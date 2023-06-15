@@ -1,0 +1,173 @@
+.sticky-mountains-component {
+  .row {
+    overflow: hidden;
+
+    /* custom filler to reconcile pinned mts and following content */
+    background: linear-gradient($sunset 55%, $mountain-6 45%);
+    @media (max-width: $screen-md) {
+      background: linear-gradient($sunset 400px, $mountain-6 80px);
+    }
+    @media (min-height: 800px) and (max-width: $screen-lg) {
+      background: linear-gradient($sunset 30%, $mountain-6 10%);
+      .mtn__6:after {
+        transform: translate(-40%);
+        margin-left: -100%;
+        content: "\a0";
+        display: flex;
+        margin-top: -10px;
+        line-height: 1px;
+        width: 100vw;
+        border-bottom: 350px solid $mountain-6;
+      }
+    }
+  }
+
+  .col {
+    position: relative;
+    height: 150vh;
+    margin-bottom: 120vh;
+    width: 10%;
+  }
+
+  .col.off {
+    margin-top: 120vh;
+    margin-bottom: 20px;
+  }
+  img {
+    width: 101vw;
+    padding: 0;
+  }
+
+  .mtn__2 img {
+    margin-left: -100%;
+  }
+  .mtn__3 img {
+    margin-left: -203%;
+  }
+  .mtn__4 img {
+    margin-left: -303%;
+  }
+  .mtn__5 img {
+    margin-left: -403%;
+  }
+  .mtn__6 img {
+    margin-left: -503%;
+  }
+  .mtn__6 {
+    width: 100%;
+    div {
+      margin-left: -500%;
+    }
+    .typed {
+      max-width: 90vw;
+      left: 30%;
+      display: inline;
+      position: absolute;
+      padding: 8px;
+      background-color: #616161;
+      color: #e2e9ea;
+      font-size: 22px;
+      width: max-content;
+
+      @media (max-width: $screen-xs) {
+        font-size: 18px;
+      }
+      &:nth-of-type(1) {
+        top: 25%;
+      }
+      &:nth-of-type(2) {
+        top: 45%;
+      }
+    }
+  }
+/* start flashing cursor */
+  .typed-cursor {
+      opacity: 1;
+      -webkit-animation: blink 0.7s infinite;
+      -moz-animation: blink 0.7s infinite;
+      animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+      0% { opacity:1; }
+      50% { opacity:0; }
+      100% { opacity:1; }
+  }
+
+  @-webkit-keyframes blink {
+      0% { opacity:1; }
+      50% { opacity:0; }
+      100% { opacity:1; }
+  }
+
+  @-moz-keyframes blink {
+      0% { opacity:1; }
+      50% { opacity:0; }
+      100% { opacity:1; }
+  }
+/* end flashing cursor */
+
+  .sticky-element {
+    overflow: visible;
+    box-sizing: border-box;
+  }
+
+  .small .sticky-element {
+      /* background-color: lightskyblue; */
+    height: 50vh;
+  }
+
+  .xsmall .sticky-element {
+      /* background-color: greenyellow; */
+      height: 10px;
+  }
+
+  .large .sticky-element {
+    /* background-color: deepskyblue; */
+    height: 120vh;
+  }
+
+  .demo {
+    display: flex;
+    // justify-content: space-around;
+  }
+
+  .demo .col {
+    // border: solid 2px red;
+    width: 10%;
+  }
+
+  .overflow-hidden { overflow: hidden; }
+
+  .add-top {
+    @media (max-width: 767px){
+      margin-top: 50px;
+    }
+  }
+  .add-extra-top {
+    padding-top: 15%;
+    padding-bottom: 25%;
+  }
+
+
+  .mtn {
+    &__1 {
+      z-index: 1;
+    }
+    &__2 {
+      z-index: 2;
+    }
+    &__3 {
+      z-index: 3;
+    }
+    &__4 {
+      z-index: 4;
+    }
+    &__5 {
+      z-index: 5;
+    }
+    &__6 {
+      z-index: 6;
+    }
+  }
+}

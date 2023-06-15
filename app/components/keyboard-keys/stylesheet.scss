@@ -1,0 +1,97 @@
+.bootstrap-styles {
+  .keyboard-keys-component {
+    * { outline: none !important; }
+    a, a:visited, a:hover, a:active { text-decoration: none; color: inherit; }
+    .container {
+      width: 260px;
+    }
+    button {
+      border: none;
+      background-color: transparent;
+    }
+    &.right {
+      .right-key {
+        span {
+          margin-top: 2px;
+          box-shadow: none;
+          -moz-box-shadow: none;
+          -webkit-box-shadow: none;
+        }
+      }
+    }
+    &.left {
+      .left-key {
+        span {
+          margin-top: 2px;
+          box-shadow: none;
+          -moz-box-shadow: none;
+          -webkit-box-shadow: none;
+        }
+      }
+    }
+    &.down {
+      .down-key {
+        span {
+          margin-top: 2px;
+          box-shadow: none;
+          -moz-box-shadow: none;
+          -webkit-box-shadow: none;
+        }
+      }
+    }
+    &.up {
+      .up-key {
+        span {
+          margin-top: 2px;
+          box-shadow: none;
+          -moz-box-shadow: none;
+          -webkit-box-shadow: none;
+        }
+      }
+    }
+    .key {
+      width:35px;
+      height: 39px;
+      padding: 1px;
+      margin: 10px;
+      border: none;
+
+      span {
+        display: block;
+      	width: 35px;
+      	height: 35px;
+      	border: 1px solid #a9a9a9;
+      	border-radius: 2px 2px 2px 2px;
+      	-moz-border-radius: 2px 2px 2px 2px;
+      	-webkit-border-radius: 2px 2px 2px 2px;
+      	font-size: 12px;
+      	-moz-box-sizing: border-box !important;
+      	-webkit-box-sizing: border-box !important;
+      	box-sizing: border-box !important;
+      	text-align: center;
+      	padding-top: 10px;
+      	color: #7c7c7c;
+      	-webkit-box-shadow: 0px 3px 0px -2px rgba(255,255,255,1), 0px 2px 0px 0px rgba(169,169,169,1);
+      	-moz-box-shadow: 0px 3px 0px -2px rgba(255,255,255,1), 0px 2px 0px 0px rgba(169,169,169,1);
+      	box-shadow: 0px 3px 0px -2px rgba(255,255,255,1), 0px 2px 0px 0px rgba(169,169,169,1);
+      	cursor: pointer;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version - Chrome and Opera */
+
+        &:hover {
+          cursor: pointer;
+        }
+        &:active {
+          margin-top: 2px;
+          box-shadow: none;
+          -moz-box-shadow: none;
+          -webkit-box-shadow: none;
+        }
+      }
+    }
+  }
+}
