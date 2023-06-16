@@ -63,22 +63,16 @@
   text-align: center;
   padding-top: 10px;
   color: #7c7c7c;
-  -webkit-box-shadow: 0px 3px 0px -2px white, 0px 2px 0px 0px darkgray;
-  -moz-box-shadow: 0px 3px 0px -2px white, 0px 2px 0px 0px darkgray;
-  box-shadow: 0px 3px 0px -2px white, 0px 2px 0px 0px darkgray;
+  -webkit-box-shadow: 0px 3px 0px -2px rgb(255, 255, 255), 0px 2px 0px 0px rgb(169, 169, 169);
+  -moz-box-shadow: 0px 3px 0px -2px rgb(255, 255, 255), 0px 2px 0px 0px rgb(169, 169, 169);
+  box-shadow: 0px 3px 0px -2px rgb(255, 255, 255), 0px 2px 0px 0px rgb(169, 169, 169);
   cursor: pointer;
-  -webkit-touch-callout: none;
-  /* iOS Safari */
-  -webkit-user-select: none;
-  /* Safari */
-  -khtml-user-select: none;
-  /* Konqueror HTML */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version - Chrome and Opera */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version - Chrome and Opera */
 }
 .bootstrap-styles .keyboard-keys-component .key span:hover {
   cursor: pointer;
@@ -375,10 +369,10 @@
 
 .bootstrap-styles {
   /*!
-   * Bootstrap v4.3.1 (https://getbootstrap.com/)
-   * Copyright 2011-2019 The Bootstrap Authors
-   * Copyright 2011-2019 Twitter, Inc.
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * Bootstrap v4.6.2 (https://getbootstrap.com/)
+   * Copyright 2011-2022 The Bootstrap Authors
+   * Copyright 2011-2022 Twitter, Inc.
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    */
 }
 .bootstrap-styles :root {
@@ -408,7 +402,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 .bootstrap-styles *,
@@ -427,7 +421,7 @@
 }
 .bootstrap-styles body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -435,7 +429,7 @@
   text-align: left;
   background-color: #fff;
 }
-.bootstrap-styles [tabindex="-1"]:focus {
+.bootstrap-styles [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
 .bootstrap-styles hr {
@@ -515,16 +509,13 @@
   color: #0056b3;
   text-decoration: underline;
 }
-.bootstrap-styles a:not([href]):not([tabindex]) {
+.bootstrap-styles a:not([href]):not([class]) {
   color: inherit;
   text-decoration: none;
 }
-.bootstrap-styles a:not([href]):not([tabindex]):hover, .bootstrap-styles a:not([href]):not([tabindex]):focus {
+.bootstrap-styles a:not([href]):not([class]):hover {
   color: inherit;
   text-decoration: none;
-}
-.bootstrap-styles a:not([href]):not([tabindex]):focus {
-  outline: 0;
 }
 .bootstrap-styles pre,
 .bootstrap-styles code,
@@ -537,6 +528,7 @@
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
+  -ms-overflow-style: scrollbar;
 }
 .bootstrap-styles figure {
   margin: 0 0 1rem;
@@ -561,6 +553,7 @@
 }
 .bootstrap-styles th {
   text-align: inherit;
+  text-align: -webkit-match-parent;
 }
 .bootstrap-styles label {
   display: inline-block;
@@ -569,9 +562,8 @@
 .bootstrap-styles button {
   border-radius: 0;
 }
-.bootstrap-styles button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+.bootstrap-styles button:focus:not(:focus-visible) {
+  outline: 0;
 }
 .bootstrap-styles input,
 .bootstrap-styles button,
@@ -590,6 +582,9 @@
 .bootstrap-styles button,
 .bootstrap-styles select {
   text-transform: none;
+}
+.bootstrap-styles [role=button] {
+  cursor: pointer;
 }
 .bootstrap-styles select {
   word-wrap: normal;
@@ -617,12 +612,6 @@
 .bootstrap-styles input[type=checkbox] {
   box-sizing: border-box;
   padding: 0;
-}
-.bootstrap-styles input[type=date],
-.bootstrap-styles input[type=time],
-.bootstrap-styles input[type=datetime-local],
-.bootstrap-styles input[type=month] {
-  -webkit-appearance: listbox;
 }
 .bootstrap-styles textarea {
   overflow: auto;
@@ -732,7 +721,7 @@
 }
 .bootstrap-styles small,
 .bootstrap-styles .small {
-  font-size: 80%;
+  font-size: 0.875em;
   font-weight: 400;
 }
 .bootstrap-styles mark,
@@ -764,7 +753,7 @@
 }
 .bootstrap-styles .blockquote-footer {
   display: block;
-  font-size: 80%;
+  font-size: 0.875em;
   color: #6c757d;
 }
 .bootstrap-styles .blockquote-footer::before {
@@ -796,7 +785,7 @@
 .bootstrap-styles code {
   font-size: 87.5%;
   color: #e83e8c;
-  word-break: break-word;
+  word-wrap: break-word;
 }
 a > .bootstrap-styles code {
   color: inherit;
@@ -827,7 +816,12 @@ a > .bootstrap-styles code {
   max-height: 340px;
   overflow-y: scroll;
 }
-.bootstrap-styles .container {
+.bootstrap-styles .container,
+.bootstrap-styles .container-fluid,
+.bootstrap-styles .container-xl,
+.bootstrap-styles .container-lg,
+.bootstrap-styles .container-md,
+.bootstrap-styles .container-sm {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -835,31 +829,24 @@ a > .bootstrap-styles code {
   margin-left: auto;
 }
 @media (min-width: 576px) {
-  .bootstrap-styles .container {
+  .bootstrap-styles .container-sm, .bootstrap-styles .container {
     max-width: 540px;
   }
 }
 @media (min-width: 768px) {
-  .bootstrap-styles .container {
+  .bootstrap-styles .container-md, .bootstrap-styles .container-sm, .bootstrap-styles .container {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
-  .bootstrap-styles .container {
+  .bootstrap-styles .container-lg, .bootstrap-styles .container-md, .bootstrap-styles .container-sm, .bootstrap-styles .container {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .bootstrap-styles .container {
+  .bootstrap-styles .container-xl, .bootstrap-styles .container-lg, .bootstrap-styles .container-md, .bootstrap-styles .container-sm, .bootstrap-styles .container {
     max-width: 1140px;
   }
-}
-.bootstrap-styles .container-fluid {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
 }
 .bootstrap-styles .row {
   display: flex;
@@ -892,54 +879,78 @@ a > .bootstrap-styles code {
   flex-grow: 1;
   max-width: 100%;
 }
+.bootstrap-styles .row-cols-1 > * {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.bootstrap-styles .row-cols-2 > * {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.bootstrap-styles .row-cols-3 > * {
+  flex: 0 0 33.3333333333%;
+  max-width: 33.3333333333%;
+}
+.bootstrap-styles .row-cols-4 > * {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+.bootstrap-styles .row-cols-5 > * {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+.bootstrap-styles .row-cols-6 > * {
+  flex: 0 0 16.6666666667%;
+  max-width: 16.6666666667%;
+}
 .bootstrap-styles .col-auto {
   flex: 0 0 auto;
   width: auto;
   max-width: 100%;
 }
 .bootstrap-styles .col-1 {
-  flex: 0 0 8.3333333333%;
-  max-width: 8.3333333333%;
+  flex: 0 0 8.33333333%;
+  max-width: 8.33333333%;
 }
 .bootstrap-styles .col-2 {
-  flex: 0 0 16.6666666667%;
-  max-width: 16.6666666667%;
+  flex: 0 0 16.66666667%;
+  max-width: 16.66666667%;
 }
 .bootstrap-styles .col-3 {
   flex: 0 0 25%;
   max-width: 25%;
 }
 .bootstrap-styles .col-4 {
-  flex: 0 0 33.3333333333%;
-  max-width: 33.3333333333%;
+  flex: 0 0 33.33333333%;
+  max-width: 33.33333333%;
 }
 .bootstrap-styles .col-5 {
-  flex: 0 0 41.6666666667%;
-  max-width: 41.6666666667%;
+  flex: 0 0 41.66666667%;
+  max-width: 41.66666667%;
 }
 .bootstrap-styles .col-6 {
   flex: 0 0 50%;
   max-width: 50%;
 }
 .bootstrap-styles .col-7 {
-  flex: 0 0 58.3333333333%;
-  max-width: 58.3333333333%;
+  flex: 0 0 58.33333333%;
+  max-width: 58.33333333%;
 }
 .bootstrap-styles .col-8 {
-  flex: 0 0 66.6666666667%;
-  max-width: 66.6666666667%;
+  flex: 0 0 66.66666667%;
+  max-width: 66.66666667%;
 }
 .bootstrap-styles .col-9 {
   flex: 0 0 75%;
   max-width: 75%;
 }
 .bootstrap-styles .col-10 {
-  flex: 0 0 83.3333333333%;
-  max-width: 83.3333333333%;
+  flex: 0 0 83.33333333%;
+  max-width: 83.33333333%;
 }
 .bootstrap-styles .col-11 {
-  flex: 0 0 91.6666666667%;
-  max-width: 91.6666666667%;
+  flex: 0 0 91.66666667%;
+  max-width: 91.66666667%;
 }
 .bootstrap-styles .col-12 {
   flex: 0 0 100%;
@@ -991,37 +1002,37 @@ a > .bootstrap-styles code {
   order: 12;
 }
 .bootstrap-styles .offset-1 {
-  margin-left: 8.3333333333%;
+  margin-left: 8.33333333%;
 }
 .bootstrap-styles .offset-2 {
-  margin-left: 16.6666666667%;
+  margin-left: 16.66666667%;
 }
 .bootstrap-styles .offset-3 {
   margin-left: 25%;
 }
 .bootstrap-styles .offset-4 {
-  margin-left: 33.3333333333%;
+  margin-left: 33.33333333%;
 }
 .bootstrap-styles .offset-5 {
-  margin-left: 41.6666666667%;
+  margin-left: 41.66666667%;
 }
 .bootstrap-styles .offset-6 {
   margin-left: 50%;
 }
 .bootstrap-styles .offset-7 {
-  margin-left: 58.3333333333%;
+  margin-left: 58.33333333%;
 }
 .bootstrap-styles .offset-8 {
-  margin-left: 66.6666666667%;
+  margin-left: 66.66666667%;
 }
 .bootstrap-styles .offset-9 {
   margin-left: 75%;
 }
 .bootstrap-styles .offset-10 {
-  margin-left: 83.3333333333%;
+  margin-left: 83.33333333%;
 }
 .bootstrap-styles .offset-11 {
-  margin-left: 91.6666666667%;
+  margin-left: 91.66666667%;
 }
 @media (min-width: 576px) {
   .bootstrap-styles .col-sm {
@@ -1029,54 +1040,78 @@ a > .bootstrap-styles code {
     flex-grow: 1;
     max-width: 100%;
   }
+  .bootstrap-styles .row-cols-sm-1 > * {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .bootstrap-styles .row-cols-sm-2 > * {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .bootstrap-styles .row-cols-sm-3 > * {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }
+  .bootstrap-styles .row-cols-sm-4 > * {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .bootstrap-styles .row-cols-sm-5 > * {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+  .bootstrap-styles .row-cols-sm-6 > * {
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
   .bootstrap-styles .col-sm-auto {
     flex: 0 0 auto;
     width: auto;
     max-width: 100%;
   }
   .bootstrap-styles .col-sm-1 {
-    flex: 0 0 8.3333333333%;
-    max-width: 8.3333333333%;
+    flex: 0 0 8.33333333%;
+    max-width: 8.33333333%;
   }
   .bootstrap-styles .col-sm-2 {
-    flex: 0 0 16.6666666667%;
-    max-width: 16.6666666667%;
+    flex: 0 0 16.66666667%;
+    max-width: 16.66666667%;
   }
   .bootstrap-styles .col-sm-3 {
     flex: 0 0 25%;
     max-width: 25%;
   }
   .bootstrap-styles .col-sm-4 {
-    flex: 0 0 33.3333333333%;
-    max-width: 33.3333333333%;
+    flex: 0 0 33.33333333%;
+    max-width: 33.33333333%;
   }
   .bootstrap-styles .col-sm-5 {
-    flex: 0 0 41.6666666667%;
-    max-width: 41.6666666667%;
+    flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
   }
   .bootstrap-styles .col-sm-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
   .bootstrap-styles .col-sm-7 {
-    flex: 0 0 58.3333333333%;
-    max-width: 58.3333333333%;
+    flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
   }
   .bootstrap-styles .col-sm-8 {
-    flex: 0 0 66.6666666667%;
-    max-width: 66.6666666667%;
+    flex: 0 0 66.66666667%;
+    max-width: 66.66666667%;
   }
   .bootstrap-styles .col-sm-9 {
     flex: 0 0 75%;
     max-width: 75%;
   }
   .bootstrap-styles .col-sm-10 {
-    flex: 0 0 83.3333333333%;
-    max-width: 83.3333333333%;
+    flex: 0 0 83.33333333%;
+    max-width: 83.33333333%;
   }
   .bootstrap-styles .col-sm-11 {
-    flex: 0 0 91.6666666667%;
-    max-width: 91.6666666667%;
+    flex: 0 0 91.66666667%;
+    max-width: 91.66666667%;
   }
   .bootstrap-styles .col-sm-12 {
     flex: 0 0 100%;
@@ -1131,37 +1166,37 @@ a > .bootstrap-styles code {
     margin-left: 0;
   }
   .bootstrap-styles .offset-sm-1 {
-    margin-left: 8.3333333333%;
+    margin-left: 8.33333333%;
   }
   .bootstrap-styles .offset-sm-2 {
-    margin-left: 16.6666666667%;
+    margin-left: 16.66666667%;
   }
   .bootstrap-styles .offset-sm-3 {
     margin-left: 25%;
   }
   .bootstrap-styles .offset-sm-4 {
-    margin-left: 33.3333333333%;
+    margin-left: 33.33333333%;
   }
   .bootstrap-styles .offset-sm-5 {
-    margin-left: 41.6666666667%;
+    margin-left: 41.66666667%;
   }
   .bootstrap-styles .offset-sm-6 {
     margin-left: 50%;
   }
   .bootstrap-styles .offset-sm-7 {
-    margin-left: 58.3333333333%;
+    margin-left: 58.33333333%;
   }
   .bootstrap-styles .offset-sm-8 {
-    margin-left: 66.6666666667%;
+    margin-left: 66.66666667%;
   }
   .bootstrap-styles .offset-sm-9 {
     margin-left: 75%;
   }
   .bootstrap-styles .offset-sm-10 {
-    margin-left: 83.3333333333%;
+    margin-left: 83.33333333%;
   }
   .bootstrap-styles .offset-sm-11 {
-    margin-left: 91.6666666667%;
+    margin-left: 91.66666667%;
   }
 }
 @media (min-width: 768px) {
@@ -1170,54 +1205,78 @@ a > .bootstrap-styles code {
     flex-grow: 1;
     max-width: 100%;
   }
+  .bootstrap-styles .row-cols-md-1 > * {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .bootstrap-styles .row-cols-md-2 > * {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .bootstrap-styles .row-cols-md-3 > * {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }
+  .bootstrap-styles .row-cols-md-4 > * {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .bootstrap-styles .row-cols-md-5 > * {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+  .bootstrap-styles .row-cols-md-6 > * {
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
   .bootstrap-styles .col-md-auto {
     flex: 0 0 auto;
     width: auto;
     max-width: 100%;
   }
   .bootstrap-styles .col-md-1 {
-    flex: 0 0 8.3333333333%;
-    max-width: 8.3333333333%;
+    flex: 0 0 8.33333333%;
+    max-width: 8.33333333%;
   }
   .bootstrap-styles .col-md-2 {
-    flex: 0 0 16.6666666667%;
-    max-width: 16.6666666667%;
+    flex: 0 0 16.66666667%;
+    max-width: 16.66666667%;
   }
   .bootstrap-styles .col-md-3 {
     flex: 0 0 25%;
     max-width: 25%;
   }
   .bootstrap-styles .col-md-4 {
-    flex: 0 0 33.3333333333%;
-    max-width: 33.3333333333%;
+    flex: 0 0 33.33333333%;
+    max-width: 33.33333333%;
   }
   .bootstrap-styles .col-md-5 {
-    flex: 0 0 41.6666666667%;
-    max-width: 41.6666666667%;
+    flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
   }
   .bootstrap-styles .col-md-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
   .bootstrap-styles .col-md-7 {
-    flex: 0 0 58.3333333333%;
-    max-width: 58.3333333333%;
+    flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
   }
   .bootstrap-styles .col-md-8 {
-    flex: 0 0 66.6666666667%;
-    max-width: 66.6666666667%;
+    flex: 0 0 66.66666667%;
+    max-width: 66.66666667%;
   }
   .bootstrap-styles .col-md-9 {
     flex: 0 0 75%;
     max-width: 75%;
   }
   .bootstrap-styles .col-md-10 {
-    flex: 0 0 83.3333333333%;
-    max-width: 83.3333333333%;
+    flex: 0 0 83.33333333%;
+    max-width: 83.33333333%;
   }
   .bootstrap-styles .col-md-11 {
-    flex: 0 0 91.6666666667%;
-    max-width: 91.6666666667%;
+    flex: 0 0 91.66666667%;
+    max-width: 91.66666667%;
   }
   .bootstrap-styles .col-md-12 {
     flex: 0 0 100%;
@@ -1272,37 +1331,37 @@ a > .bootstrap-styles code {
     margin-left: 0;
   }
   .bootstrap-styles .offset-md-1 {
-    margin-left: 8.3333333333%;
+    margin-left: 8.33333333%;
   }
   .bootstrap-styles .offset-md-2 {
-    margin-left: 16.6666666667%;
+    margin-left: 16.66666667%;
   }
   .bootstrap-styles .offset-md-3 {
     margin-left: 25%;
   }
   .bootstrap-styles .offset-md-4 {
-    margin-left: 33.3333333333%;
+    margin-left: 33.33333333%;
   }
   .bootstrap-styles .offset-md-5 {
-    margin-left: 41.6666666667%;
+    margin-left: 41.66666667%;
   }
   .bootstrap-styles .offset-md-6 {
     margin-left: 50%;
   }
   .bootstrap-styles .offset-md-7 {
-    margin-left: 58.3333333333%;
+    margin-left: 58.33333333%;
   }
   .bootstrap-styles .offset-md-8 {
-    margin-left: 66.6666666667%;
+    margin-left: 66.66666667%;
   }
   .bootstrap-styles .offset-md-9 {
     margin-left: 75%;
   }
   .bootstrap-styles .offset-md-10 {
-    margin-left: 83.3333333333%;
+    margin-left: 83.33333333%;
   }
   .bootstrap-styles .offset-md-11 {
-    margin-left: 91.6666666667%;
+    margin-left: 91.66666667%;
   }
 }
 @media (min-width: 992px) {
@@ -1311,54 +1370,78 @@ a > .bootstrap-styles code {
     flex-grow: 1;
     max-width: 100%;
   }
+  .bootstrap-styles .row-cols-lg-1 > * {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .bootstrap-styles .row-cols-lg-2 > * {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .bootstrap-styles .row-cols-lg-3 > * {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }
+  .bootstrap-styles .row-cols-lg-4 > * {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .bootstrap-styles .row-cols-lg-5 > * {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+  .bootstrap-styles .row-cols-lg-6 > * {
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
   .bootstrap-styles .col-lg-auto {
     flex: 0 0 auto;
     width: auto;
     max-width: 100%;
   }
   .bootstrap-styles .col-lg-1 {
-    flex: 0 0 8.3333333333%;
-    max-width: 8.3333333333%;
+    flex: 0 0 8.33333333%;
+    max-width: 8.33333333%;
   }
   .bootstrap-styles .col-lg-2 {
-    flex: 0 0 16.6666666667%;
-    max-width: 16.6666666667%;
+    flex: 0 0 16.66666667%;
+    max-width: 16.66666667%;
   }
   .bootstrap-styles .col-lg-3 {
     flex: 0 0 25%;
     max-width: 25%;
   }
   .bootstrap-styles .col-lg-4 {
-    flex: 0 0 33.3333333333%;
-    max-width: 33.3333333333%;
+    flex: 0 0 33.33333333%;
+    max-width: 33.33333333%;
   }
   .bootstrap-styles .col-lg-5 {
-    flex: 0 0 41.6666666667%;
-    max-width: 41.6666666667%;
+    flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
   }
   .bootstrap-styles .col-lg-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
   .bootstrap-styles .col-lg-7 {
-    flex: 0 0 58.3333333333%;
-    max-width: 58.3333333333%;
+    flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
   }
   .bootstrap-styles .col-lg-8 {
-    flex: 0 0 66.6666666667%;
-    max-width: 66.6666666667%;
+    flex: 0 0 66.66666667%;
+    max-width: 66.66666667%;
   }
   .bootstrap-styles .col-lg-9 {
     flex: 0 0 75%;
     max-width: 75%;
   }
   .bootstrap-styles .col-lg-10 {
-    flex: 0 0 83.3333333333%;
-    max-width: 83.3333333333%;
+    flex: 0 0 83.33333333%;
+    max-width: 83.33333333%;
   }
   .bootstrap-styles .col-lg-11 {
-    flex: 0 0 91.6666666667%;
-    max-width: 91.6666666667%;
+    flex: 0 0 91.66666667%;
+    max-width: 91.66666667%;
   }
   .bootstrap-styles .col-lg-12 {
     flex: 0 0 100%;
@@ -1413,37 +1496,37 @@ a > .bootstrap-styles code {
     margin-left: 0;
   }
   .bootstrap-styles .offset-lg-1 {
-    margin-left: 8.3333333333%;
+    margin-left: 8.33333333%;
   }
   .bootstrap-styles .offset-lg-2 {
-    margin-left: 16.6666666667%;
+    margin-left: 16.66666667%;
   }
   .bootstrap-styles .offset-lg-3 {
     margin-left: 25%;
   }
   .bootstrap-styles .offset-lg-4 {
-    margin-left: 33.3333333333%;
+    margin-left: 33.33333333%;
   }
   .bootstrap-styles .offset-lg-5 {
-    margin-left: 41.6666666667%;
+    margin-left: 41.66666667%;
   }
   .bootstrap-styles .offset-lg-6 {
     margin-left: 50%;
   }
   .bootstrap-styles .offset-lg-7 {
-    margin-left: 58.3333333333%;
+    margin-left: 58.33333333%;
   }
   .bootstrap-styles .offset-lg-8 {
-    margin-left: 66.6666666667%;
+    margin-left: 66.66666667%;
   }
   .bootstrap-styles .offset-lg-9 {
     margin-left: 75%;
   }
   .bootstrap-styles .offset-lg-10 {
-    margin-left: 83.3333333333%;
+    margin-left: 83.33333333%;
   }
   .bootstrap-styles .offset-lg-11 {
-    margin-left: 91.6666666667%;
+    margin-left: 91.66666667%;
   }
 }
 @media (min-width: 1200px) {
@@ -1452,54 +1535,78 @@ a > .bootstrap-styles code {
     flex-grow: 1;
     max-width: 100%;
   }
+  .bootstrap-styles .row-cols-xl-1 > * {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .bootstrap-styles .row-cols-xl-2 > * {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .bootstrap-styles .row-cols-xl-3 > * {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }
+  .bootstrap-styles .row-cols-xl-4 > * {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .bootstrap-styles .row-cols-xl-5 > * {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+  .bootstrap-styles .row-cols-xl-6 > * {
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
   .bootstrap-styles .col-xl-auto {
     flex: 0 0 auto;
     width: auto;
     max-width: 100%;
   }
   .bootstrap-styles .col-xl-1 {
-    flex: 0 0 8.3333333333%;
-    max-width: 8.3333333333%;
+    flex: 0 0 8.33333333%;
+    max-width: 8.33333333%;
   }
   .bootstrap-styles .col-xl-2 {
-    flex: 0 0 16.6666666667%;
-    max-width: 16.6666666667%;
+    flex: 0 0 16.66666667%;
+    max-width: 16.66666667%;
   }
   .bootstrap-styles .col-xl-3 {
     flex: 0 0 25%;
     max-width: 25%;
   }
   .bootstrap-styles .col-xl-4 {
-    flex: 0 0 33.3333333333%;
-    max-width: 33.3333333333%;
+    flex: 0 0 33.33333333%;
+    max-width: 33.33333333%;
   }
   .bootstrap-styles .col-xl-5 {
-    flex: 0 0 41.6666666667%;
-    max-width: 41.6666666667%;
+    flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
   }
   .bootstrap-styles .col-xl-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
   .bootstrap-styles .col-xl-7 {
-    flex: 0 0 58.3333333333%;
-    max-width: 58.3333333333%;
+    flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
   }
   .bootstrap-styles .col-xl-8 {
-    flex: 0 0 66.6666666667%;
-    max-width: 66.6666666667%;
+    flex: 0 0 66.66666667%;
+    max-width: 66.66666667%;
   }
   .bootstrap-styles .col-xl-9 {
     flex: 0 0 75%;
     max-width: 75%;
   }
   .bootstrap-styles .col-xl-10 {
-    flex: 0 0 83.3333333333%;
-    max-width: 83.3333333333%;
+    flex: 0 0 83.33333333%;
+    max-width: 83.33333333%;
   }
   .bootstrap-styles .col-xl-11 {
-    flex: 0 0 91.6666666667%;
-    max-width: 91.6666666667%;
+    flex: 0 0 91.66666667%;
+    max-width: 91.66666667%;
   }
   .bootstrap-styles .col-xl-12 {
     flex: 0 0 100%;
@@ -1554,37 +1661,37 @@ a > .bootstrap-styles code {
     margin-left: 0;
   }
   .bootstrap-styles .offset-xl-1 {
-    margin-left: 8.3333333333%;
+    margin-left: 8.33333333%;
   }
   .bootstrap-styles .offset-xl-2 {
-    margin-left: 16.6666666667%;
+    margin-left: 16.66666667%;
   }
   .bootstrap-styles .offset-xl-3 {
     margin-left: 25%;
   }
   .bootstrap-styles .offset-xl-4 {
-    margin-left: 33.3333333333%;
+    margin-left: 33.33333333%;
   }
   .bootstrap-styles .offset-xl-5 {
-    margin-left: 41.6666666667%;
+    margin-left: 41.66666667%;
   }
   .bootstrap-styles .offset-xl-6 {
     margin-left: 50%;
   }
   .bootstrap-styles .offset-xl-7 {
-    margin-left: 58.3333333333%;
+    margin-left: 58.33333333%;
   }
   .bootstrap-styles .offset-xl-8 {
-    margin-left: 66.6666666667%;
+    margin-left: 66.66666667%;
   }
   .bootstrap-styles .offset-xl-9 {
     margin-left: 75%;
   }
   .bootstrap-styles .offset-xl-10 {
-    margin-left: 83.3333333333%;
+    margin-left: 83.33333333%;
   }
   .bootstrap-styles .offset-xl-11 {
-    margin-left: 91.6666666667%;
+    margin-left: 91.66666667%;
   }
 }
 .bootstrap-styles .table {
@@ -1910,6 +2017,16 @@ a > .bootstrap-styles code {
   background-color: #e9ecef;
   opacity: 1;
 }
+.bootstrap-styles input[type=date].form-control,
+.bootstrap-styles input[type=time].form-control,
+.bootstrap-styles input[type=datetime-local].form-control,
+.bootstrap-styles input[type=month].form-control {
+  appearance: none;
+}
+.bootstrap-styles select.form-control:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #495057;
+}
 .bootstrap-styles select.form-control:focus::-ms-value {
   color: #495057;
   background-color: #fff;
@@ -1941,9 +2058,9 @@ a > .bootstrap-styles code {
 .bootstrap-styles .form-control-plaintext {
   display: block;
   width: 100%;
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
+  padding: 0.375rem 0;
   margin-bottom: 0;
+  font-size: 1rem;
   line-height: 1.5;
   color: #212529;
   background-color: transparent;
@@ -2002,7 +2119,7 @@ a > .bootstrap-styles code {
   margin-top: 0.3rem;
   margin-left: -1.25rem;
 }
-.bootstrap-styles .form-check-input:disabled ~ .form-check-label {
+.bootstrap-styles .form-check-input[disabled] ~ .form-check-label, .bootstrap-styles .form-check-input:disabled ~ .form-check-label {
   color: #6c757d;
 }
 .bootstrap-styles .form-check-label {
@@ -2024,12 +2141,13 @@ a > .bootstrap-styles code {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 80%;
+  font-size: 0.875em;
   color: #28a745;
 }
 .bootstrap-styles .valid-tooltip {
   position: absolute;
   top: 100%;
+  left: 0;
   z-index: 5;
   display: none;
   max-width: 100%;
@@ -2041,22 +2159,29 @@ a > .bootstrap-styles code {
   background-color: rgba(40, 167, 69, 0.9);
   border-radius: 0.25rem;
 }
+.form-row > .col > .bootstrap-styles .valid-tooltip, .form-row > [class*=col-] > .bootstrap-styles .valid-tooltip {
+  left: 5px;
+}
+.was-validated .bootstrap-styles:valid ~ .valid-feedback,
+.was-validated .bootstrap-styles:valid ~ .valid-tooltip, .bootstrap-styles.is-valid ~ .valid-feedback,
+.bootstrap-styles.is-valid ~ .valid-tooltip {
+  display: block;
+}
 .was-validated .bootstrap-styles .form-control:valid, .bootstrap-styles .form-control.is-valid {
   border-color: #28a745;
-  padding-right: calc(1.5em + 0.75rem);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  padding-right: calc(1.5em + 0.75rem) !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: center right calc(0.375em + 0.1875rem);
+  background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .bootstrap-styles .form-control:valid:focus, .bootstrap-styles .form-control.is-valid:focus {
   border-color: #28a745;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
-.was-validated .bootstrap-styles .form-control:valid ~ .valid-feedback,
-.was-validated .bootstrap-styles .form-control:valid ~ .valid-tooltip, .bootstrap-styles .form-control.is-valid ~ .valid-feedback,
-.bootstrap-styles .form-control.is-valid ~ .valid-tooltip {
-  display: block;
+.was-validated .bootstrap-styles select.form-control:valid, .bootstrap-styles select.form-control.is-valid {
+  padding-right: 3rem !important;
+  background-position: right 1.5rem center;
 }
 .was-validated .bootstrap-styles textarea.form-control:valid, .bootstrap-styles textarea.form-control.is-valid {
   padding-right: calc(1.5em + 0.75rem);
@@ -2064,22 +2189,12 @@ a > .bootstrap-styles code {
 }
 .was-validated .bootstrap-styles .custom-select:valid, .bootstrap-styles .custom-select.is-valid {
   border-color: #28a745;
-  padding-right: calc((1em + 0.75rem) * 3 / 4 + 1.75rem);
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  padding-right: calc(0.75em + 2.3125rem) !important;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 .was-validated .bootstrap-styles .custom-select:valid:focus, .bootstrap-styles .custom-select.is-valid:focus {
   border-color: #28a745;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
-}
-.was-validated .bootstrap-styles .custom-select:valid ~ .valid-feedback,
-.was-validated .bootstrap-styles .custom-select:valid ~ .valid-tooltip, .bootstrap-styles .custom-select.is-valid ~ .valid-feedback,
-.bootstrap-styles .custom-select.is-valid ~ .valid-tooltip {
-  display: block;
-}
-.was-validated .bootstrap-styles .form-control-file:valid ~ .valid-feedback,
-.was-validated .bootstrap-styles .form-control-file:valid ~ .valid-tooltip, .bootstrap-styles .form-control-file.is-valid ~ .valid-feedback,
-.bootstrap-styles .form-control-file.is-valid ~ .valid-tooltip {
-  display: block;
 }
 .was-validated .bootstrap-styles .form-check-input:valid ~ .form-check-label, .bootstrap-styles .form-check-input.is-valid ~ .form-check-label {
   color: #28a745;
@@ -2095,11 +2210,6 @@ a > .bootstrap-styles code {
 .was-validated .bootstrap-styles .custom-control-input:valid ~ .custom-control-label::before, .bootstrap-styles .custom-control-input.is-valid ~ .custom-control-label::before {
   border-color: #28a745;
 }
-.was-validated .bootstrap-styles .custom-control-input:valid ~ .valid-feedback,
-.was-validated .bootstrap-styles .custom-control-input:valid ~ .valid-tooltip, .bootstrap-styles .custom-control-input.is-valid ~ .valid-feedback,
-.bootstrap-styles .custom-control-input.is-valid ~ .valid-tooltip {
-  display: block;
-}
 .was-validated .bootstrap-styles .custom-control-input:valid:checked ~ .custom-control-label::before, .bootstrap-styles .custom-control-input.is-valid:checked ~ .custom-control-label::before {
   border-color: #34ce57;
   background-color: #34ce57;
@@ -2113,11 +2223,6 @@ a > .bootstrap-styles code {
 .was-validated .bootstrap-styles .custom-file-input:valid ~ .custom-file-label, .bootstrap-styles .custom-file-input.is-valid ~ .custom-file-label {
   border-color: #28a745;
 }
-.was-validated .bootstrap-styles .custom-file-input:valid ~ .valid-feedback,
-.was-validated .bootstrap-styles .custom-file-input:valid ~ .valid-tooltip, .bootstrap-styles .custom-file-input.is-valid ~ .valid-feedback,
-.bootstrap-styles .custom-file-input.is-valid ~ .valid-tooltip {
-  display: block;
-}
 .was-validated .bootstrap-styles .custom-file-input:valid:focus ~ .custom-file-label, .bootstrap-styles .custom-file-input.is-valid:focus ~ .custom-file-label {
   border-color: #28a745;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
@@ -2126,12 +2231,13 @@ a > .bootstrap-styles code {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 80%;
+  font-size: 0.875em;
   color: #dc3545;
 }
 .bootstrap-styles .invalid-tooltip {
   position: absolute;
   top: 100%;
+  left: 0;
   z-index: 5;
   display: none;
   max-width: 100%;
@@ -2143,22 +2249,29 @@ a > .bootstrap-styles code {
   background-color: rgba(220, 53, 69, 0.9);
   border-radius: 0.25rem;
 }
+.form-row > .col > .bootstrap-styles .invalid-tooltip, .form-row > [class*=col-] > .bootstrap-styles .invalid-tooltip {
+  left: 5px;
+}
+.was-validated .bootstrap-styles:invalid ~ .invalid-feedback,
+.was-validated .bootstrap-styles:invalid ~ .invalid-tooltip, .bootstrap-styles.is-invalid ~ .invalid-feedback,
+.bootstrap-styles.is-invalid ~ .invalid-tooltip {
+  display: block;
+}
 .was-validated .bootstrap-styles .form-control:invalid, .bootstrap-styles .form-control.is-invalid {
   border-color: #dc3545;
-  padding-right: calc(1.5em + 0.75rem);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+  padding-right: calc(1.5em + 0.75rem) !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: center right calc(0.375em + 0.1875rem);
+  background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .bootstrap-styles .form-control:invalid:focus, .bootstrap-styles .form-control.is-invalid:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
-.was-validated .bootstrap-styles .form-control:invalid ~ .invalid-feedback,
-.was-validated .bootstrap-styles .form-control:invalid ~ .invalid-tooltip, .bootstrap-styles .form-control.is-invalid ~ .invalid-feedback,
-.bootstrap-styles .form-control.is-invalid ~ .invalid-tooltip {
-  display: block;
+.was-validated .bootstrap-styles select.form-control:invalid, .bootstrap-styles select.form-control.is-invalid {
+  padding-right: 3rem !important;
+  background-position: right 1.5rem center;
 }
 .was-validated .bootstrap-styles textarea.form-control:invalid, .bootstrap-styles textarea.form-control.is-invalid {
   padding-right: calc(1.5em + 0.75rem);
@@ -2166,22 +2279,12 @@ a > .bootstrap-styles code {
 }
 .was-validated .bootstrap-styles .custom-select:invalid, .bootstrap-styles .custom-select.is-invalid {
   border-color: #dc3545;
-  padding-right: calc((1em + 0.75rem) * 3 / 4 + 1.75rem);
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  padding-right: calc(0.75em + 2.3125rem) !important;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 .was-validated .bootstrap-styles .custom-select:invalid:focus, .bootstrap-styles .custom-select.is-invalid:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-}
-.was-validated .bootstrap-styles .custom-select:invalid ~ .invalid-feedback,
-.was-validated .bootstrap-styles .custom-select:invalid ~ .invalid-tooltip, .bootstrap-styles .custom-select.is-invalid ~ .invalid-feedback,
-.bootstrap-styles .custom-select.is-invalid ~ .invalid-tooltip {
-  display: block;
-}
-.was-validated .bootstrap-styles .form-control-file:invalid ~ .invalid-feedback,
-.was-validated .bootstrap-styles .form-control-file:invalid ~ .invalid-tooltip, .bootstrap-styles .form-control-file.is-invalid ~ .invalid-feedback,
-.bootstrap-styles .form-control-file.is-invalid ~ .invalid-tooltip {
-  display: block;
 }
 .was-validated .bootstrap-styles .form-check-input:invalid ~ .form-check-label, .bootstrap-styles .form-check-input.is-invalid ~ .form-check-label {
   color: #dc3545;
@@ -2197,11 +2300,6 @@ a > .bootstrap-styles code {
 .was-validated .bootstrap-styles .custom-control-input:invalid ~ .custom-control-label::before, .bootstrap-styles .custom-control-input.is-invalid ~ .custom-control-label::before {
   border-color: #dc3545;
 }
-.was-validated .bootstrap-styles .custom-control-input:invalid ~ .invalid-feedback,
-.was-validated .bootstrap-styles .custom-control-input:invalid ~ .invalid-tooltip, .bootstrap-styles .custom-control-input.is-invalid ~ .invalid-feedback,
-.bootstrap-styles .custom-control-input.is-invalid ~ .invalid-tooltip {
-  display: block;
-}
 .was-validated .bootstrap-styles .custom-control-input:invalid:checked ~ .custom-control-label::before, .bootstrap-styles .custom-control-input.is-invalid:checked ~ .custom-control-label::before {
   border-color: #e4606d;
   background-color: #e4606d;
@@ -2214,11 +2312,6 @@ a > .bootstrap-styles code {
 }
 .was-validated .bootstrap-styles .custom-file-input:invalid ~ .custom-file-label, .bootstrap-styles .custom-file-input.is-invalid ~ .custom-file-label {
   border-color: #dc3545;
-}
-.was-validated .bootstrap-styles .custom-file-input:invalid ~ .invalid-feedback,
-.was-validated .bootstrap-styles .custom-file-input:invalid ~ .invalid-tooltip, .bootstrap-styles .custom-file-input.is-invalid ~ .invalid-feedback,
-.bootstrap-styles .custom-file-input.is-invalid ~ .invalid-tooltip {
-  display: block;
 }
 .was-validated .bootstrap-styles .custom-file-input:invalid:focus ~ .custom-file-label, .bootstrap-styles .custom-file-input.is-invalid:focus ~ .custom-file-label {
   border-color: #dc3545;
@@ -2255,7 +2348,7 @@ a > .bootstrap-styles code {
     display: inline-block;
   }
   .bootstrap-styles .form-inline .input-group,
-.bootstrap-styles .form-inline .custom-select {
+  .bootstrap-styles .form-inline .custom-select {
     width: auto;
   }
   .bootstrap-styles .form-inline .form-check {
@@ -2311,6 +2404,9 @@ a > .bootstrap-styles code {
 .bootstrap-styles .btn.disabled, .bootstrap-styles .btn:disabled {
   opacity: 0.65;
 }
+.bootstrap-styles .btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
 .bootstrap-styles a.btn.disabled,
 .bootstrap-styles fieldset:disabled a.btn {
   pointer-events: none;
@@ -2326,6 +2422,9 @@ a > .bootstrap-styles code {
   border-color: #0062cc;
 }
 .bootstrap-styles .btn-primary:focus, .bootstrap-styles .btn-primary.focus {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 .bootstrap-styles .btn-primary.disabled, .bootstrap-styles .btn-primary:disabled {
@@ -2352,6 +2451,9 @@ a > .bootstrap-styles code {
   border-color: #545b62;
 }
 .bootstrap-styles .btn-secondary:focus, .bootstrap-styles .btn-secondary.focus {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
   box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 .bootstrap-styles .btn-secondary.disabled, .bootstrap-styles .btn-secondary:disabled {
@@ -2378,6 +2480,9 @@ a > .bootstrap-styles code {
   border-color: #1e7e34;
 }
 .bootstrap-styles .btn-success:focus, .bootstrap-styles .btn-success.focus {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
   box-shadow: 0 0 0 0.2rem rgba(72, 180, 97, 0.5);
 }
 .bootstrap-styles .btn-success.disabled, .bootstrap-styles .btn-success:disabled {
@@ -2404,6 +2509,9 @@ a > .bootstrap-styles code {
   border-color: #117a8b;
 }
 .bootstrap-styles .btn-info:focus, .bootstrap-styles .btn-info.focus {
+  color: #fff;
+  background-color: #138496;
+  border-color: #117a8b;
   box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5);
 }
 .bootstrap-styles .btn-info.disabled, .bootstrap-styles .btn-info:disabled {
@@ -2430,6 +2538,9 @@ a > .bootstrap-styles code {
   border-color: #d39e00;
 }
 .bootstrap-styles .btn-warning:focus, .bootstrap-styles .btn-warning.focus {
+  color: #212529;
+  background-color: #e0a800;
+  border-color: #d39e00;
   box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5);
 }
 .bootstrap-styles .btn-warning.disabled, .bootstrap-styles .btn-warning:disabled {
@@ -2456,6 +2567,9 @@ a > .bootstrap-styles code {
   border-color: #bd2130;
 }
 .bootstrap-styles .btn-danger:focus, .bootstrap-styles .btn-danger.focus {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
   box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
 }
 .bootstrap-styles .btn-danger.disabled, .bootstrap-styles .btn-danger:disabled {
@@ -2482,6 +2596,9 @@ a > .bootstrap-styles code {
   border-color: #dae0e5;
 }
 .bootstrap-styles .btn-light:focus, .bootstrap-styles .btn-light.focus {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
   box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5);
 }
 .bootstrap-styles .btn-light.disabled, .bootstrap-styles .btn-light:disabled {
@@ -2508,6 +2625,9 @@ a > .bootstrap-styles code {
   border-color: #1d2124;
 }
 .bootstrap-styles .btn-dark:focus, .bootstrap-styles .btn-dark.focus {
+  color: #fff;
+  background-color: #23272b;
+  border-color: #1d2124;
   box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5);
 }
 .bootstrap-styles .btn-dark.disabled, .bootstrap-styles .btn-dark:disabled {
@@ -2726,7 +2846,6 @@ a > .bootstrap-styles code {
 }
 .bootstrap-styles .btn-link:focus, .bootstrap-styles .btn-link.focus {
   text-decoration: underline;
-  box-shadow: none;
 }
 .bootstrap-styles .btn-link:disabled, .bootstrap-styles .btn-link.disabled {
   color: #6c757d;
@@ -2778,6 +2897,16 @@ a > .bootstrap-styles code {
 }
 @media (prefers-reduced-motion: reduce) {
   .bootstrap-styles .collapsing {
+    transition: none;
+  }
+}
+.bootstrap-styles .collapsing.width {
+  width: 0;
+  height: auto;
+  transition: width 0.35s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bootstrap-styles .collapsing.width {
     transition: none;
   }
 }
@@ -2968,7 +3097,7 @@ a > .bootstrap-styles code {
 .bootstrap-styles .dropdown-item:hover, .bootstrap-styles .dropdown-item:focus {
   color: #16181b;
   text-decoration: none;
-  background-color: #f8f9fa;
+  background-color: #e9ecef;
 }
 .bootstrap-styles .dropdown-item.active, .bootstrap-styles .dropdown-item:active {
   color: #fff;
@@ -2976,7 +3105,7 @@ a > .bootstrap-styles code {
   background-color: #007bff;
 }
 .bootstrap-styles .dropdown-item.disabled, .bootstrap-styles .dropdown-item:disabled {
-  color: #6c757d;
+  color: #adb5bd;
   pointer-events: none;
   background-color: transparent;
 }
@@ -3106,6 +3235,7 @@ a > .bootstrap-styles code {
   position: relative;
   flex: 1 1 auto;
   width: 1%;
+  min-width: 0;
   margin-bottom: 0;
 }
 .bootstrap-styles .input-group > .form-control + .form-control,
@@ -3130,11 +3260,6 @@ a > .bootstrap-styles code {
 .bootstrap-styles .input-group > .custom-file .custom-file-input:focus {
   z-index: 4;
 }
-.bootstrap-styles .input-group > .form-control:not(:last-child),
-.bootstrap-styles .input-group > .custom-select:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
 .bootstrap-styles .input-group > .form-control:not(:first-child),
 .bootstrap-styles .input-group > .custom-select:not(:first-child) {
   border-top-left-radius: 0;
@@ -3151,6 +3276,20 @@ a > .bootstrap-styles code {
 .bootstrap-styles .input-group > .custom-file:not(:first-child) .custom-file-label {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+.bootstrap-styles .input-group:not(.has-validation) > .form-control:not(:last-child),
+.bootstrap-styles .input-group:not(.has-validation) > .custom-select:not(:last-child),
+.bootstrap-styles .input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label,
+.bootstrap-styles .input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label::after {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.bootstrap-styles .input-group.has-validation > .form-control:nth-last-child(n+3),
+.bootstrap-styles .input-group.has-validation > .custom-select:nth-last-child(n+3),
+.bootstrap-styles .input-group.has-validation > .custom-file:nth-last-child(n+3) .custom-file-label,
+.bootstrap-styles .input-group.has-validation > .custom-file:nth-last-child(n+3) .custom-file-label::after {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .bootstrap-styles .input-group-prepend,
 .bootstrap-styles .input-group-append {
@@ -3236,8 +3375,10 @@ a > .bootstrap-styles code {
 }
 .bootstrap-styles .input-group > .input-group-prepend > .btn,
 .bootstrap-styles .input-group > .input-group-prepend > .input-group-text,
-.bootstrap-styles .input-group > .input-group-append:not(:last-child) > .btn,
-.bootstrap-styles .input-group > .input-group-append:not(:last-child) > .input-group-text,
+.bootstrap-styles .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn,
+.bootstrap-styles .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .input-group-text,
+.bootstrap-styles .input-group.has-validation > .input-group-append:nth-last-child(n+3) > .btn,
+.bootstrap-styles .input-group.has-validation > .input-group-append:nth-last-child(n+3) > .input-group-text,
 .bootstrap-styles .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .bootstrap-styles .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
   border-top-right-radius: 0;
@@ -3254,9 +3395,11 @@ a > .bootstrap-styles code {
 }
 .bootstrap-styles .custom-control {
   position: relative;
+  z-index: 1;
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5rem;
+  print-color-adjust: exact;
 }
 .bootstrap-styles .custom-control-inline {
   display: inline-flex;
@@ -3264,7 +3407,10 @@ a > .bootstrap-styles code {
 }
 .bootstrap-styles .custom-control-input {
   position: absolute;
+  left: 0;
   z-index: -1;
+  width: 1rem;
+  height: 1.25rem;
   opacity: 0;
 }
 .bootstrap-styles .custom-control-input:checked ~ .custom-control-label::before {
@@ -3283,10 +3429,10 @@ a > .bootstrap-styles code {
   background-color: #b3d7ff;
   border-color: #b3d7ff;
 }
-.bootstrap-styles .custom-control-input:disabled ~ .custom-control-label {
+.bootstrap-styles .custom-control-input[disabled] ~ .custom-control-label, .bootstrap-styles .custom-control-input:disabled ~ .custom-control-label {
   color: #6c757d;
 }
-.bootstrap-styles .custom-control-input:disabled ~ .custom-control-label::before {
+.bootstrap-styles .custom-control-input[disabled] ~ .custom-control-label::before, .bootstrap-styles .custom-control-input:disabled ~ .custom-control-label::before {
   background-color: #e9ecef;
 }
 .bootstrap-styles .custom-control-label {
@@ -3304,7 +3450,7 @@ a > .bootstrap-styles code {
   pointer-events: none;
   content: "";
   background-color: #fff;
-  border: #adb5bd solid 1px;
+  border: 1px solid #adb5bd;
 }
 .bootstrap-styles .custom-control-label::after {
   position: absolute;
@@ -3314,20 +3460,20 @@ a > .bootstrap-styles code {
   width: 1rem;
   height: 1rem;
   content: "";
-  background: no-repeat 50%/50% 50%;
+  background: 50%/50% 50% no-repeat;
 }
 .bootstrap-styles .custom-checkbox .custom-control-label::before {
   border-radius: 0.25rem;
 }
 .bootstrap-styles .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
 }
 .bootstrap-styles .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
   border-color: #007bff;
   background-color: #007bff;
 }
 .bootstrap-styles .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
 }
 .bootstrap-styles .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
   background-color: rgba(0, 123, 255, 0.5);
@@ -3339,7 +3485,7 @@ a > .bootstrap-styles code {
   border-radius: 50%;
 }
 .bootstrap-styles .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
 }
 .bootstrap-styles .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
   background-color: rgba(0, 123, 255, 0.5);
@@ -3384,8 +3530,7 @@ a > .bootstrap-styles code {
   line-height: 1.5;
   color: #495057;
   vertical-align: middle;
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
-  background-color: #fff;
+  background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   appearance: none;
@@ -3410,6 +3555,10 @@ a > .bootstrap-styles code {
 }
 .bootstrap-styles .custom-select::-ms-expand {
   display: none;
+}
+.bootstrap-styles .custom-select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #495057;
 }
 .bootstrap-styles .custom-select-sm {
   height: calc(1.5em + 0.5rem + 2px);
@@ -3438,13 +3587,14 @@ a > .bootstrap-styles code {
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   margin: 0;
+  overflow: hidden;
   opacity: 0;
 }
 .bootstrap-styles .custom-file-input:focus ~ .custom-file-label {
   border-color: #80bdff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
-.bootstrap-styles .custom-file-input:disabled ~ .custom-file-label {
+.bootstrap-styles .custom-file-input[disabled] ~ .custom-file-label, .bootstrap-styles .custom-file-input:disabled ~ .custom-file-label {
   background-color: #e9ecef;
 }
 .bootstrap-styles .custom-file-input:lang(en) ~ .custom-file-label::after {
@@ -3461,6 +3611,7 @@ a > .bootstrap-styles code {
   z-index: 1;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
+  overflow: hidden;
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
@@ -3486,13 +3637,13 @@ a > .bootstrap-styles code {
 }
 .bootstrap-styles .custom-range {
   width: 100%;
-  height: calc(1rem + 0.4rem);
+  height: 1.4rem;
   padding: 0;
   background-color: transparent;
   appearance: none;
 }
 .bootstrap-styles .custom-range:focus {
-  outline: none;
+  outline: 0;
 }
 .bootstrap-styles .custom-range:focus::-webkit-slider-thumb {
   box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
@@ -3619,8 +3770,8 @@ a > .bootstrap-styles code {
 }
 @media (prefers-reduced-motion: reduce) {
   .bootstrap-styles .custom-control-label::before,
-.bootstrap-styles .custom-file-label,
-.bootstrap-styles .custom-select {
+  .bootstrap-styles .custom-file-label,
+  .bootstrap-styles .custom-select {
     transition: none;
   }
 }
@@ -3646,15 +3797,15 @@ a > .bootstrap-styles code {
 .bootstrap-styles .nav-tabs {
   border-bottom: 1px solid #dee2e6;
 }
-.bootstrap-styles .nav-tabs .nav-item {
-  margin-bottom: -1px;
-}
 .bootstrap-styles .nav-tabs .nav-link {
+  margin-bottom: -1px;
+  background-color: transparent;
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
 .bootstrap-styles .nav-tabs .nav-link:hover, .bootstrap-styles .nav-tabs .nav-link:focus {
+  isolation: isolate;
   border-color: #e9ecef #e9ecef #dee2e6;
 }
 .bootstrap-styles .nav-tabs .nav-link.disabled {
@@ -3674,6 +3825,8 @@ a > .bootstrap-styles code {
   border-top-right-radius: 0;
 }
 .bootstrap-styles .nav-pills .nav-link {
+  background: none;
+  border: 0;
   border-radius: 0.25rem;
 }
 .bootstrap-styles .nav-pills .nav-link.active,
@@ -3681,10 +3834,12 @@ a > .bootstrap-styles code {
   color: #fff;
   background-color: #007bff;
 }
+.bootstrap-styles .nav-fill > .nav-link,
 .bootstrap-styles .nav-fill .nav-item {
   flex: 1 1 auto;
   text-align: center;
 }
+.bootstrap-styles .nav-justified > .nav-link,
 .bootstrap-styles .nav-justified .nav-item {
   flex-basis: 0;
   flex-grow: 1;
@@ -3704,8 +3859,12 @@ a > .bootstrap-styles code {
   justify-content: space-between;
   padding: 0.5rem 1rem;
 }
-.bootstrap-styles .navbar > .container,
-.bootstrap-styles .navbar > .container-fluid {
+.bootstrap-styles .navbar .container,
+.bootstrap-styles .navbar .container-fluid,
+.bootstrap-styles .navbar .container-sm,
+.bootstrap-styles .navbar .container-md,
+.bootstrap-styles .navbar .container-lg,
+.bootstrap-styles .navbar .container-xl {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -3765,12 +3924,19 @@ a > .bootstrap-styles code {
   height: 1.5em;
   vertical-align: middle;
   content: "";
-  background: no-repeat center center;
-  background-size: 100% 100%;
+  background: 50%/100% 100% no-repeat;
+}
+.bootstrap-styles .navbar-nav-scroll {
+  max-height: 75vh;
+  overflow-y: auto;
 }
 @media (max-width: 575.98px) {
   .bootstrap-styles .navbar-expand-sm > .container,
-.bootstrap-styles .navbar-expand-sm > .container-fluid {
+  .bootstrap-styles .navbar-expand-sm > .container-fluid,
+  .bootstrap-styles .navbar-expand-sm > .container-sm,
+  .bootstrap-styles .navbar-expand-sm > .container-md,
+  .bootstrap-styles .navbar-expand-sm > .container-lg,
+  .bootstrap-styles .navbar-expand-sm > .container-xl {
     padding-right: 0;
     padding-left: 0;
   }
@@ -3791,8 +3957,15 @@ a > .bootstrap-styles code {
     padding-left: 0.5rem;
   }
   .bootstrap-styles .navbar-expand-sm > .container,
-.bootstrap-styles .navbar-expand-sm > .container-fluid {
+  .bootstrap-styles .navbar-expand-sm > .container-fluid,
+  .bootstrap-styles .navbar-expand-sm > .container-sm,
+  .bootstrap-styles .navbar-expand-sm > .container-md,
+  .bootstrap-styles .navbar-expand-sm > .container-lg,
+  .bootstrap-styles .navbar-expand-sm > .container-xl {
     flex-wrap: nowrap;
+  }
+  .bootstrap-styles .navbar-expand-sm .navbar-nav-scroll {
+    overflow: visible;
   }
   .bootstrap-styles .navbar-expand-sm .navbar-collapse {
     display: flex !important;
@@ -3804,7 +3977,11 @@ a > .bootstrap-styles code {
 }
 @media (max-width: 767.98px) {
   .bootstrap-styles .navbar-expand-md > .container,
-.bootstrap-styles .navbar-expand-md > .container-fluid {
+  .bootstrap-styles .navbar-expand-md > .container-fluid,
+  .bootstrap-styles .navbar-expand-md > .container-sm,
+  .bootstrap-styles .navbar-expand-md > .container-md,
+  .bootstrap-styles .navbar-expand-md > .container-lg,
+  .bootstrap-styles .navbar-expand-md > .container-xl {
     padding-right: 0;
     padding-left: 0;
   }
@@ -3825,8 +4002,15 @@ a > .bootstrap-styles code {
     padding-left: 0.5rem;
   }
   .bootstrap-styles .navbar-expand-md > .container,
-.bootstrap-styles .navbar-expand-md > .container-fluid {
+  .bootstrap-styles .navbar-expand-md > .container-fluid,
+  .bootstrap-styles .navbar-expand-md > .container-sm,
+  .bootstrap-styles .navbar-expand-md > .container-md,
+  .bootstrap-styles .navbar-expand-md > .container-lg,
+  .bootstrap-styles .navbar-expand-md > .container-xl {
     flex-wrap: nowrap;
+  }
+  .bootstrap-styles .navbar-expand-md .navbar-nav-scroll {
+    overflow: visible;
   }
   .bootstrap-styles .navbar-expand-md .navbar-collapse {
     display: flex !important;
@@ -3838,7 +4022,11 @@ a > .bootstrap-styles code {
 }
 @media (max-width: 991.98px) {
   .bootstrap-styles .navbar-expand-lg > .container,
-.bootstrap-styles .navbar-expand-lg > .container-fluid {
+  .bootstrap-styles .navbar-expand-lg > .container-fluid,
+  .bootstrap-styles .navbar-expand-lg > .container-sm,
+  .bootstrap-styles .navbar-expand-lg > .container-md,
+  .bootstrap-styles .navbar-expand-lg > .container-lg,
+  .bootstrap-styles .navbar-expand-lg > .container-xl {
     padding-right: 0;
     padding-left: 0;
   }
@@ -3859,8 +4047,15 @@ a > .bootstrap-styles code {
     padding-left: 0.5rem;
   }
   .bootstrap-styles .navbar-expand-lg > .container,
-.bootstrap-styles .navbar-expand-lg > .container-fluid {
+  .bootstrap-styles .navbar-expand-lg > .container-fluid,
+  .bootstrap-styles .navbar-expand-lg > .container-sm,
+  .bootstrap-styles .navbar-expand-lg > .container-md,
+  .bootstrap-styles .navbar-expand-lg > .container-lg,
+  .bootstrap-styles .navbar-expand-lg > .container-xl {
     flex-wrap: nowrap;
+  }
+  .bootstrap-styles .navbar-expand-lg .navbar-nav-scroll {
+    overflow: visible;
   }
   .bootstrap-styles .navbar-expand-lg .navbar-collapse {
     display: flex !important;
@@ -3872,7 +4067,11 @@ a > .bootstrap-styles code {
 }
 @media (max-width: 1199.98px) {
   .bootstrap-styles .navbar-expand-xl > .container,
-.bootstrap-styles .navbar-expand-xl > .container-fluid {
+  .bootstrap-styles .navbar-expand-xl > .container-fluid,
+  .bootstrap-styles .navbar-expand-xl > .container-sm,
+  .bootstrap-styles .navbar-expand-xl > .container-md,
+  .bootstrap-styles .navbar-expand-xl > .container-lg,
+  .bootstrap-styles .navbar-expand-xl > .container-xl {
     padding-right: 0;
     padding-left: 0;
   }
@@ -3893,8 +4092,15 @@ a > .bootstrap-styles code {
     padding-left: 0.5rem;
   }
   .bootstrap-styles .navbar-expand-xl > .container,
-.bootstrap-styles .navbar-expand-xl > .container-fluid {
+  .bootstrap-styles .navbar-expand-xl > .container-fluid,
+  .bootstrap-styles .navbar-expand-xl > .container-sm,
+  .bootstrap-styles .navbar-expand-xl > .container-md,
+  .bootstrap-styles .navbar-expand-xl > .container-lg,
+  .bootstrap-styles .navbar-expand-xl > .container-xl {
     flex-wrap: nowrap;
+  }
+  .bootstrap-styles .navbar-expand-xl .navbar-nav-scroll {
+    overflow: visible;
   }
   .bootstrap-styles .navbar-expand-xl .navbar-collapse {
     display: flex !important;
@@ -3909,7 +4115,11 @@ a > .bootstrap-styles code {
   justify-content: flex-start;
 }
 .bootstrap-styles .navbar-expand > .container,
-.bootstrap-styles .navbar-expand > .container-fluid {
+.bootstrap-styles .navbar-expand > .container-fluid,
+.bootstrap-styles .navbar-expand > .container-sm,
+.bootstrap-styles .navbar-expand > .container-md,
+.bootstrap-styles .navbar-expand > .container-lg,
+.bootstrap-styles .navbar-expand > .container-xl {
   padding-right: 0;
   padding-left: 0;
 }
@@ -3924,8 +4134,15 @@ a > .bootstrap-styles code {
   padding-left: 0.5rem;
 }
 .bootstrap-styles .navbar-expand > .container,
-.bootstrap-styles .navbar-expand > .container-fluid {
+.bootstrap-styles .navbar-expand > .container-fluid,
+.bootstrap-styles .navbar-expand > .container-sm,
+.bootstrap-styles .navbar-expand > .container-md,
+.bootstrap-styles .navbar-expand > .container-lg,
+.bootstrap-styles .navbar-expand > .container-xl {
   flex-wrap: nowrap;
+}
+.bootstrap-styles .navbar-expand .navbar-nav-scroll {
+  overflow: visible;
 }
 .bootstrap-styles .navbar-expand .navbar-collapse {
   display: flex !important;
@@ -3960,7 +4177,7 @@ a > .bootstrap-styles code {
   border-color: rgba(0, 0, 0, 0.1);
 }
 .bootstrap-styles .navbar-light .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 .bootstrap-styles .navbar-light .navbar-text {
   color: rgba(0, 0, 0, 0.5);
@@ -3997,7 +4214,7 @@ a > .bootstrap-styles code {
   border-color: rgba(255, 255, 255, 0.1);
 }
 .bootstrap-styles .navbar-dark .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 .bootstrap-styles .navbar-dark .navbar-text {
   color: rgba(255, 255, 255, 0.5);
@@ -4023,16 +4240,27 @@ a > .bootstrap-styles code {
   margin-right: 0;
   margin-left: 0;
 }
-.bootstrap-styles .card > .list-group:first-child .list-group-item:first-child {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+.bootstrap-styles .card > .list-group {
+  border-top: inherit;
+  border-bottom: inherit;
 }
-.bootstrap-styles .card > .list-group:last-child .list-group-item:last-child {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+.bootstrap-styles .card > .list-group:first-child {
+  border-top-width: 0;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+.bootstrap-styles .card > .list-group:last-child {
+  border-bottom-width: 0;
+  border-bottom-right-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+.bootstrap-styles .card > .card-header + .list-group,
+.bootstrap-styles .card > .list-group + .card-footer {
+  border-top: 0;
 }
 .bootstrap-styles .card-body {
   flex: 1 1 auto;
+  min-height: 1px;
   padding: 1.25rem;
 }
 .bootstrap-styles .card-title {
@@ -4060,9 +4288,6 @@ a > .bootstrap-styles code {
 .bootstrap-styles .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
-.bootstrap-styles .card-header + .list-group .list-group-item:first-child {
-  border-top: 0;
-}
 .bootstrap-styles .card-footer {
   padding: 0.75rem 1.25rem;
   background-color: rgba(0, 0, 0, 0.03);
@@ -4088,52 +4313,47 @@ a > .bootstrap-styles code {
   bottom: 0;
   left: 0;
   padding: 1.25rem;
-}
-.bootstrap-styles .card-img {
-  width: 100%;
   border-radius: calc(0.25rem - 1px);
 }
-.bootstrap-styles .card-img-top {
+.bootstrap-styles .card-img,
+.bootstrap-styles .card-img-top,
+.bootstrap-styles .card-img-bottom {
+  flex-shrink: 0;
   width: 100%;
+}
+.bootstrap-styles .card-img,
+.bootstrap-styles .card-img-top {
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
 }
+.bootstrap-styles .card-img,
 .bootstrap-styles .card-img-bottom {
-  width: 100%;
   border-bottom-right-radius: calc(0.25rem - 1px);
   border-bottom-left-radius: calc(0.25rem - 1px);
-}
-.bootstrap-styles .card-deck {
-  display: flex;
-  flex-direction: column;
 }
 .bootstrap-styles .card-deck .card {
   margin-bottom: 15px;
 }
 @media (min-width: 576px) {
   .bootstrap-styles .card-deck {
+    display: flex;
     flex-flow: row wrap;
     margin-right: -15px;
     margin-left: -15px;
   }
   .bootstrap-styles .card-deck .card {
-    display: flex;
     flex: 1 0 0%;
-    flex-direction: column;
     margin-right: 15px;
     margin-bottom: 0;
     margin-left: 15px;
   }
-}
-.bootstrap-styles .card-group {
-  display: flex;
-  flex-direction: column;
 }
 .bootstrap-styles .card-group > .card {
   margin-bottom: 15px;
 }
 @media (min-width: 576px) {
   .bootstrap-styles .card-group {
+    display: flex;
     flex-flow: row wrap;
   }
   .bootstrap-styles .card-group > .card {
@@ -4149,11 +4369,11 @@ a > .bootstrap-styles code {
     border-bottom-right-radius: 0;
   }
   .bootstrap-styles .card-group > .card:not(:last-child) .card-img-top,
-.bootstrap-styles .card-group > .card:not(:last-child) .card-header {
+  .bootstrap-styles .card-group > .card:not(:last-child) .card-header {
     border-top-right-radius: 0;
   }
   .bootstrap-styles .card-group > .card:not(:last-child) .card-img-bottom,
-.bootstrap-styles .card-group > .card:not(:last-child) .card-footer {
+  .bootstrap-styles .card-group > .card:not(:last-child) .card-footer {
     border-bottom-right-radius: 0;
   }
   .bootstrap-styles .card-group > .card:not(:first-child) {
@@ -4161,11 +4381,11 @@ a > .bootstrap-styles code {
     border-bottom-left-radius: 0;
   }
   .bootstrap-styles .card-group > .card:not(:first-child) .card-img-top,
-.bootstrap-styles .card-group > .card:not(:first-child) .card-header {
+  .bootstrap-styles .card-group > .card:not(:first-child) .card-header {
     border-top-left-radius: 0;
   }
   .bootstrap-styles .card-group > .card:not(:first-child) .card-img-bottom,
-.bootstrap-styles .card-group > .card:not(:first-child) .card-footer {
+  .bootstrap-styles .card-group > .card:not(:first-child) .card-footer {
     border-bottom-left-radius: 0;
   }
 }
@@ -4184,26 +4404,23 @@ a > .bootstrap-styles code {
     width: 100%;
   }
 }
+.bootstrap-styles .accordion {
+  overflow-anchor: none;
+}
 .bootstrap-styles .accordion > .card {
   overflow: hidden;
 }
-.bootstrap-styles .accordion > .card:not(:first-of-type) .card-header:first-child {
-  border-radius: 0;
-}
-.bootstrap-styles .accordion > .card:not(:first-of-type):not(:last-of-type) {
-  border-bottom: 0;
-  border-radius: 0;
-}
-.bootstrap-styles .accordion > .card:first-of-type {
+.bootstrap-styles .accordion > .card:not(:last-of-type) {
   border-bottom: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.bootstrap-styles .accordion > .card:last-of-type {
+.bootstrap-styles .accordion > .card:not(:first-of-type) {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.bootstrap-styles .accordion > .card .card-header {
+.bootstrap-styles .accordion > .card > .card-header {
+  border-radius: 0;
   margin-bottom: -1px;
 }
 .bootstrap-styles .breadcrumb {
@@ -4219,7 +4436,7 @@ a > .bootstrap-styles code {
   padding-left: 0.5rem;
 }
 .bootstrap-styles .breadcrumb-item + .breadcrumb-item::before {
-  display: inline-block;
+  float: left;
   padding-right: 0.5rem;
   color: #6c757d;
   content: "/";
@@ -4257,7 +4474,7 @@ a > .bootstrap-styles code {
   border-color: #dee2e6;
 }
 .bootstrap-styles .page-link:focus {
-  z-index: 2;
+  z-index: 3;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
@@ -4271,7 +4488,7 @@ a > .bootstrap-styles code {
   border-bottom-right-radius: 0.25rem;
 }
 .bootstrap-styles .page-item.active .page-link {
-  z-index: 1;
+  z-index: 3;
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
@@ -4482,6 +4699,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 2;
   padding: 0.75rem 1.25rem;
   color: inherit;
 }
@@ -4585,6 +4803,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   display: flex;
   height: 1rem;
   overflow: hidden;
+  line-height: 0;
   font-size: 0.75rem;
   background-color: #e9ecef;
   border-radius: 0.25rem;
@@ -4593,6 +4812,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
   color: #fff;
   text-align: center;
   white-space: nowrap;
@@ -4609,7 +4829,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   background-size: 1rem 1rem;
 }
 .bootstrap-styles .progress-bar-animated {
-  animation: progress-bar-stripes 1s linear infinite;
+  animation: 1s linear infinite progress-bar-stripes;
 }
 @media (prefers-reduced-motion: reduce) {
   .bootstrap-styles .progress-bar-animated {
@@ -4628,6 +4848,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
+  border-radius: 0.25rem;
 }
 .bootstrap-styles .list-group-item-action {
   width: 100%;
@@ -4648,18 +4869,16 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   position: relative;
   display: block;
   padding: 0.75rem 1.25rem;
-  margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .bootstrap-styles .list-group-item:first-child {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
 }
 .bootstrap-styles .list-group-item:last-child {
-  margin-bottom: 0;
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
 }
 .bootstrap-styles .list-group-item.disabled, .bootstrap-styles .list-group-item:disabled {
   color: #6c757d;
@@ -4672,118 +4891,139 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   background-color: #007bff;
   border-color: #007bff;
 }
+.bootstrap-styles .list-group-item + .bootstrap-styles .list-group-item {
+  border-top-width: 0;
+}
+.bootstrap-styles .list-group-item + .bootstrap-styles .list-group-item.active {
+  margin-top: -1px;
+  border-top-width: 1px;
+}
 .bootstrap-styles .list-group-horizontal {
   flex-direction: row;
 }
-.bootstrap-styles .list-group-horizontal .list-group-item {
-  margin-right: -1px;
-  margin-bottom: 0;
-}
-.bootstrap-styles .list-group-horizontal .list-group-item:first-child {
-  border-top-left-radius: 0.25rem;
+.bootstrap-styles .list-group-horizontal > .list-group-item:first-child {
   border-bottom-left-radius: 0.25rem;
   border-top-right-radius: 0;
 }
-.bootstrap-styles .list-group-horizontal .list-group-item:last-child {
-  margin-right: 0;
+.bootstrap-styles .list-group-horizontal > .list-group-item:last-child {
   border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0;
+}
+.bootstrap-styles .list-group-horizontal > .list-group-item.active {
+  margin-top: 0;
+}
+.bootstrap-styles .list-group-horizontal > .list-group-item + .list-group-item {
+  border-top-width: 1px;
+  border-left-width: 0;
+}
+.bootstrap-styles .list-group-horizontal > .list-group-item + .list-group-item.active {
+  margin-left: -1px;
+  border-left-width: 1px;
 }
 @media (min-width: 576px) {
   .bootstrap-styles .list-group-horizontal-sm {
     flex-direction: row;
   }
-  .bootstrap-styles .list-group-horizontal-sm .list-group-item {
-    margin-right: -1px;
-    margin-bottom: 0;
-  }
-  .bootstrap-styles .list-group-horizontal-sm .list-group-item:first-child {
-    border-top-left-radius: 0.25rem;
+  .bootstrap-styles .list-group-horizontal-sm > .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0;
   }
-  .bootstrap-styles .list-group-horizontal-sm .list-group-item:last-child {
-    margin-right: 0;
+  .bootstrap-styles .list-group-horizontal-sm > .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-sm > .list-group-item.active {
+    margin-top: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-sm > .list-group-item + .list-group-item {
+    border-top-width: 1px;
+    border-left-width: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-sm > .list-group-item + .list-group-item.active {
+    margin-left: -1px;
+    border-left-width: 1px;
   }
 }
 @media (min-width: 768px) {
   .bootstrap-styles .list-group-horizontal-md {
     flex-direction: row;
   }
-  .bootstrap-styles .list-group-horizontal-md .list-group-item {
-    margin-right: -1px;
-    margin-bottom: 0;
-  }
-  .bootstrap-styles .list-group-horizontal-md .list-group-item:first-child {
-    border-top-left-radius: 0.25rem;
+  .bootstrap-styles .list-group-horizontal-md > .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0;
   }
-  .bootstrap-styles .list-group-horizontal-md .list-group-item:last-child {
-    margin-right: 0;
+  .bootstrap-styles .list-group-horizontal-md > .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-md > .list-group-item.active {
+    margin-top: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-md > .list-group-item + .list-group-item {
+    border-top-width: 1px;
+    border-left-width: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-md > .list-group-item + .list-group-item.active {
+    margin-left: -1px;
+    border-left-width: 1px;
   }
 }
 @media (min-width: 992px) {
   .bootstrap-styles .list-group-horizontal-lg {
     flex-direction: row;
   }
-  .bootstrap-styles .list-group-horizontal-lg .list-group-item {
-    margin-right: -1px;
-    margin-bottom: 0;
-  }
-  .bootstrap-styles .list-group-horizontal-lg .list-group-item:first-child {
-    border-top-left-radius: 0.25rem;
+  .bootstrap-styles .list-group-horizontal-lg > .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0;
   }
-  .bootstrap-styles .list-group-horizontal-lg .list-group-item:last-child {
-    margin-right: 0;
+  .bootstrap-styles .list-group-horizontal-lg > .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-lg > .list-group-item.active {
+    margin-top: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-lg > .list-group-item + .list-group-item {
+    border-top-width: 1px;
+    border-left-width: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-lg > .list-group-item + .list-group-item.active {
+    margin-left: -1px;
+    border-left-width: 1px;
   }
 }
 @media (min-width: 1200px) {
   .bootstrap-styles .list-group-horizontal-xl {
     flex-direction: row;
   }
-  .bootstrap-styles .list-group-horizontal-xl .list-group-item {
-    margin-right: -1px;
-    margin-bottom: 0;
-  }
-  .bootstrap-styles .list-group-horizontal-xl .list-group-item:first-child {
-    border-top-left-radius: 0.25rem;
+  .bootstrap-styles .list-group-horizontal-xl > .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0;
   }
-  .bootstrap-styles .list-group-horizontal-xl .list-group-item:last-child {
-    margin-right: 0;
+  .bootstrap-styles .list-group-horizontal-xl > .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0;
   }
+  .bootstrap-styles .list-group-horizontal-xl > .list-group-item.active {
+    margin-top: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-xl > .list-group-item + .list-group-item {
+    border-top-width: 1px;
+    border-left-width: 0;
+  }
+  .bootstrap-styles .list-group-horizontal-xl > .list-group-item + .list-group-item.active {
+    margin-left: -1px;
+    border-left-width: 1px;
+  }
 }
-.bootstrap-styles .list-group-flush .list-group-item {
-  border-right: 0;
-  border-left: 0;
+.bootstrap-styles .list-group-flush {
   border-radius: 0;
 }
-.bootstrap-styles .list-group-flush .list-group-item:last-child {
-  margin-bottom: -1px;
+.bootstrap-styles .list-group-flush > .list-group-item {
+  border-width: 0 0 1px;
 }
-.bootstrap-styles .list-group-flush:first-child .list-group-item:first-child {
-  border-top: 0;
-}
-.bootstrap-styles .list-group-flush:last-child .list-group-item:last-child {
-  margin-bottom: 0;
-  border-bottom: 0;
+.bootstrap-styles .list-group-flush > .list-group-item:last-child {
+  border-bottom-width: 0;
 }
 .bootstrap-styles .list-group-item-primary {
   color: #004085;
@@ -4909,20 +5149,18 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   padding: 0;
   background-color: transparent;
   border: 0;
-  appearance: none;
 }
 .bootstrap-styles a.close.disabled {
   pointer-events: none;
 }
 .bootstrap-styles .toast {
+  flex-basis: 350px;
   max-width: 350px;
-  overflow: hidden;
   font-size: 0.875rem;
   background-color: rgba(255, 255, 255, 0.85);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
   opacity: 0;
   border-radius: 0.25rem;
 }
@@ -4947,6 +5185,8 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   background-color: rgba(255, 255, 255, 0.85);
   background-clip: padding-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
 }
 .bootstrap-styles .toast-body {
   padding: 0.75rem;
@@ -4987,6 +5227,9 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
 .modal.show .bootstrap-styles .modal-dialog {
   transform: none;
 }
+.modal.modal-static .bootstrap-styles .modal-dialog {
+  transform: scale(1.02);
+}
 .bootstrap-styles .modal-dialog-scrollable {
   display: flex;
   max-height: calc(100% - 1rem);
@@ -5010,6 +5253,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
 .bootstrap-styles .modal-dialog-centered::before {
   display: block;
   height: calc(100vh - 1rem);
+  height: min-content;
   content: "";
 }
 .bootstrap-styles .modal-dialog-centered.modal-dialog-scrollable {
@@ -5056,8 +5300,8 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   justify-content: space-between;
   padding: 1rem 1rem;
   border-bottom: 1px solid #dee2e6;
-  border-top-left-radius: 0.3rem;
-  border-top-right-radius: 0.3rem;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
 }
 .bootstrap-styles .modal-header .close {
   padding: 1rem 1rem;
@@ -5074,18 +5318,16 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
 }
 .bootstrap-styles .modal-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 0.75rem;
   border-top: 1px solid #dee2e6;
-  border-bottom-right-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: calc(0.3rem - 1px);
+  border-bottom-left-radius: calc(0.3rem - 1px);
 }
-.bootstrap-styles .modal-footer > :not(:first-child) {
-  margin-left: 0.25rem;
-}
-.bootstrap-styles .modal-footer > :not(:last-child) {
-  margin-right: 0.25rem;
+.bootstrap-styles .modal-footer > * {
+  margin: 0.25rem;
 }
 .bootstrap-styles .modal-scrollbar-measure {
   position: absolute;
@@ -5110,6 +5352,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   }
   .bootstrap-styles .modal-dialog-centered::before {
     height: calc(100vh - 3.5rem);
+    height: min-content;
   }
   .bootstrap-styles .modal-sm {
     max-width: 300px;
@@ -5117,7 +5360,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
 }
 @media (min-width: 992px) {
   .bootstrap-styles .modal-lg,
-.bootstrap-styles .modal-xl {
+  .bootstrap-styles .modal-xl {
     max-width: 800px;
   }
 }
@@ -5131,7 +5374,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5142,8 +5385,8 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   text-transform: none;
   letter-spacing: normal;
   word-break: normal;
-  word-spacing: normal;
   white-space: normal;
+  word-spacing: normal;
   line-break: auto;
   font-size: 0.875rem;
   word-wrap: break-word;
@@ -5227,7 +5470,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5238,8 +5481,8 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   text-transform: none;
   letter-spacing: normal;
   word-break: normal;
-  word-spacing: normal;
   white-space: normal;
+  word-spacing: normal;
   line-break: auto;
   font-size: 0.875rem;
   word-wrap: break-word;
@@ -5266,7 +5509,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   margin-bottom: 0.5rem;
 }
 .bootstrap-styles .bs-popover-top > .arrow, .bootstrap-styles .bs-popover-auto[x-placement^=top] > .arrow {
-  bottom: calc((0.5rem + 1px) * -1);
+  bottom: calc(-0.5rem - 1px);
 }
 .bootstrap-styles .bs-popover-top > .arrow::before, .bootstrap-styles .bs-popover-auto[x-placement^=top] > .arrow::before {
   bottom: 0;
@@ -5282,7 +5525,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   margin-left: 0.5rem;
 }
 .bootstrap-styles .bs-popover-right > .arrow, .bootstrap-styles .bs-popover-auto[x-placement^=right] > .arrow {
-  left: calc((0.5rem + 1px) * -1);
+  left: calc(-0.5rem - 1px);
   width: 0.5rem;
   height: 1rem;
   margin: 0.3rem 0;
@@ -5301,7 +5544,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   margin-top: 0.5rem;
 }
 .bootstrap-styles .bs-popover-bottom > .arrow, .bootstrap-styles .bs-popover-auto[x-placement^=bottom] > .arrow {
-  top: calc((0.5rem + 1px) * -1);
+  top: calc(-0.5rem - 1px);
 }
 .bootstrap-styles .bs-popover-bottom > .arrow::before, .bootstrap-styles .bs-popover-auto[x-placement^=bottom] > .arrow::before {
   top: 0;
@@ -5327,7 +5570,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   margin-right: 0.5rem;
 }
 .bootstrap-styles .bs-popover-left > .arrow, .bootstrap-styles .bs-popover-auto[x-placement^=left] > .arrow {
-  right: calc((0.5rem + 1px) * -1);
+  right: calc(-0.5rem - 1px);
   width: 0.5rem;
   height: 1rem;
   margin: 0.3rem 0;
@@ -5416,11 +5659,11 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
 .bootstrap-styles .carousel-fade .active.carousel-item-right {
   z-index: 0;
   opacity: 0;
-  transition: 0s 0.6s opacity;
+  transition: opacity 0s 0.6s;
 }
 @media (prefers-reduced-motion: reduce) {
   .bootstrap-styles .carousel-fade .active.carousel-item-left,
-.bootstrap-styles .carousel-fade .active.carousel-item-right {
+  .bootstrap-styles .carousel-fade .active.carousel-item-right {
     transition: none;
   }
 }
@@ -5434,14 +5677,17 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   align-items: center;
   justify-content: center;
   width: 15%;
+  padding: 0;
   color: #fff;
   text-align: center;
+  background: none;
+  border: 0;
   opacity: 0.5;
   transition: opacity 0.15s ease;
 }
 @media (prefers-reduced-motion: reduce) {
   .bootstrap-styles .carousel-control-prev,
-.bootstrap-styles .carousel-control-next {
+  .bootstrap-styles .carousel-control-next {
     transition: none;
   }
 }
@@ -5464,13 +5710,13 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: no-repeat 50%/100% 100%;
+  background: 50%/100% 100% no-repeat;
 }
 .bootstrap-styles .carousel-control-prev-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5L4.25 4l2.5-2.5L5.25 0z'/%3e%3c/svg%3e");
 }
 .bootstrap-styles .carousel-control-next-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/%3e%3c/svg%3e");
 }
 .bootstrap-styles .carousel-indicators {
   position: absolute;
@@ -5529,11 +5775,11 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   display: inline-block;
   width: 2rem;
   height: 2rem;
-  vertical-align: text-bottom;
-  border: 0.25em solid currentColor;
+  vertical-align: -0.125em;
+  border: 0.25em solid currentcolor;
   border-right-color: transparent;
   border-radius: 50%;
-  animation: spinner-border 0.75s linear infinite;
+  animation: 0.75s linear infinite spinner-border;
 }
 .bootstrap-styles .spinner-border-sm {
   width: 1rem;
@@ -5546,21 +5792,28 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   }
   50% {
     opacity: 1;
+    transform: none;
   }
 }
 .bootstrap-styles .spinner-grow {
   display: inline-block;
   width: 2rem;
   height: 2rem;
-  vertical-align: text-bottom;
-  background-color: currentColor;
+  vertical-align: -0.125em;
+  background-color: currentcolor;
   border-radius: 50%;
   opacity: 0;
-  animation: spinner-grow 0.75s linear infinite;
+  animation: 0.75s linear infinite spinner-grow;
 }
 .bootstrap-styles .spinner-grow-sm {
   width: 1rem;
   height: 1rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bootstrap-styles .spinner-border,
+  .bootstrap-styles .spinner-grow {
+    animation-duration: 1.5s;
+  }
 }
 .bootstrap-styles .align-baseline {
   vertical-align: baseline !important;
@@ -5943,7 +6196,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   border: 0;
 }
 .bootstrap-styles .embed-responsive-21by9::before {
-  padding-top: 42.8571428571%;
+  padding-top: 42.85714286%;
 }
 .bootstrap-styles .embed-responsive-16by9::before {
   padding-top: 56.25%;
@@ -6525,6 +6778,15 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
     float: none !important;
   }
 }
+.bootstrap-styles .user-select-all {
+  user-select: all !important;
+}
+.bootstrap-styles .user-select-auto {
+  user-select: auto !important;
+}
+.bootstrap-styles .user-select-none {
+  user-select: none !important;
+}
 .bootstrap-styles .overflow-auto {
   overflow: auto !important;
 }
@@ -6572,6 +6834,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
   width: 1px;
   height: 1px;
   padding: 0;
+  margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -6644,17 +6907,6 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
 }
 .bootstrap-styles .vh-100 {
   height: 100vh !important;
-}
-.bootstrap-styles .stretched-link::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: auto;
-  content: "";
-  background-color: rgba(0, 0, 0, 0);
 }
 .bootstrap-styles .m-0 {
   margin: 0 !important;
@@ -7003,342 +7255,342 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
     margin: 0 !important;
   }
   .bootstrap-styles .mt-sm-0,
-.bootstrap-styles .my-sm-0 {
+  .bootstrap-styles .my-sm-0 {
     margin-top: 0 !important;
   }
   .bootstrap-styles .mr-sm-0,
-.bootstrap-styles .mx-sm-0 {
+  .bootstrap-styles .mx-sm-0 {
     margin-right: 0 !important;
   }
   .bootstrap-styles .mb-sm-0,
-.bootstrap-styles .my-sm-0 {
+  .bootstrap-styles .my-sm-0 {
     margin-bottom: 0 !important;
   }
   .bootstrap-styles .ml-sm-0,
-.bootstrap-styles .mx-sm-0 {
+  .bootstrap-styles .mx-sm-0 {
     margin-left: 0 !important;
   }
   .bootstrap-styles .m-sm-1 {
     margin: 0.25rem !important;
   }
   .bootstrap-styles .mt-sm-1,
-.bootstrap-styles .my-sm-1 {
+  .bootstrap-styles .my-sm-1 {
     margin-top: 0.25rem !important;
   }
   .bootstrap-styles .mr-sm-1,
-.bootstrap-styles .mx-sm-1 {
+  .bootstrap-styles .mx-sm-1 {
     margin-right: 0.25rem !important;
   }
   .bootstrap-styles .mb-sm-1,
-.bootstrap-styles .my-sm-1 {
+  .bootstrap-styles .my-sm-1 {
     margin-bottom: 0.25rem !important;
   }
   .bootstrap-styles .ml-sm-1,
-.bootstrap-styles .mx-sm-1 {
+  .bootstrap-styles .mx-sm-1 {
     margin-left: 0.25rem !important;
   }
   .bootstrap-styles .m-sm-2 {
     margin: 0.5rem !important;
   }
   .bootstrap-styles .mt-sm-2,
-.bootstrap-styles .my-sm-2 {
+  .bootstrap-styles .my-sm-2 {
     margin-top: 0.5rem !important;
   }
   .bootstrap-styles .mr-sm-2,
-.bootstrap-styles .mx-sm-2 {
+  .bootstrap-styles .mx-sm-2 {
     margin-right: 0.5rem !important;
   }
   .bootstrap-styles .mb-sm-2,
-.bootstrap-styles .my-sm-2 {
+  .bootstrap-styles .my-sm-2 {
     margin-bottom: 0.5rem !important;
   }
   .bootstrap-styles .ml-sm-2,
-.bootstrap-styles .mx-sm-2 {
+  .bootstrap-styles .mx-sm-2 {
     margin-left: 0.5rem !important;
   }
   .bootstrap-styles .m-sm-3 {
     margin: 1rem !important;
   }
   .bootstrap-styles .mt-sm-3,
-.bootstrap-styles .my-sm-3 {
+  .bootstrap-styles .my-sm-3 {
     margin-top: 1rem !important;
   }
   .bootstrap-styles .mr-sm-3,
-.bootstrap-styles .mx-sm-3 {
+  .bootstrap-styles .mx-sm-3 {
     margin-right: 1rem !important;
   }
   .bootstrap-styles .mb-sm-3,
-.bootstrap-styles .my-sm-3 {
+  .bootstrap-styles .my-sm-3 {
     margin-bottom: 1rem !important;
   }
   .bootstrap-styles .ml-sm-3,
-.bootstrap-styles .mx-sm-3 {
+  .bootstrap-styles .mx-sm-3 {
     margin-left: 1rem !important;
   }
   .bootstrap-styles .m-sm-4 {
     margin: 1.5rem !important;
   }
   .bootstrap-styles .mt-sm-4,
-.bootstrap-styles .my-sm-4 {
+  .bootstrap-styles .my-sm-4 {
     margin-top: 1.5rem !important;
   }
   .bootstrap-styles .mr-sm-4,
-.bootstrap-styles .mx-sm-4 {
+  .bootstrap-styles .mx-sm-4 {
     margin-right: 1.5rem !important;
   }
   .bootstrap-styles .mb-sm-4,
-.bootstrap-styles .my-sm-4 {
+  .bootstrap-styles .my-sm-4 {
     margin-bottom: 1.5rem !important;
   }
   .bootstrap-styles .ml-sm-4,
-.bootstrap-styles .mx-sm-4 {
+  .bootstrap-styles .mx-sm-4 {
     margin-left: 1.5rem !important;
   }
   .bootstrap-styles .m-sm-5 {
     margin: 3rem !important;
   }
   .bootstrap-styles .mt-sm-5,
-.bootstrap-styles .my-sm-5 {
+  .bootstrap-styles .my-sm-5 {
     margin-top: 3rem !important;
   }
   .bootstrap-styles .mr-sm-5,
-.bootstrap-styles .mx-sm-5 {
+  .bootstrap-styles .mx-sm-5 {
     margin-right: 3rem !important;
   }
   .bootstrap-styles .mb-sm-5,
-.bootstrap-styles .my-sm-5 {
+  .bootstrap-styles .my-sm-5 {
     margin-bottom: 3rem !important;
   }
   .bootstrap-styles .ml-sm-5,
-.bootstrap-styles .mx-sm-5 {
+  .bootstrap-styles .mx-sm-5 {
     margin-left: 3rem !important;
   }
   .bootstrap-styles .p-sm-0 {
     padding: 0 !important;
   }
   .bootstrap-styles .pt-sm-0,
-.bootstrap-styles .py-sm-0 {
+  .bootstrap-styles .py-sm-0 {
     padding-top: 0 !important;
   }
   .bootstrap-styles .pr-sm-0,
-.bootstrap-styles .px-sm-0 {
+  .bootstrap-styles .px-sm-0 {
     padding-right: 0 !important;
   }
   .bootstrap-styles .pb-sm-0,
-.bootstrap-styles .py-sm-0 {
+  .bootstrap-styles .py-sm-0 {
     padding-bottom: 0 !important;
   }
   .bootstrap-styles .pl-sm-0,
-.bootstrap-styles .px-sm-0 {
+  .bootstrap-styles .px-sm-0 {
     padding-left: 0 !important;
   }
   .bootstrap-styles .p-sm-1 {
     padding: 0.25rem !important;
   }
   .bootstrap-styles .pt-sm-1,
-.bootstrap-styles .py-sm-1 {
+  .bootstrap-styles .py-sm-1 {
     padding-top: 0.25rem !important;
   }
   .bootstrap-styles .pr-sm-1,
-.bootstrap-styles .px-sm-1 {
+  .bootstrap-styles .px-sm-1 {
     padding-right: 0.25rem !important;
   }
   .bootstrap-styles .pb-sm-1,
-.bootstrap-styles .py-sm-1 {
+  .bootstrap-styles .py-sm-1 {
     padding-bottom: 0.25rem !important;
   }
   .bootstrap-styles .pl-sm-1,
-.bootstrap-styles .px-sm-1 {
+  .bootstrap-styles .px-sm-1 {
     padding-left: 0.25rem !important;
   }
   .bootstrap-styles .p-sm-2 {
     padding: 0.5rem !important;
   }
   .bootstrap-styles .pt-sm-2,
-.bootstrap-styles .py-sm-2 {
+  .bootstrap-styles .py-sm-2 {
     padding-top: 0.5rem !important;
   }
   .bootstrap-styles .pr-sm-2,
-.bootstrap-styles .px-sm-2 {
+  .bootstrap-styles .px-sm-2 {
     padding-right: 0.5rem !important;
   }
   .bootstrap-styles .pb-sm-2,
-.bootstrap-styles .py-sm-2 {
+  .bootstrap-styles .py-sm-2 {
     padding-bottom: 0.5rem !important;
   }
   .bootstrap-styles .pl-sm-2,
-.bootstrap-styles .px-sm-2 {
+  .bootstrap-styles .px-sm-2 {
     padding-left: 0.5rem !important;
   }
   .bootstrap-styles .p-sm-3 {
     padding: 1rem !important;
   }
   .bootstrap-styles .pt-sm-3,
-.bootstrap-styles .py-sm-3 {
+  .bootstrap-styles .py-sm-3 {
     padding-top: 1rem !important;
   }
   .bootstrap-styles .pr-sm-3,
-.bootstrap-styles .px-sm-3 {
+  .bootstrap-styles .px-sm-3 {
     padding-right: 1rem !important;
   }
   .bootstrap-styles .pb-sm-3,
-.bootstrap-styles .py-sm-3 {
+  .bootstrap-styles .py-sm-3 {
     padding-bottom: 1rem !important;
   }
   .bootstrap-styles .pl-sm-3,
-.bootstrap-styles .px-sm-3 {
+  .bootstrap-styles .px-sm-3 {
     padding-left: 1rem !important;
   }
   .bootstrap-styles .p-sm-4 {
     padding: 1.5rem !important;
   }
   .bootstrap-styles .pt-sm-4,
-.bootstrap-styles .py-sm-4 {
+  .bootstrap-styles .py-sm-4 {
     padding-top: 1.5rem !important;
   }
   .bootstrap-styles .pr-sm-4,
-.bootstrap-styles .px-sm-4 {
+  .bootstrap-styles .px-sm-4 {
     padding-right: 1.5rem !important;
   }
   .bootstrap-styles .pb-sm-4,
-.bootstrap-styles .py-sm-4 {
+  .bootstrap-styles .py-sm-4 {
     padding-bottom: 1.5rem !important;
   }
   .bootstrap-styles .pl-sm-4,
-.bootstrap-styles .px-sm-4 {
+  .bootstrap-styles .px-sm-4 {
     padding-left: 1.5rem !important;
   }
   .bootstrap-styles .p-sm-5 {
     padding: 3rem !important;
   }
   .bootstrap-styles .pt-sm-5,
-.bootstrap-styles .py-sm-5 {
+  .bootstrap-styles .py-sm-5 {
     padding-top: 3rem !important;
   }
   .bootstrap-styles .pr-sm-5,
-.bootstrap-styles .px-sm-5 {
+  .bootstrap-styles .px-sm-5 {
     padding-right: 3rem !important;
   }
   .bootstrap-styles .pb-sm-5,
-.bootstrap-styles .py-sm-5 {
+  .bootstrap-styles .py-sm-5 {
     padding-bottom: 3rem !important;
   }
   .bootstrap-styles .pl-sm-5,
-.bootstrap-styles .px-sm-5 {
+  .bootstrap-styles .px-sm-5 {
     padding-left: 3rem !important;
   }
   .bootstrap-styles .m-sm-n1 {
     margin: -0.25rem !important;
   }
   .bootstrap-styles .mt-sm-n1,
-.bootstrap-styles .my-sm-n1 {
+  .bootstrap-styles .my-sm-n1 {
     margin-top: -0.25rem !important;
   }
   .bootstrap-styles .mr-sm-n1,
-.bootstrap-styles .mx-sm-n1 {
+  .bootstrap-styles .mx-sm-n1 {
     margin-right: -0.25rem !important;
   }
   .bootstrap-styles .mb-sm-n1,
-.bootstrap-styles .my-sm-n1 {
+  .bootstrap-styles .my-sm-n1 {
     margin-bottom: -0.25rem !important;
   }
   .bootstrap-styles .ml-sm-n1,
-.bootstrap-styles .mx-sm-n1 {
+  .bootstrap-styles .mx-sm-n1 {
     margin-left: -0.25rem !important;
   }
   .bootstrap-styles .m-sm-n2 {
     margin: -0.5rem !important;
   }
   .bootstrap-styles .mt-sm-n2,
-.bootstrap-styles .my-sm-n2 {
+  .bootstrap-styles .my-sm-n2 {
     margin-top: -0.5rem !important;
   }
   .bootstrap-styles .mr-sm-n2,
-.bootstrap-styles .mx-sm-n2 {
+  .bootstrap-styles .mx-sm-n2 {
     margin-right: -0.5rem !important;
   }
   .bootstrap-styles .mb-sm-n2,
-.bootstrap-styles .my-sm-n2 {
+  .bootstrap-styles .my-sm-n2 {
     margin-bottom: -0.5rem !important;
   }
   .bootstrap-styles .ml-sm-n2,
-.bootstrap-styles .mx-sm-n2 {
+  .bootstrap-styles .mx-sm-n2 {
     margin-left: -0.5rem !important;
   }
   .bootstrap-styles .m-sm-n3 {
     margin: -1rem !important;
   }
   .bootstrap-styles .mt-sm-n3,
-.bootstrap-styles .my-sm-n3 {
+  .bootstrap-styles .my-sm-n3 {
     margin-top: -1rem !important;
   }
   .bootstrap-styles .mr-sm-n3,
-.bootstrap-styles .mx-sm-n3 {
+  .bootstrap-styles .mx-sm-n3 {
     margin-right: -1rem !important;
   }
   .bootstrap-styles .mb-sm-n3,
-.bootstrap-styles .my-sm-n3 {
+  .bootstrap-styles .my-sm-n3 {
     margin-bottom: -1rem !important;
   }
   .bootstrap-styles .ml-sm-n3,
-.bootstrap-styles .mx-sm-n3 {
+  .bootstrap-styles .mx-sm-n3 {
     margin-left: -1rem !important;
   }
   .bootstrap-styles .m-sm-n4 {
     margin: -1.5rem !important;
   }
   .bootstrap-styles .mt-sm-n4,
-.bootstrap-styles .my-sm-n4 {
+  .bootstrap-styles .my-sm-n4 {
     margin-top: -1.5rem !important;
   }
   .bootstrap-styles .mr-sm-n4,
-.bootstrap-styles .mx-sm-n4 {
+  .bootstrap-styles .mx-sm-n4 {
     margin-right: -1.5rem !important;
   }
   .bootstrap-styles .mb-sm-n4,
-.bootstrap-styles .my-sm-n4 {
+  .bootstrap-styles .my-sm-n4 {
     margin-bottom: -1.5rem !important;
   }
   .bootstrap-styles .ml-sm-n4,
-.bootstrap-styles .mx-sm-n4 {
+  .bootstrap-styles .mx-sm-n4 {
     margin-left: -1.5rem !important;
   }
   .bootstrap-styles .m-sm-n5 {
     margin: -3rem !important;
   }
   .bootstrap-styles .mt-sm-n5,
-.bootstrap-styles .my-sm-n5 {
+  .bootstrap-styles .my-sm-n5 {
     margin-top: -3rem !important;
   }
   .bootstrap-styles .mr-sm-n5,
-.bootstrap-styles .mx-sm-n5 {
+  .bootstrap-styles .mx-sm-n5 {
     margin-right: -3rem !important;
   }
   .bootstrap-styles .mb-sm-n5,
-.bootstrap-styles .my-sm-n5 {
+  .bootstrap-styles .my-sm-n5 {
     margin-bottom: -3rem !important;
   }
   .bootstrap-styles .ml-sm-n5,
-.bootstrap-styles .mx-sm-n5 {
+  .bootstrap-styles .mx-sm-n5 {
     margin-left: -3rem !important;
   }
   .bootstrap-styles .m-sm-auto {
     margin: auto !important;
   }
   .bootstrap-styles .mt-sm-auto,
-.bootstrap-styles .my-sm-auto {
+  .bootstrap-styles .my-sm-auto {
     margin-top: auto !important;
   }
   .bootstrap-styles .mr-sm-auto,
-.bootstrap-styles .mx-sm-auto {
+  .bootstrap-styles .mx-sm-auto {
     margin-right: auto !important;
   }
   .bootstrap-styles .mb-sm-auto,
-.bootstrap-styles .my-sm-auto {
+  .bootstrap-styles .my-sm-auto {
     margin-bottom: auto !important;
   }
   .bootstrap-styles .ml-sm-auto,
-.bootstrap-styles .mx-sm-auto {
+  .bootstrap-styles .mx-sm-auto {
     margin-left: auto !important;
   }
 }
@@ -7347,342 +7599,342 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
     margin: 0 !important;
   }
   .bootstrap-styles .mt-md-0,
-.bootstrap-styles .my-md-0 {
+  .bootstrap-styles .my-md-0 {
     margin-top: 0 !important;
   }
   .bootstrap-styles .mr-md-0,
-.bootstrap-styles .mx-md-0 {
+  .bootstrap-styles .mx-md-0 {
     margin-right: 0 !important;
   }
   .bootstrap-styles .mb-md-0,
-.bootstrap-styles .my-md-0 {
+  .bootstrap-styles .my-md-0 {
     margin-bottom: 0 !important;
   }
   .bootstrap-styles .ml-md-0,
-.bootstrap-styles .mx-md-0 {
+  .bootstrap-styles .mx-md-0 {
     margin-left: 0 !important;
   }
   .bootstrap-styles .m-md-1 {
     margin: 0.25rem !important;
   }
   .bootstrap-styles .mt-md-1,
-.bootstrap-styles .my-md-1 {
+  .bootstrap-styles .my-md-1 {
     margin-top: 0.25rem !important;
   }
   .bootstrap-styles .mr-md-1,
-.bootstrap-styles .mx-md-1 {
+  .bootstrap-styles .mx-md-1 {
     margin-right: 0.25rem !important;
   }
   .bootstrap-styles .mb-md-1,
-.bootstrap-styles .my-md-1 {
+  .bootstrap-styles .my-md-1 {
     margin-bottom: 0.25rem !important;
   }
   .bootstrap-styles .ml-md-1,
-.bootstrap-styles .mx-md-1 {
+  .bootstrap-styles .mx-md-1 {
     margin-left: 0.25rem !important;
   }
   .bootstrap-styles .m-md-2 {
     margin: 0.5rem !important;
   }
   .bootstrap-styles .mt-md-2,
-.bootstrap-styles .my-md-2 {
+  .bootstrap-styles .my-md-2 {
     margin-top: 0.5rem !important;
   }
   .bootstrap-styles .mr-md-2,
-.bootstrap-styles .mx-md-2 {
+  .bootstrap-styles .mx-md-2 {
     margin-right: 0.5rem !important;
   }
   .bootstrap-styles .mb-md-2,
-.bootstrap-styles .my-md-2 {
+  .bootstrap-styles .my-md-2 {
     margin-bottom: 0.5rem !important;
   }
   .bootstrap-styles .ml-md-2,
-.bootstrap-styles .mx-md-2 {
+  .bootstrap-styles .mx-md-2 {
     margin-left: 0.5rem !important;
   }
   .bootstrap-styles .m-md-3 {
     margin: 1rem !important;
   }
   .bootstrap-styles .mt-md-3,
-.bootstrap-styles .my-md-3 {
+  .bootstrap-styles .my-md-3 {
     margin-top: 1rem !important;
   }
   .bootstrap-styles .mr-md-3,
-.bootstrap-styles .mx-md-3 {
+  .bootstrap-styles .mx-md-3 {
     margin-right: 1rem !important;
   }
   .bootstrap-styles .mb-md-3,
-.bootstrap-styles .my-md-3 {
+  .bootstrap-styles .my-md-3 {
     margin-bottom: 1rem !important;
   }
   .bootstrap-styles .ml-md-3,
-.bootstrap-styles .mx-md-3 {
+  .bootstrap-styles .mx-md-3 {
     margin-left: 1rem !important;
   }
   .bootstrap-styles .m-md-4 {
     margin: 1.5rem !important;
   }
   .bootstrap-styles .mt-md-4,
-.bootstrap-styles .my-md-4 {
+  .bootstrap-styles .my-md-4 {
     margin-top: 1.5rem !important;
   }
   .bootstrap-styles .mr-md-4,
-.bootstrap-styles .mx-md-4 {
+  .bootstrap-styles .mx-md-4 {
     margin-right: 1.5rem !important;
   }
   .bootstrap-styles .mb-md-4,
-.bootstrap-styles .my-md-4 {
+  .bootstrap-styles .my-md-4 {
     margin-bottom: 1.5rem !important;
   }
   .bootstrap-styles .ml-md-4,
-.bootstrap-styles .mx-md-4 {
+  .bootstrap-styles .mx-md-4 {
     margin-left: 1.5rem !important;
   }
   .bootstrap-styles .m-md-5 {
     margin: 3rem !important;
   }
   .bootstrap-styles .mt-md-5,
-.bootstrap-styles .my-md-5 {
+  .bootstrap-styles .my-md-5 {
     margin-top: 3rem !important;
   }
   .bootstrap-styles .mr-md-5,
-.bootstrap-styles .mx-md-5 {
+  .bootstrap-styles .mx-md-5 {
     margin-right: 3rem !important;
   }
   .bootstrap-styles .mb-md-5,
-.bootstrap-styles .my-md-5 {
+  .bootstrap-styles .my-md-5 {
     margin-bottom: 3rem !important;
   }
   .bootstrap-styles .ml-md-5,
-.bootstrap-styles .mx-md-5 {
+  .bootstrap-styles .mx-md-5 {
     margin-left: 3rem !important;
   }
   .bootstrap-styles .p-md-0 {
     padding: 0 !important;
   }
   .bootstrap-styles .pt-md-0,
-.bootstrap-styles .py-md-0 {
+  .bootstrap-styles .py-md-0 {
     padding-top: 0 !important;
   }
   .bootstrap-styles .pr-md-0,
-.bootstrap-styles .px-md-0 {
+  .bootstrap-styles .px-md-0 {
     padding-right: 0 !important;
   }
   .bootstrap-styles .pb-md-0,
-.bootstrap-styles .py-md-0 {
+  .bootstrap-styles .py-md-0 {
     padding-bottom: 0 !important;
   }
   .bootstrap-styles .pl-md-0,
-.bootstrap-styles .px-md-0 {
+  .bootstrap-styles .px-md-0 {
     padding-left: 0 !important;
   }
   .bootstrap-styles .p-md-1 {
     padding: 0.25rem !important;
   }
   .bootstrap-styles .pt-md-1,
-.bootstrap-styles .py-md-1 {
+  .bootstrap-styles .py-md-1 {
     padding-top: 0.25rem !important;
   }
   .bootstrap-styles .pr-md-1,
-.bootstrap-styles .px-md-1 {
+  .bootstrap-styles .px-md-1 {
     padding-right: 0.25rem !important;
   }
   .bootstrap-styles .pb-md-1,
-.bootstrap-styles .py-md-1 {
+  .bootstrap-styles .py-md-1 {
     padding-bottom: 0.25rem !important;
   }
   .bootstrap-styles .pl-md-1,
-.bootstrap-styles .px-md-1 {
+  .bootstrap-styles .px-md-1 {
     padding-left: 0.25rem !important;
   }
   .bootstrap-styles .p-md-2 {
     padding: 0.5rem !important;
   }
   .bootstrap-styles .pt-md-2,
-.bootstrap-styles .py-md-2 {
+  .bootstrap-styles .py-md-2 {
     padding-top: 0.5rem !important;
   }
   .bootstrap-styles .pr-md-2,
-.bootstrap-styles .px-md-2 {
+  .bootstrap-styles .px-md-2 {
     padding-right: 0.5rem !important;
   }
   .bootstrap-styles .pb-md-2,
-.bootstrap-styles .py-md-2 {
+  .bootstrap-styles .py-md-2 {
     padding-bottom: 0.5rem !important;
   }
   .bootstrap-styles .pl-md-2,
-.bootstrap-styles .px-md-2 {
+  .bootstrap-styles .px-md-2 {
     padding-left: 0.5rem !important;
   }
   .bootstrap-styles .p-md-3 {
     padding: 1rem !important;
   }
   .bootstrap-styles .pt-md-3,
-.bootstrap-styles .py-md-3 {
+  .bootstrap-styles .py-md-3 {
     padding-top: 1rem !important;
   }
   .bootstrap-styles .pr-md-3,
-.bootstrap-styles .px-md-3 {
+  .bootstrap-styles .px-md-3 {
     padding-right: 1rem !important;
   }
   .bootstrap-styles .pb-md-3,
-.bootstrap-styles .py-md-3 {
+  .bootstrap-styles .py-md-3 {
     padding-bottom: 1rem !important;
   }
   .bootstrap-styles .pl-md-3,
-.bootstrap-styles .px-md-3 {
+  .bootstrap-styles .px-md-3 {
     padding-left: 1rem !important;
   }
   .bootstrap-styles .p-md-4 {
     padding: 1.5rem !important;
   }
   .bootstrap-styles .pt-md-4,
-.bootstrap-styles .py-md-4 {
+  .bootstrap-styles .py-md-4 {
     padding-top: 1.5rem !important;
   }
   .bootstrap-styles .pr-md-4,
-.bootstrap-styles .px-md-4 {
+  .bootstrap-styles .px-md-4 {
     padding-right: 1.5rem !important;
   }
   .bootstrap-styles .pb-md-4,
-.bootstrap-styles .py-md-4 {
+  .bootstrap-styles .py-md-4 {
     padding-bottom: 1.5rem !important;
   }
   .bootstrap-styles .pl-md-4,
-.bootstrap-styles .px-md-4 {
+  .bootstrap-styles .px-md-4 {
     padding-left: 1.5rem !important;
   }
   .bootstrap-styles .p-md-5 {
     padding: 3rem !important;
   }
   .bootstrap-styles .pt-md-5,
-.bootstrap-styles .py-md-5 {
+  .bootstrap-styles .py-md-5 {
     padding-top: 3rem !important;
   }
   .bootstrap-styles .pr-md-5,
-.bootstrap-styles .px-md-5 {
+  .bootstrap-styles .px-md-5 {
     padding-right: 3rem !important;
   }
   .bootstrap-styles .pb-md-5,
-.bootstrap-styles .py-md-5 {
+  .bootstrap-styles .py-md-5 {
     padding-bottom: 3rem !important;
   }
   .bootstrap-styles .pl-md-5,
-.bootstrap-styles .px-md-5 {
+  .bootstrap-styles .px-md-5 {
     padding-left: 3rem !important;
   }
   .bootstrap-styles .m-md-n1 {
     margin: -0.25rem !important;
   }
   .bootstrap-styles .mt-md-n1,
-.bootstrap-styles .my-md-n1 {
+  .bootstrap-styles .my-md-n1 {
     margin-top: -0.25rem !important;
   }
   .bootstrap-styles .mr-md-n1,
-.bootstrap-styles .mx-md-n1 {
+  .bootstrap-styles .mx-md-n1 {
     margin-right: -0.25rem !important;
   }
   .bootstrap-styles .mb-md-n1,
-.bootstrap-styles .my-md-n1 {
+  .bootstrap-styles .my-md-n1 {
     margin-bottom: -0.25rem !important;
   }
   .bootstrap-styles .ml-md-n1,
-.bootstrap-styles .mx-md-n1 {
+  .bootstrap-styles .mx-md-n1 {
     margin-left: -0.25rem !important;
   }
   .bootstrap-styles .m-md-n2 {
     margin: -0.5rem !important;
   }
   .bootstrap-styles .mt-md-n2,
-.bootstrap-styles .my-md-n2 {
+  .bootstrap-styles .my-md-n2 {
     margin-top: -0.5rem !important;
   }
   .bootstrap-styles .mr-md-n2,
-.bootstrap-styles .mx-md-n2 {
+  .bootstrap-styles .mx-md-n2 {
     margin-right: -0.5rem !important;
   }
   .bootstrap-styles .mb-md-n2,
-.bootstrap-styles .my-md-n2 {
+  .bootstrap-styles .my-md-n2 {
     margin-bottom: -0.5rem !important;
   }
   .bootstrap-styles .ml-md-n2,
-.bootstrap-styles .mx-md-n2 {
+  .bootstrap-styles .mx-md-n2 {
     margin-left: -0.5rem !important;
   }
   .bootstrap-styles .m-md-n3 {
     margin: -1rem !important;
   }
   .bootstrap-styles .mt-md-n3,
-.bootstrap-styles .my-md-n3 {
+  .bootstrap-styles .my-md-n3 {
     margin-top: -1rem !important;
   }
   .bootstrap-styles .mr-md-n3,
-.bootstrap-styles .mx-md-n3 {
+  .bootstrap-styles .mx-md-n3 {
     margin-right: -1rem !important;
   }
   .bootstrap-styles .mb-md-n3,
-.bootstrap-styles .my-md-n3 {
+  .bootstrap-styles .my-md-n3 {
     margin-bottom: -1rem !important;
   }
   .bootstrap-styles .ml-md-n3,
-.bootstrap-styles .mx-md-n3 {
+  .bootstrap-styles .mx-md-n3 {
     margin-left: -1rem !important;
   }
   .bootstrap-styles .m-md-n4 {
     margin: -1.5rem !important;
   }
   .bootstrap-styles .mt-md-n4,
-.bootstrap-styles .my-md-n4 {
+  .bootstrap-styles .my-md-n4 {
     margin-top: -1.5rem !important;
   }
   .bootstrap-styles .mr-md-n4,
-.bootstrap-styles .mx-md-n4 {
+  .bootstrap-styles .mx-md-n4 {
     margin-right: -1.5rem !important;
   }
   .bootstrap-styles .mb-md-n4,
-.bootstrap-styles .my-md-n4 {
+  .bootstrap-styles .my-md-n4 {
     margin-bottom: -1.5rem !important;
   }
   .bootstrap-styles .ml-md-n4,
-.bootstrap-styles .mx-md-n4 {
+  .bootstrap-styles .mx-md-n4 {
     margin-left: -1.5rem !important;
   }
   .bootstrap-styles .m-md-n5 {
     margin: -3rem !important;
   }
   .bootstrap-styles .mt-md-n5,
-.bootstrap-styles .my-md-n5 {
+  .bootstrap-styles .my-md-n5 {
     margin-top: -3rem !important;
   }
   .bootstrap-styles .mr-md-n5,
-.bootstrap-styles .mx-md-n5 {
+  .bootstrap-styles .mx-md-n5 {
     margin-right: -3rem !important;
   }
   .bootstrap-styles .mb-md-n5,
-.bootstrap-styles .my-md-n5 {
+  .bootstrap-styles .my-md-n5 {
     margin-bottom: -3rem !important;
   }
   .bootstrap-styles .ml-md-n5,
-.bootstrap-styles .mx-md-n5 {
+  .bootstrap-styles .mx-md-n5 {
     margin-left: -3rem !important;
   }
   .bootstrap-styles .m-md-auto {
     margin: auto !important;
   }
   .bootstrap-styles .mt-md-auto,
-.bootstrap-styles .my-md-auto {
+  .bootstrap-styles .my-md-auto {
     margin-top: auto !important;
   }
   .bootstrap-styles .mr-md-auto,
-.bootstrap-styles .mx-md-auto {
+  .bootstrap-styles .mx-md-auto {
     margin-right: auto !important;
   }
   .bootstrap-styles .mb-md-auto,
-.bootstrap-styles .my-md-auto {
+  .bootstrap-styles .my-md-auto {
     margin-bottom: auto !important;
   }
   .bootstrap-styles .ml-md-auto,
-.bootstrap-styles .mx-md-auto {
+  .bootstrap-styles .mx-md-auto {
     margin-left: auto !important;
   }
 }
@@ -7691,342 +7943,342 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
     margin: 0 !important;
   }
   .bootstrap-styles .mt-lg-0,
-.bootstrap-styles .my-lg-0 {
+  .bootstrap-styles .my-lg-0 {
     margin-top: 0 !important;
   }
   .bootstrap-styles .mr-lg-0,
-.bootstrap-styles .mx-lg-0 {
+  .bootstrap-styles .mx-lg-0 {
     margin-right: 0 !important;
   }
   .bootstrap-styles .mb-lg-0,
-.bootstrap-styles .my-lg-0 {
+  .bootstrap-styles .my-lg-0 {
     margin-bottom: 0 !important;
   }
   .bootstrap-styles .ml-lg-0,
-.bootstrap-styles .mx-lg-0 {
+  .bootstrap-styles .mx-lg-0 {
     margin-left: 0 !important;
   }
   .bootstrap-styles .m-lg-1 {
     margin: 0.25rem !important;
   }
   .bootstrap-styles .mt-lg-1,
-.bootstrap-styles .my-lg-1 {
+  .bootstrap-styles .my-lg-1 {
     margin-top: 0.25rem !important;
   }
   .bootstrap-styles .mr-lg-1,
-.bootstrap-styles .mx-lg-1 {
+  .bootstrap-styles .mx-lg-1 {
     margin-right: 0.25rem !important;
   }
   .bootstrap-styles .mb-lg-1,
-.bootstrap-styles .my-lg-1 {
+  .bootstrap-styles .my-lg-1 {
     margin-bottom: 0.25rem !important;
   }
   .bootstrap-styles .ml-lg-1,
-.bootstrap-styles .mx-lg-1 {
+  .bootstrap-styles .mx-lg-1 {
     margin-left: 0.25rem !important;
   }
   .bootstrap-styles .m-lg-2 {
     margin: 0.5rem !important;
   }
   .bootstrap-styles .mt-lg-2,
-.bootstrap-styles .my-lg-2 {
+  .bootstrap-styles .my-lg-2 {
     margin-top: 0.5rem !important;
   }
   .bootstrap-styles .mr-lg-2,
-.bootstrap-styles .mx-lg-2 {
+  .bootstrap-styles .mx-lg-2 {
     margin-right: 0.5rem !important;
   }
   .bootstrap-styles .mb-lg-2,
-.bootstrap-styles .my-lg-2 {
+  .bootstrap-styles .my-lg-2 {
     margin-bottom: 0.5rem !important;
   }
   .bootstrap-styles .ml-lg-2,
-.bootstrap-styles .mx-lg-2 {
+  .bootstrap-styles .mx-lg-2 {
     margin-left: 0.5rem !important;
   }
   .bootstrap-styles .m-lg-3 {
     margin: 1rem !important;
   }
   .bootstrap-styles .mt-lg-3,
-.bootstrap-styles .my-lg-3 {
+  .bootstrap-styles .my-lg-3 {
     margin-top: 1rem !important;
   }
   .bootstrap-styles .mr-lg-3,
-.bootstrap-styles .mx-lg-3 {
+  .bootstrap-styles .mx-lg-3 {
     margin-right: 1rem !important;
   }
   .bootstrap-styles .mb-lg-3,
-.bootstrap-styles .my-lg-3 {
+  .bootstrap-styles .my-lg-3 {
     margin-bottom: 1rem !important;
   }
   .bootstrap-styles .ml-lg-3,
-.bootstrap-styles .mx-lg-3 {
+  .bootstrap-styles .mx-lg-3 {
     margin-left: 1rem !important;
   }
   .bootstrap-styles .m-lg-4 {
     margin: 1.5rem !important;
   }
   .bootstrap-styles .mt-lg-4,
-.bootstrap-styles .my-lg-4 {
+  .bootstrap-styles .my-lg-4 {
     margin-top: 1.5rem !important;
   }
   .bootstrap-styles .mr-lg-4,
-.bootstrap-styles .mx-lg-4 {
+  .bootstrap-styles .mx-lg-4 {
     margin-right: 1.5rem !important;
   }
   .bootstrap-styles .mb-lg-4,
-.bootstrap-styles .my-lg-4 {
+  .bootstrap-styles .my-lg-4 {
     margin-bottom: 1.5rem !important;
   }
   .bootstrap-styles .ml-lg-4,
-.bootstrap-styles .mx-lg-4 {
+  .bootstrap-styles .mx-lg-4 {
     margin-left: 1.5rem !important;
   }
   .bootstrap-styles .m-lg-5 {
     margin: 3rem !important;
   }
   .bootstrap-styles .mt-lg-5,
-.bootstrap-styles .my-lg-5 {
+  .bootstrap-styles .my-lg-5 {
     margin-top: 3rem !important;
   }
   .bootstrap-styles .mr-lg-5,
-.bootstrap-styles .mx-lg-5 {
+  .bootstrap-styles .mx-lg-5 {
     margin-right: 3rem !important;
   }
   .bootstrap-styles .mb-lg-5,
-.bootstrap-styles .my-lg-5 {
+  .bootstrap-styles .my-lg-5 {
     margin-bottom: 3rem !important;
   }
   .bootstrap-styles .ml-lg-5,
-.bootstrap-styles .mx-lg-5 {
+  .bootstrap-styles .mx-lg-5 {
     margin-left: 3rem !important;
   }
   .bootstrap-styles .p-lg-0 {
     padding: 0 !important;
   }
   .bootstrap-styles .pt-lg-0,
-.bootstrap-styles .py-lg-0 {
+  .bootstrap-styles .py-lg-0 {
     padding-top: 0 !important;
   }
   .bootstrap-styles .pr-lg-0,
-.bootstrap-styles .px-lg-0 {
+  .bootstrap-styles .px-lg-0 {
     padding-right: 0 !important;
   }
   .bootstrap-styles .pb-lg-0,
-.bootstrap-styles .py-lg-0 {
+  .bootstrap-styles .py-lg-0 {
     padding-bottom: 0 !important;
   }
   .bootstrap-styles .pl-lg-0,
-.bootstrap-styles .px-lg-0 {
+  .bootstrap-styles .px-lg-0 {
     padding-left: 0 !important;
   }
   .bootstrap-styles .p-lg-1 {
     padding: 0.25rem !important;
   }
   .bootstrap-styles .pt-lg-1,
-.bootstrap-styles .py-lg-1 {
+  .bootstrap-styles .py-lg-1 {
     padding-top: 0.25rem !important;
   }
   .bootstrap-styles .pr-lg-1,
-.bootstrap-styles .px-lg-1 {
+  .bootstrap-styles .px-lg-1 {
     padding-right: 0.25rem !important;
   }
   .bootstrap-styles .pb-lg-1,
-.bootstrap-styles .py-lg-1 {
+  .bootstrap-styles .py-lg-1 {
     padding-bottom: 0.25rem !important;
   }
   .bootstrap-styles .pl-lg-1,
-.bootstrap-styles .px-lg-1 {
+  .bootstrap-styles .px-lg-1 {
     padding-left: 0.25rem !important;
   }
   .bootstrap-styles .p-lg-2 {
     padding: 0.5rem !important;
   }
   .bootstrap-styles .pt-lg-2,
-.bootstrap-styles .py-lg-2 {
+  .bootstrap-styles .py-lg-2 {
     padding-top: 0.5rem !important;
   }
   .bootstrap-styles .pr-lg-2,
-.bootstrap-styles .px-lg-2 {
+  .bootstrap-styles .px-lg-2 {
     padding-right: 0.5rem !important;
   }
   .bootstrap-styles .pb-lg-2,
-.bootstrap-styles .py-lg-2 {
+  .bootstrap-styles .py-lg-2 {
     padding-bottom: 0.5rem !important;
   }
   .bootstrap-styles .pl-lg-2,
-.bootstrap-styles .px-lg-2 {
+  .bootstrap-styles .px-lg-2 {
     padding-left: 0.5rem !important;
   }
   .bootstrap-styles .p-lg-3 {
     padding: 1rem !important;
   }
   .bootstrap-styles .pt-lg-3,
-.bootstrap-styles .py-lg-3 {
+  .bootstrap-styles .py-lg-3 {
     padding-top: 1rem !important;
   }
   .bootstrap-styles .pr-lg-3,
-.bootstrap-styles .px-lg-3 {
+  .bootstrap-styles .px-lg-3 {
     padding-right: 1rem !important;
   }
   .bootstrap-styles .pb-lg-3,
-.bootstrap-styles .py-lg-3 {
+  .bootstrap-styles .py-lg-3 {
     padding-bottom: 1rem !important;
   }
   .bootstrap-styles .pl-lg-3,
-.bootstrap-styles .px-lg-3 {
+  .bootstrap-styles .px-lg-3 {
     padding-left: 1rem !important;
   }
   .bootstrap-styles .p-lg-4 {
     padding: 1.5rem !important;
   }
   .bootstrap-styles .pt-lg-4,
-.bootstrap-styles .py-lg-4 {
+  .bootstrap-styles .py-lg-4 {
     padding-top: 1.5rem !important;
   }
   .bootstrap-styles .pr-lg-4,
-.bootstrap-styles .px-lg-4 {
+  .bootstrap-styles .px-lg-4 {
     padding-right: 1.5rem !important;
   }
   .bootstrap-styles .pb-lg-4,
-.bootstrap-styles .py-lg-4 {
+  .bootstrap-styles .py-lg-4 {
     padding-bottom: 1.5rem !important;
   }
   .bootstrap-styles .pl-lg-4,
-.bootstrap-styles .px-lg-4 {
+  .bootstrap-styles .px-lg-4 {
     padding-left: 1.5rem !important;
   }
   .bootstrap-styles .p-lg-5 {
     padding: 3rem !important;
   }
   .bootstrap-styles .pt-lg-5,
-.bootstrap-styles .py-lg-5 {
+  .bootstrap-styles .py-lg-5 {
     padding-top: 3rem !important;
   }
   .bootstrap-styles .pr-lg-5,
-.bootstrap-styles .px-lg-5 {
+  .bootstrap-styles .px-lg-5 {
     padding-right: 3rem !important;
   }
   .bootstrap-styles .pb-lg-5,
-.bootstrap-styles .py-lg-5 {
+  .bootstrap-styles .py-lg-5 {
     padding-bottom: 3rem !important;
   }
   .bootstrap-styles .pl-lg-5,
-.bootstrap-styles .px-lg-5 {
+  .bootstrap-styles .px-lg-5 {
     padding-left: 3rem !important;
   }
   .bootstrap-styles .m-lg-n1 {
     margin: -0.25rem !important;
   }
   .bootstrap-styles .mt-lg-n1,
-.bootstrap-styles .my-lg-n1 {
+  .bootstrap-styles .my-lg-n1 {
     margin-top: -0.25rem !important;
   }
   .bootstrap-styles .mr-lg-n1,
-.bootstrap-styles .mx-lg-n1 {
+  .bootstrap-styles .mx-lg-n1 {
     margin-right: -0.25rem !important;
   }
   .bootstrap-styles .mb-lg-n1,
-.bootstrap-styles .my-lg-n1 {
+  .bootstrap-styles .my-lg-n1 {
     margin-bottom: -0.25rem !important;
   }
   .bootstrap-styles .ml-lg-n1,
-.bootstrap-styles .mx-lg-n1 {
+  .bootstrap-styles .mx-lg-n1 {
     margin-left: -0.25rem !important;
   }
   .bootstrap-styles .m-lg-n2 {
     margin: -0.5rem !important;
   }
   .bootstrap-styles .mt-lg-n2,
-.bootstrap-styles .my-lg-n2 {
+  .bootstrap-styles .my-lg-n2 {
     margin-top: -0.5rem !important;
   }
   .bootstrap-styles .mr-lg-n2,
-.bootstrap-styles .mx-lg-n2 {
+  .bootstrap-styles .mx-lg-n2 {
     margin-right: -0.5rem !important;
   }
   .bootstrap-styles .mb-lg-n2,
-.bootstrap-styles .my-lg-n2 {
+  .bootstrap-styles .my-lg-n2 {
     margin-bottom: -0.5rem !important;
   }
   .bootstrap-styles .ml-lg-n2,
-.bootstrap-styles .mx-lg-n2 {
+  .bootstrap-styles .mx-lg-n2 {
     margin-left: -0.5rem !important;
   }
   .bootstrap-styles .m-lg-n3 {
     margin: -1rem !important;
   }
   .bootstrap-styles .mt-lg-n3,
-.bootstrap-styles .my-lg-n3 {
+  .bootstrap-styles .my-lg-n3 {
     margin-top: -1rem !important;
   }
   .bootstrap-styles .mr-lg-n3,
-.bootstrap-styles .mx-lg-n3 {
+  .bootstrap-styles .mx-lg-n3 {
     margin-right: -1rem !important;
   }
   .bootstrap-styles .mb-lg-n3,
-.bootstrap-styles .my-lg-n3 {
+  .bootstrap-styles .my-lg-n3 {
     margin-bottom: -1rem !important;
   }
   .bootstrap-styles .ml-lg-n3,
-.bootstrap-styles .mx-lg-n3 {
+  .bootstrap-styles .mx-lg-n3 {
     margin-left: -1rem !important;
   }
   .bootstrap-styles .m-lg-n4 {
     margin: -1.5rem !important;
   }
   .bootstrap-styles .mt-lg-n4,
-.bootstrap-styles .my-lg-n4 {
+  .bootstrap-styles .my-lg-n4 {
     margin-top: -1.5rem !important;
   }
   .bootstrap-styles .mr-lg-n4,
-.bootstrap-styles .mx-lg-n4 {
+  .bootstrap-styles .mx-lg-n4 {
     margin-right: -1.5rem !important;
   }
   .bootstrap-styles .mb-lg-n4,
-.bootstrap-styles .my-lg-n4 {
+  .bootstrap-styles .my-lg-n4 {
     margin-bottom: -1.5rem !important;
   }
   .bootstrap-styles .ml-lg-n4,
-.bootstrap-styles .mx-lg-n4 {
+  .bootstrap-styles .mx-lg-n4 {
     margin-left: -1.5rem !important;
   }
   .bootstrap-styles .m-lg-n5 {
     margin: -3rem !important;
   }
   .bootstrap-styles .mt-lg-n5,
-.bootstrap-styles .my-lg-n5 {
+  .bootstrap-styles .my-lg-n5 {
     margin-top: -3rem !important;
   }
   .bootstrap-styles .mr-lg-n5,
-.bootstrap-styles .mx-lg-n5 {
+  .bootstrap-styles .mx-lg-n5 {
     margin-right: -3rem !important;
   }
   .bootstrap-styles .mb-lg-n5,
-.bootstrap-styles .my-lg-n5 {
+  .bootstrap-styles .my-lg-n5 {
     margin-bottom: -3rem !important;
   }
   .bootstrap-styles .ml-lg-n5,
-.bootstrap-styles .mx-lg-n5 {
+  .bootstrap-styles .mx-lg-n5 {
     margin-left: -3rem !important;
   }
   .bootstrap-styles .m-lg-auto {
     margin: auto !important;
   }
   .bootstrap-styles .mt-lg-auto,
-.bootstrap-styles .my-lg-auto {
+  .bootstrap-styles .my-lg-auto {
     margin-top: auto !important;
   }
   .bootstrap-styles .mr-lg-auto,
-.bootstrap-styles .mx-lg-auto {
+  .bootstrap-styles .mx-lg-auto {
     margin-right: auto !important;
   }
   .bootstrap-styles .mb-lg-auto,
-.bootstrap-styles .my-lg-auto {
+  .bootstrap-styles .my-lg-auto {
     margin-bottom: auto !important;
   }
   .bootstrap-styles .ml-lg-auto,
-.bootstrap-styles .mx-lg-auto {
+  .bootstrap-styles .mx-lg-auto {
     margin-left: auto !important;
   }
 }
@@ -8035,344 +8287,355 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
     margin: 0 !important;
   }
   .bootstrap-styles .mt-xl-0,
-.bootstrap-styles .my-xl-0 {
+  .bootstrap-styles .my-xl-0 {
     margin-top: 0 !important;
   }
   .bootstrap-styles .mr-xl-0,
-.bootstrap-styles .mx-xl-0 {
+  .bootstrap-styles .mx-xl-0 {
     margin-right: 0 !important;
   }
   .bootstrap-styles .mb-xl-0,
-.bootstrap-styles .my-xl-0 {
+  .bootstrap-styles .my-xl-0 {
     margin-bottom: 0 !important;
   }
   .bootstrap-styles .ml-xl-0,
-.bootstrap-styles .mx-xl-0 {
+  .bootstrap-styles .mx-xl-0 {
     margin-left: 0 !important;
   }
   .bootstrap-styles .m-xl-1 {
     margin: 0.25rem !important;
   }
   .bootstrap-styles .mt-xl-1,
-.bootstrap-styles .my-xl-1 {
+  .bootstrap-styles .my-xl-1 {
     margin-top: 0.25rem !important;
   }
   .bootstrap-styles .mr-xl-1,
-.bootstrap-styles .mx-xl-1 {
+  .bootstrap-styles .mx-xl-1 {
     margin-right: 0.25rem !important;
   }
   .bootstrap-styles .mb-xl-1,
-.bootstrap-styles .my-xl-1 {
+  .bootstrap-styles .my-xl-1 {
     margin-bottom: 0.25rem !important;
   }
   .bootstrap-styles .ml-xl-1,
-.bootstrap-styles .mx-xl-1 {
+  .bootstrap-styles .mx-xl-1 {
     margin-left: 0.25rem !important;
   }
   .bootstrap-styles .m-xl-2 {
     margin: 0.5rem !important;
   }
   .bootstrap-styles .mt-xl-2,
-.bootstrap-styles .my-xl-2 {
+  .bootstrap-styles .my-xl-2 {
     margin-top: 0.5rem !important;
   }
   .bootstrap-styles .mr-xl-2,
-.bootstrap-styles .mx-xl-2 {
+  .bootstrap-styles .mx-xl-2 {
     margin-right: 0.5rem !important;
   }
   .bootstrap-styles .mb-xl-2,
-.bootstrap-styles .my-xl-2 {
+  .bootstrap-styles .my-xl-2 {
     margin-bottom: 0.5rem !important;
   }
   .bootstrap-styles .ml-xl-2,
-.bootstrap-styles .mx-xl-2 {
+  .bootstrap-styles .mx-xl-2 {
     margin-left: 0.5rem !important;
   }
   .bootstrap-styles .m-xl-3 {
     margin: 1rem !important;
   }
   .bootstrap-styles .mt-xl-3,
-.bootstrap-styles .my-xl-3 {
+  .bootstrap-styles .my-xl-3 {
     margin-top: 1rem !important;
   }
   .bootstrap-styles .mr-xl-3,
-.bootstrap-styles .mx-xl-3 {
+  .bootstrap-styles .mx-xl-3 {
     margin-right: 1rem !important;
   }
   .bootstrap-styles .mb-xl-3,
-.bootstrap-styles .my-xl-3 {
+  .bootstrap-styles .my-xl-3 {
     margin-bottom: 1rem !important;
   }
   .bootstrap-styles .ml-xl-3,
-.bootstrap-styles .mx-xl-3 {
+  .bootstrap-styles .mx-xl-3 {
     margin-left: 1rem !important;
   }
   .bootstrap-styles .m-xl-4 {
     margin: 1.5rem !important;
   }
   .bootstrap-styles .mt-xl-4,
-.bootstrap-styles .my-xl-4 {
+  .bootstrap-styles .my-xl-4 {
     margin-top: 1.5rem !important;
   }
   .bootstrap-styles .mr-xl-4,
-.bootstrap-styles .mx-xl-4 {
+  .bootstrap-styles .mx-xl-4 {
     margin-right: 1.5rem !important;
   }
   .bootstrap-styles .mb-xl-4,
-.bootstrap-styles .my-xl-4 {
+  .bootstrap-styles .my-xl-4 {
     margin-bottom: 1.5rem !important;
   }
   .bootstrap-styles .ml-xl-4,
-.bootstrap-styles .mx-xl-4 {
+  .bootstrap-styles .mx-xl-4 {
     margin-left: 1.5rem !important;
   }
   .bootstrap-styles .m-xl-5 {
     margin: 3rem !important;
   }
   .bootstrap-styles .mt-xl-5,
-.bootstrap-styles .my-xl-5 {
+  .bootstrap-styles .my-xl-5 {
     margin-top: 3rem !important;
   }
   .bootstrap-styles .mr-xl-5,
-.bootstrap-styles .mx-xl-5 {
+  .bootstrap-styles .mx-xl-5 {
     margin-right: 3rem !important;
   }
   .bootstrap-styles .mb-xl-5,
-.bootstrap-styles .my-xl-5 {
+  .bootstrap-styles .my-xl-5 {
     margin-bottom: 3rem !important;
   }
   .bootstrap-styles .ml-xl-5,
-.bootstrap-styles .mx-xl-5 {
+  .bootstrap-styles .mx-xl-5 {
     margin-left: 3rem !important;
   }
   .bootstrap-styles .p-xl-0 {
     padding: 0 !important;
   }
   .bootstrap-styles .pt-xl-0,
-.bootstrap-styles .py-xl-0 {
+  .bootstrap-styles .py-xl-0 {
     padding-top: 0 !important;
   }
   .bootstrap-styles .pr-xl-0,
-.bootstrap-styles .px-xl-0 {
+  .bootstrap-styles .px-xl-0 {
     padding-right: 0 !important;
   }
   .bootstrap-styles .pb-xl-0,
-.bootstrap-styles .py-xl-0 {
+  .bootstrap-styles .py-xl-0 {
     padding-bottom: 0 !important;
   }
   .bootstrap-styles .pl-xl-0,
-.bootstrap-styles .px-xl-0 {
+  .bootstrap-styles .px-xl-0 {
     padding-left: 0 !important;
   }
   .bootstrap-styles .p-xl-1 {
     padding: 0.25rem !important;
   }
   .bootstrap-styles .pt-xl-1,
-.bootstrap-styles .py-xl-1 {
+  .bootstrap-styles .py-xl-1 {
     padding-top: 0.25rem !important;
   }
   .bootstrap-styles .pr-xl-1,
-.bootstrap-styles .px-xl-1 {
+  .bootstrap-styles .px-xl-1 {
     padding-right: 0.25rem !important;
   }
   .bootstrap-styles .pb-xl-1,
-.bootstrap-styles .py-xl-1 {
+  .bootstrap-styles .py-xl-1 {
     padding-bottom: 0.25rem !important;
   }
   .bootstrap-styles .pl-xl-1,
-.bootstrap-styles .px-xl-1 {
+  .bootstrap-styles .px-xl-1 {
     padding-left: 0.25rem !important;
   }
   .bootstrap-styles .p-xl-2 {
     padding: 0.5rem !important;
   }
   .bootstrap-styles .pt-xl-2,
-.bootstrap-styles .py-xl-2 {
+  .bootstrap-styles .py-xl-2 {
     padding-top: 0.5rem !important;
   }
   .bootstrap-styles .pr-xl-2,
-.bootstrap-styles .px-xl-2 {
+  .bootstrap-styles .px-xl-2 {
     padding-right: 0.5rem !important;
   }
   .bootstrap-styles .pb-xl-2,
-.bootstrap-styles .py-xl-2 {
+  .bootstrap-styles .py-xl-2 {
     padding-bottom: 0.5rem !important;
   }
   .bootstrap-styles .pl-xl-2,
-.bootstrap-styles .px-xl-2 {
+  .bootstrap-styles .px-xl-2 {
     padding-left: 0.5rem !important;
   }
   .bootstrap-styles .p-xl-3 {
     padding: 1rem !important;
   }
   .bootstrap-styles .pt-xl-3,
-.bootstrap-styles .py-xl-3 {
+  .bootstrap-styles .py-xl-3 {
     padding-top: 1rem !important;
   }
   .bootstrap-styles .pr-xl-3,
-.bootstrap-styles .px-xl-3 {
+  .bootstrap-styles .px-xl-3 {
     padding-right: 1rem !important;
   }
   .bootstrap-styles .pb-xl-3,
-.bootstrap-styles .py-xl-3 {
+  .bootstrap-styles .py-xl-3 {
     padding-bottom: 1rem !important;
   }
   .bootstrap-styles .pl-xl-3,
-.bootstrap-styles .px-xl-3 {
+  .bootstrap-styles .px-xl-3 {
     padding-left: 1rem !important;
   }
   .bootstrap-styles .p-xl-4 {
     padding: 1.5rem !important;
   }
   .bootstrap-styles .pt-xl-4,
-.bootstrap-styles .py-xl-4 {
+  .bootstrap-styles .py-xl-4 {
     padding-top: 1.5rem !important;
   }
   .bootstrap-styles .pr-xl-4,
-.bootstrap-styles .px-xl-4 {
+  .bootstrap-styles .px-xl-4 {
     padding-right: 1.5rem !important;
   }
   .bootstrap-styles .pb-xl-4,
-.bootstrap-styles .py-xl-4 {
+  .bootstrap-styles .py-xl-4 {
     padding-bottom: 1.5rem !important;
   }
   .bootstrap-styles .pl-xl-4,
-.bootstrap-styles .px-xl-4 {
+  .bootstrap-styles .px-xl-4 {
     padding-left: 1.5rem !important;
   }
   .bootstrap-styles .p-xl-5 {
     padding: 3rem !important;
   }
   .bootstrap-styles .pt-xl-5,
-.bootstrap-styles .py-xl-5 {
+  .bootstrap-styles .py-xl-5 {
     padding-top: 3rem !important;
   }
   .bootstrap-styles .pr-xl-5,
-.bootstrap-styles .px-xl-5 {
+  .bootstrap-styles .px-xl-5 {
     padding-right: 3rem !important;
   }
   .bootstrap-styles .pb-xl-5,
-.bootstrap-styles .py-xl-5 {
+  .bootstrap-styles .py-xl-5 {
     padding-bottom: 3rem !important;
   }
   .bootstrap-styles .pl-xl-5,
-.bootstrap-styles .px-xl-5 {
+  .bootstrap-styles .px-xl-5 {
     padding-left: 3rem !important;
   }
   .bootstrap-styles .m-xl-n1 {
     margin: -0.25rem !important;
   }
   .bootstrap-styles .mt-xl-n1,
-.bootstrap-styles .my-xl-n1 {
+  .bootstrap-styles .my-xl-n1 {
     margin-top: -0.25rem !important;
   }
   .bootstrap-styles .mr-xl-n1,
-.bootstrap-styles .mx-xl-n1 {
+  .bootstrap-styles .mx-xl-n1 {
     margin-right: -0.25rem !important;
   }
   .bootstrap-styles .mb-xl-n1,
-.bootstrap-styles .my-xl-n1 {
+  .bootstrap-styles .my-xl-n1 {
     margin-bottom: -0.25rem !important;
   }
   .bootstrap-styles .ml-xl-n1,
-.bootstrap-styles .mx-xl-n1 {
+  .bootstrap-styles .mx-xl-n1 {
     margin-left: -0.25rem !important;
   }
   .bootstrap-styles .m-xl-n2 {
     margin: -0.5rem !important;
   }
   .bootstrap-styles .mt-xl-n2,
-.bootstrap-styles .my-xl-n2 {
+  .bootstrap-styles .my-xl-n2 {
     margin-top: -0.5rem !important;
   }
   .bootstrap-styles .mr-xl-n2,
-.bootstrap-styles .mx-xl-n2 {
+  .bootstrap-styles .mx-xl-n2 {
     margin-right: -0.5rem !important;
   }
   .bootstrap-styles .mb-xl-n2,
-.bootstrap-styles .my-xl-n2 {
+  .bootstrap-styles .my-xl-n2 {
     margin-bottom: -0.5rem !important;
   }
   .bootstrap-styles .ml-xl-n2,
-.bootstrap-styles .mx-xl-n2 {
+  .bootstrap-styles .mx-xl-n2 {
     margin-left: -0.5rem !important;
   }
   .bootstrap-styles .m-xl-n3 {
     margin: -1rem !important;
   }
   .bootstrap-styles .mt-xl-n3,
-.bootstrap-styles .my-xl-n3 {
+  .bootstrap-styles .my-xl-n3 {
     margin-top: -1rem !important;
   }
   .bootstrap-styles .mr-xl-n3,
-.bootstrap-styles .mx-xl-n3 {
+  .bootstrap-styles .mx-xl-n3 {
     margin-right: -1rem !important;
   }
   .bootstrap-styles .mb-xl-n3,
-.bootstrap-styles .my-xl-n3 {
+  .bootstrap-styles .my-xl-n3 {
     margin-bottom: -1rem !important;
   }
   .bootstrap-styles .ml-xl-n3,
-.bootstrap-styles .mx-xl-n3 {
+  .bootstrap-styles .mx-xl-n3 {
     margin-left: -1rem !important;
   }
   .bootstrap-styles .m-xl-n4 {
     margin: -1.5rem !important;
   }
   .bootstrap-styles .mt-xl-n4,
-.bootstrap-styles .my-xl-n4 {
+  .bootstrap-styles .my-xl-n4 {
     margin-top: -1.5rem !important;
   }
   .bootstrap-styles .mr-xl-n4,
-.bootstrap-styles .mx-xl-n4 {
+  .bootstrap-styles .mx-xl-n4 {
     margin-right: -1.5rem !important;
   }
   .bootstrap-styles .mb-xl-n4,
-.bootstrap-styles .my-xl-n4 {
+  .bootstrap-styles .my-xl-n4 {
     margin-bottom: -1.5rem !important;
   }
   .bootstrap-styles .ml-xl-n4,
-.bootstrap-styles .mx-xl-n4 {
+  .bootstrap-styles .mx-xl-n4 {
     margin-left: -1.5rem !important;
   }
   .bootstrap-styles .m-xl-n5 {
     margin: -3rem !important;
   }
   .bootstrap-styles .mt-xl-n5,
-.bootstrap-styles .my-xl-n5 {
+  .bootstrap-styles .my-xl-n5 {
     margin-top: -3rem !important;
   }
   .bootstrap-styles .mr-xl-n5,
-.bootstrap-styles .mx-xl-n5 {
+  .bootstrap-styles .mx-xl-n5 {
     margin-right: -3rem !important;
   }
   .bootstrap-styles .mb-xl-n5,
-.bootstrap-styles .my-xl-n5 {
+  .bootstrap-styles .my-xl-n5 {
     margin-bottom: -3rem !important;
   }
   .bootstrap-styles .ml-xl-n5,
-.bootstrap-styles .mx-xl-n5 {
+  .bootstrap-styles .mx-xl-n5 {
     margin-left: -3rem !important;
   }
   .bootstrap-styles .m-xl-auto {
     margin: auto !important;
   }
   .bootstrap-styles .mt-xl-auto,
-.bootstrap-styles .my-xl-auto {
+  .bootstrap-styles .my-xl-auto {
     margin-top: auto !important;
   }
   .bootstrap-styles .mr-xl-auto,
-.bootstrap-styles .mx-xl-auto {
+  .bootstrap-styles .mx-xl-auto {
     margin-right: auto !important;
   }
   .bootstrap-styles .mb-xl-auto,
-.bootstrap-styles .my-xl-auto {
+  .bootstrap-styles .my-xl-auto {
     margin-bottom: auto !important;
   }
   .bootstrap-styles .ml-xl-auto,
-.bootstrap-styles .mx-xl-auto {
+  .bootstrap-styles .mx-xl-auto {
     margin-left: auto !important;
   }
+}
+.bootstrap-styles .stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  content: "";
+  background-color: rgba(0, 0, 0, 0);
 }
 .bootstrap-styles .text-monospace {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
@@ -8546,7 +8809,7 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
 }
 .bootstrap-styles .text-break {
   word-break: break-word !important;
-  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
 }
 .bootstrap-styles .text-reset {
   color: inherit !important;
@@ -8559,8 +8822,8 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
 }
 @media print {
   .bootstrap-styles *,
-.bootstrap-styles *::before,
-.bootstrap-styles *::after {
+  .bootstrap-styles *::before,
+  .bootstrap-styles *::after {
     text-shadow: none !important;
     box-shadow: none !important;
   }
@@ -8574,25 +8837,22 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
     white-space: pre-wrap !important;
   }
   .bootstrap-styles pre,
-.bootstrap-styles blockquote {
+  .bootstrap-styles blockquote {
     border: 1px solid #adb5bd;
     page-break-inside: avoid;
   }
-  .bootstrap-styles thead {
-    display: table-header-group;
-  }
   .bootstrap-styles tr,
-.bootstrap-styles img {
+  .bootstrap-styles img {
     page-break-inside: avoid;
   }
   .bootstrap-styles p,
-.bootstrap-styles h2,
-.bootstrap-styles h3 {
+  .bootstrap-styles h2,
+  .bootstrap-styles h3 {
     orphans: 3;
     widows: 3;
   }
   .bootstrap-styles h2,
-.bootstrap-styles h3 {
+  .bootstrap-styles h3 {
     page-break-after: avoid;
   }
   @page {
@@ -8616,20 +8876,20 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
     border-collapse: collapse !important;
   }
   .bootstrap-styles .table td,
-.bootstrap-styles .table th {
+  .bootstrap-styles .table th {
     background-color: #fff !important;
   }
   .bootstrap-styles .table-bordered th,
-.bootstrap-styles .table-bordered td {
+  .bootstrap-styles .table-bordered td {
     border: 1px solid #dee2e6 !important;
   }
   .bootstrap-styles .table-dark {
     color: inherit;
   }
   .bootstrap-styles .table-dark th,
-.bootstrap-styles .table-dark td,
-.bootstrap-styles .table-dark thead th,
-.bootstrap-styles .table-dark tbody + tbody {
+  .bootstrap-styles .table-dark td,
+  .bootstrap-styles .table-dark thead th,
+  .bootstrap-styles .table-dark tbody + tbody {
     border-color: #dee2e6;
   }
   .bootstrap-styles .table .thead-dark th {
@@ -8682,5 +8942,3 @@ a.bootstrap-styles .badge-dark:focus, a.bootstrap-styles .badge-dark.focus {
 p {
   font-weight: 100;
 }
-
-/*# sourceMappingURL=mountain-portfolio.css.map */

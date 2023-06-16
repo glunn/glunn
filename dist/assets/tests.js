@@ -37,6 +37,7 @@ define("mountain-portfolio/tests/integration/components/keyboard-key/component-t
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
+
       await (0, _testHelpers.render)(Ember.HTMLBars.template({
         "id": "s+HfeZL8",
         "block": "{\"symbols\":[],\"statements\":[[1,[21,\"keyboard-key\"],false]],\"hasEval\":false}",
@@ -98,6 +99,7 @@ define("mountain-portfolio/tests/integration/components/site-footer/component-te
     (0, _qunit.test)('it renders', async function (assert) {
       // Set any properties with this.set('myProperty', 'value');
       // Handle any actions with this.set('myAction', function(val) { ... });
+
       await (0, _testHelpers.render)(Ember.HTMLBars.template({
         "id": "5KKd987O",
         "block": "{\"symbols\":[],\"statements\":[[1,[21,\"site-footer\"],false]],\"hasEval\":false}",
@@ -289,8 +291,9 @@ define("mountain-portfolio/tests/unit/controllers/awesome-test", ["qunit", "embe
   "use strict";
 
   (0, _qunit.module)('Unit | Controller | awesome', function (hooks) {
-    (0, _emberQunit.setupTest)(hooks); // Replace this with your real tests.
+    (0, _emberQunit.setupTest)(hooks);
 
+    // Replace this with your real tests.
     (0, _qunit.test)('it exists', function (assert) {
       let controller = this.owner.lookup('controller:awesome');
       assert.ok(controller);
@@ -312,8 +315,9 @@ define("mountain-portfolio/tests/unit/services/sprite-test", ["qunit", "ember-qu
   "use strict";
 
   (0, _qunit.module)('Unit | Service | sprite', function (hooks) {
-    (0, _emberQunit.setupTest)(hooks); // Replace this with your real tests.
+    (0, _emberQunit.setupTest)(hooks);
 
+    // Replace this with your real tests.
     (0, _qunit.test)('it exists', function (assert) {
       let service = this.owner.lookup('service:sprite');
       assert.ok(service);

@@ -40,28 +40,24 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.Component.extend({
     sprite: Ember.inject.service(),
     keyClass: '',
-
     didInsertElement() {
       this._super(...arguments);
-
       let spriteling = Ember.get(this, 'sprite.spriteling');
       Ember.set(this, 'sprite.spriteling', spriteling);
     },
-
     didRender() {
-      this._super(...arguments); // Only focus if game key pressed, then turn off listener
-
-
+      this._super(...arguments);
+      // Only focus if game key pressed, then turn off listener
       Ember.$(document).on('keydown', function (event) {
         if (event.keyCode == 68 || event.keyCode == 65 || event.keyCode == 87 || event.keyCode == 83) {
           Ember.$('#move-sprite').attr({
             tabindex: 1
           });
-          Ember.$('#move-sprite').focus(); //$(this).off(event);
+          Ember.$('#move-sprite').focus();
+          //$(this).off(event);
         }
       });
     },
@@ -73,49 +69,41 @@
       let forward = Ember.get(this, 'sprite.forward');
       let left = Ember.get(this, 'sprite.left');
       let currentSprite = spriteling.currentSprite();
-
       if (event.keyCode == 68) {
         // right
         left = left + 10;
         Ember.set(this, 'sprite.left', left);
-
         if (action !== 'runRight' || currentSprite === 11) {
           spriteling.play('runRight', {
             run: -1,
             delay: 150
           });
         }
-
         document.getElementById("move-sprite").style.left = left + "px";
         this.set('sprite.action', 'runRight');
         this.set('sprite.forward', true);
         this.set('keyClass', 'right');
       }
-
       if (event.keyCode == 65) {
         // left
         left = left - 10;
         Ember.set(this, 'sprite.left', left);
-
         if (action !== 'runLeft') {
           spriteling.play('runLeft', {
             run: -1,
             delay: 150
           });
         }
-
         document.getElementById("move-sprite").style.left = left + "px";
         this.set('sprite.action', 'runLeft');
         this.set('sprite.forward', false);
         this.set('keyClass', 'left');
       }
-
       if (event.keyCode == 87) {
         // up
-        top = top - 10; // set(this, 'sprite.top', top);
-
+        top = top - 10;
+        // set(this, 'sprite.top', top);
         spriteling.next();
-
         if (!forward) {
           spriteling.showSprite(2);
           this.set('sprite.action', 'jumpLeft');
@@ -123,12 +111,10 @@
           spriteling.showSprite(11);
           this.set('sprite.action', 'jumpRight');
         }
-
         document.getElementById("move-sprite").style.top = top + "px";
         this.set('sprite.top', top);
         this.set('keyClass', 'up');
       }
-
       if (event.keyCode == 83) {
         // down
         top = top + 10;
@@ -137,11 +123,9 @@
         document.getElementById("move-sprite").style.top = top + "px";
       }
     },
-
     keyUp() {
       let spriteling = Ember.get(this, 'sprite.spriteling');
       const currentSprite = spriteling.currentSprite();
-
       if (currentSprite < 7) {
         spriteling.play({
           run: 1,
@@ -161,12 +145,9 @@
         });
         this.set('sprite.action', 'standRight');
       }
-
       this.set('keyClass', '');
     }
-
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/alpaca-game/template", ["exports"], function (_exports) {
@@ -176,7 +157,6 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.HTMLBars.template({
     "id": "eiD3BM8k",
     "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"bootstrap-styles\"],[9],[0,\"\\n  \"],[1,[21,\"portfolio-cards\"],false],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"d-flex justify-content-start\"],[9],[0,\"\\n    \"],[1,[27,\"keyboard-keys\",null,[[\"class\"],[[23,[\"keyClass\"]]]]],false],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"d-flex justify-content-start\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"id\",\"move-sprite\"],[11,\"style\",\"position: relative; left: 100px; top: 0px; width: 30px; height: 32px;\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"id\",\"sprite\"],[9],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[1,[21,\"site-footer\"],false],[0,\"\\n\"],[10],[0,\"\\n\\n\"]],\"hasEval\":false}",
@@ -184,7 +164,6 @@
       "moduleName": "mountain-portfolio/components/alpaca-game/template.hbs"
     }
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/bs-accordion", ["exports", "ember-bootstrap/components/bs-accordion"], function (_exports, _bsAccordion) {
@@ -837,19 +816,6 @@
     }
   });
 });
-;define("mountain-portfolio/components/bs-navbar/nav-item", ["exports", "ember-bootstrap/components/bs-navbar/nav-item"], function (_exports, _navItem) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _navItem.default;
-    }
-  });
-});
 ;define("mountain-portfolio/components/bs-navbar/nav", ["exports", "ember-bootstrap/components/bs-navbar/nav"], function (_exports, _nav) {
   "use strict";
 
@@ -1026,16 +992,13 @@
     value: true
   });
   _exports.default = void 0;
-
   function sendPress() {
     this.sendAction('press');
   }
-
   function sendRelease() {
     this.sendAction('release');
     let spriteling = Ember.get(this, 'sprite.spriteling');
     const currentSprite = spriteling.currentSprite();
-
     if (currentSprite < 7) {
       spriteling.play({
         run: 1,
@@ -1056,7 +1019,6 @@
       this.set('sprite.action', 'standRight');
     }
   }
-
   var _default = Ember.Component.extend({
     sprite: Ember.inject.service(),
     tagName: 'button',
@@ -1068,7 +1030,6 @@
     mouseLeave: sendRelease,
     mouseUp: sendRelease
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/keyboard-key/template", ["exports"], function (_exports) {
@@ -1078,7 +1039,6 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.HTMLBars.template({
     "id": "u+UqPFpp",
     "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[7,\"span\"],[9],[1,[21,\"letter\"],false],[10],[0,\"\\n\"]],\"hasEval\":false}",
@@ -1086,101 +1046,93 @@
       "moduleName": "mountain-portfolio/components/keyboard-key/template.hbs"
     }
   });
-
   _exports.default = _default;
 });
-;define("mountain-portfolio/components/keyboard-keys/component", ["exports", "ember-concurrency"], function (_exports, _emberConcurrency) {
+;// import Component from '@ember/component';
+// import { get, set } from '@ember/object';
+// import { task, timeout } from 'ember-concurrency';
+// import { inject as service } from '@ember/service';
+
+// export default Component.extend({
+//   classNames: ['keyboard-keys-component'],
+//   sprite: service(),
+
+//   onClickLeft: task(function * (inc) {
+//     let spriteling = get(this, 'sprite.spriteling');
+//     let left = get(this, 'sprite.left');
+
+//     spriteling.play('runLeft', {
+//       run: -1,
+//       delay: 150
+//     });
+//     this.set('sprite.action', 'runLeft');
+//     this.set('sprite.forward', false);
+
+//     while (true) {
+//       this.decrementProperty('sprite.left', inc);
+//       yield timeout(8);
+//       left = get(this, 'sprite.left');
+//       set(this, 'sprite.left', left);
+//       document.getElementById("move-sprite").style.left = left + "px";
+//     }
+//   }),
+//   onClickRight: task(function * (inc) {
+//     let spriteling = get(this, 'sprite.spriteling');
+//     let left = get(this, 'sprite.left');
+
+//     spriteling.play('runRight', {
+//       run: -1,
+//       delay: 150
+//     });
+//     this.set('sprite.action', 'runRight');
+//     this.set('sprite.forward', true);
+
+//     while (true) {
+//       this.incrementProperty('sprite.left', inc);
+//       yield timeout(8);
+//       left = get(this, 'sprite.left');
+//       set(this, 'sprite.left', left);
+//       document.getElementById("move-sprite").style.left = left + "px";
+//     }
+//   }),
+//   onClickDown: task(function * (inc) {
+//     let top = get(this, 'sprite.top');
+//     while (true) {
+//       this.incrementProperty('sprite.top', inc);
+//       yield timeout(8);
+//       top = get(this, 'sprite.top');
+//       set(this, 'sprite.top', top);
+//       document.getElementById("move-sprite").style.top = top + "px";
+//     }
+//   }),
+//   onClickUp: task(function * (inc) {
+//     let top = get(this, 'sprite.top');
+//     let spriteling = get(this, 'sprite.spriteling');
+//     let forward = get(this, 'sprite.forward');
+//     spriteling.next();
+
+//     if (!forward) {
+//       spriteling.showSprite(2);
+//       this.set('sprite.action', 'jumpLeft');
+//     } else {
+//       spriteling.showSprite(11);
+//       this.set('sprite.action', 'jumpRight');
+//     }
+//     while (true) {
+//       this.decrementProperty('sprite.top', inc);
+//       yield timeout(8);
+//       top = get(this, 'sprite.top');
+//       set(this, 'sprite.top', top);
+//       document.getElementById("move-sprite").style.top = top + "px";
+//     }
+//   }),
+//   onMoveUp() {},
+//   onMoveDown() {},
+//   onMoveLeft() {},
+//   onMoveRight() {}
+// });
+define("mountain-portfolio/components/keyboard-keys/component", [], function () {
   "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.Component.extend({
-    classNames: ['keyboard-keys-component'],
-    sprite: Ember.inject.service(),
-    onClickLeft: (0, _emberConcurrency.task)(function* (inc) {
-      let spriteling = Ember.get(this, 'sprite.spriteling');
-      let left = Ember.get(this, 'sprite.left');
-      spriteling.play('runLeft', {
-        run: -1,
-        delay: 150
-      });
-      this.set('sprite.action', 'runLeft');
-      this.set('sprite.forward', false);
-
-      while (true) {
-        this.decrementProperty('sprite.left', inc);
-        yield (0, _emberConcurrency.timeout)(8);
-        left = Ember.get(this, 'sprite.left');
-        Ember.set(this, 'sprite.left', left);
-        document.getElementById("move-sprite").style.left = left + "px";
-      }
-    }),
-    onClickRight: (0, _emberConcurrency.task)(function* (inc) {
-      let spriteling = Ember.get(this, 'sprite.spriteling');
-      let left = Ember.get(this, 'sprite.left');
-      spriteling.play('runRight', {
-        run: -1,
-        delay: 150
-      });
-      this.set('sprite.action', 'runRight');
-      this.set('sprite.forward', true);
-
-      while (true) {
-        this.incrementProperty('sprite.left', inc);
-        yield (0, _emberConcurrency.timeout)(8);
-        left = Ember.get(this, 'sprite.left');
-        Ember.set(this, 'sprite.left', left);
-        document.getElementById("move-sprite").style.left = left + "px";
-      }
-    }),
-    onClickDown: (0, _emberConcurrency.task)(function* (inc) {
-      let top = Ember.get(this, 'sprite.top');
-
-      while (true) {
-        this.incrementProperty('sprite.top', inc);
-        yield (0, _emberConcurrency.timeout)(8);
-        top = Ember.get(this, 'sprite.top');
-        Ember.set(this, 'sprite.top', top);
-        document.getElementById("move-sprite").style.top = top + "px";
-      }
-    }),
-    onClickUp: (0, _emberConcurrency.task)(function* (inc) {
-      let top = Ember.get(this, 'sprite.top');
-      let spriteling = Ember.get(this, 'sprite.spriteling');
-      let forward = Ember.get(this, 'sprite.forward');
-      spriteling.next();
-
-      if (!forward) {
-        spriteling.showSprite(2);
-        this.set('sprite.action', 'jumpLeft');
-      } else {
-        spriteling.showSprite(11);
-        this.set('sprite.action', 'jumpRight');
-      }
-
-      while (true) {
-        this.decrementProperty('sprite.top', inc);
-        yield (0, _emberConcurrency.timeout)(8);
-        top = Ember.get(this, 'sprite.top');
-        Ember.set(this, 'sprite.top', top);
-        document.getElementById("move-sprite").style.top = top + "px";
-      }
-    }),
-
-    onMoveUp() {},
-
-    onMoveDown() {},
-
-    onMoveLeft() {},
-
-    onMoveRight() {}
-
-  });
-
-  _exports.default = _default;
 });
 ;define("mountain-portfolio/components/keyboard-keys/template", ["exports"], function (_exports) {
   "use strict";
@@ -1189,15 +1141,13 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.HTMLBars.template({
-    "id": "238TTMOM",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"row justify-content-center\"],[9],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"up-key\",\"w\",[27,\"perform\",[[23,[\"onClickUp\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickUp\"]]],null]]]],false],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"row justify-content-center\"],[9],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"left-key\",\"a\",[27,\"perform\",[[23,[\"onClickLeft\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickLeft\"]]],null]]]],false],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"down-key\",\"s\",[27,\"perform\",[[23,[\"onClickDown\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickDown\"]]],null]]]],false],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"right-key\",\"d\",[27,\"perform\",[[23,[\"onClickRight\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickRight\"]]],null]]]],false],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\\n\\n\"]],\"hasEval\":false}",
+    "id": "KE0kENoJ",
+    "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\\n\\n\"]],\"hasEval\":false}",
     "meta": {
       "moduleName": "mountain-portfolio/components/keyboard-keys/template.hbs"
     }
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/portfolio-cards/component", ["exports"], function (_exports) {
@@ -1207,11 +1157,9 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.Component.extend({
     classNames: ['portfolio-cards-component']
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/portfolio-cards/template", ["exports"], function (_exports) {
@@ -1221,7 +1169,6 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.HTMLBars.template({
     "id": "MxR2z0DA",
     "block": "{\"symbols\":[],\"statements\":[[4,\"unless\",[[27,\"user-agent\",[\"browser.isIE\"],null]],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n        \"],[7,\"p\"],[9],[0,\"I work for Poached Jobs where I help develop new features and migrate a legacy site from WordPress to a single page Ember application backed by a RESTful API.\"],[10],[0,\"\\n        \"],[7,\"h6\"],[9],[0,\"Some languages, frameworks and tools I've used:\"],[10],[0,\"\\n        \"],[7,\"h1\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://emberjs.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"ember\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://sass-lang.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"sass\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://reactjs.org/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"react\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://nodejs.org/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"node\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://developer.mozilla.org/en-US/docs/Web/JavaScript\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"js\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.adobe.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"adobe\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://getbootstrap.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"bootstrap\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.npmjs.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"npm\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"html5\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.mysql.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mysql\"],[9],[0,\"\\n            \"],[7,\"img\"],[11,\"src\",\"/img/mysql.png\"],[11,\"alt\",\"mysql logo\"],[11,\"class\",\"fa\"],[9],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://github.com/glunn\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"github\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.python.org/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"python\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"row p-sm-5 mx-sm-auto\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://blog.poachedjobs.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[11,\"src\",\"/img/poached-blog.jpg\"],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"The Poached Blog\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"The Poached Blog\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"Before starting on the main app one of my projects at Poached was building their blog site using a WordPress child theme. Avg. daily pageviews are up over 200%. (My co-workers are brillant and hilarious, you should check out their articles!)\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"http://rubencortezdrywall.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"drywall.jpg\",\"card-img-top\",\"Ruben Cortez Drywall\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Ruben Cortez Drywall\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"Responsive, quick to load, and straight to the point. A local contractor asked me for a simple page to showcase his company's Yelp reviews.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.portlandialanguages.com/free-session\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"sign-up.jpg\",\"card-img-top\",\"Portlandia Languages\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Portlandia Language School\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I doubled the rate of enrollment in language courses at Portlandia Language School by updating their website and implementing an online sign up form.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://devpost.com/software/growing-gardens-donate-portal\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[11,\"src\",\"/img/growing-gardens.jpg\"],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"Growing Gardens app\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Growing Gardens 🏆\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"My team won first place at the annual We Code For Good Hackathon with our donation platform for a local non-profit. I contributed to the concept, requirements gathering, front end development, and I set up the front end architecture for the project.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"http://rpmaquinarias.com.ar/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[11,\"src\",\"/img/rp-maquinarias.jpg\"],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"RP Maquinarias site\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"RP Maquinarias\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I used a Wayback Machine downloader to quickly recontruct a lost site designed by another developer. RP was losing substantial business due to downtime and thought they were out >1k and numerous hours spent generating content, but happily it was pretty straight-forward to save everything.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://devpost.com/software/team-13-z8gw0b\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[11,\"src\",\"/img/milk-bank.jpg\"],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"Mother's Milk app\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"NW Mother’s Milk Bank\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"My team's entry for the 2017 We Code For Good Hackathon. We built a mobile app to aid donors in finding places to drop off their breast milk, and designed features for ordering supplies, tracking donations, and explaining donation packaging. It's built with Node.js and MongoDB.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://help.poachedjobs.com/hc/en-us\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"zendesk.jpg\",\"card-img-top\",\"Help Center\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Zendesk Help Desk\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I created a theme for our Poached help center, with a search function and suggested articles.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"http://www.hackoregon.org/about-us\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"web-cartography.jpg\",\"card-img-top\",\"Web Cartography\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Hack Oregon\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I volunteered as a Junior Front End Developer for a Hack Oregon civic project, and also completed their JavaScript, React, and Web Cartography classes.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
@@ -1229,7 +1176,6 @@
       "moduleName": "mountain-portfolio/components/portfolio-cards/template.hbs"
     }
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/responsive-background", ["exports", "ember-responsive-image/components/responsive-background"], function (_exports, _responsiveBackground) {
@@ -1265,11 +1211,9 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.Component.extend({
     classNames: ['site-footer-component']
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/site-footer/template", ["exports"], function (_exports) {
@@ -1279,7 +1223,6 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.HTMLBars.template({
     "id": "KK0Y55yr",
     "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"col text-right text-nowrap\"],[9],[0,\"\\n  \"],[7,\"a\"],[11,\"href\",\"https://github.com/glunn\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n    \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"github\",\"fab\"]]],[0,\" https://github.com/glunn\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"col text-right text-nowrap\"],[9],[0,\"\\n  \"],[7,\"a\"],[11,\"href\",\"https://www.linkedin.com/in/aglunn/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n    \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"linkedin\",\"fab\"]]],[0,\" https://www.linkedin.com/in/aglunn/\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"]],\"hasEval\":false}",
@@ -1287,7 +1230,6 @@
       "moduleName": "mountain-portfolio/components/site-footer/template.hbs"
     }
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/sticky-element", ["exports", "ember-sticky-element/components/sticky-element"], function (_exports, _stickyElement) {
@@ -1323,12 +1265,10 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.Component.extend({
     classNames: ['sticky-mountains-component'],
     media: Ember.inject.service()
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/sticky-mountains/template", ["exports"], function (_exports) {
@@ -1338,7 +1278,6 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.HTMLBars.template({
     "id": "xR8yvO3L",
     "block": "{\"symbols\":[],\"statements\":[[4,\"if\",[[27,\"user-agent\",[\"browser.isIE\"],null]],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"ie-alert\"],[9],[0,\"\\n    \"],[7,\"div\"],[9],[0,\"\\n      To avoid security vulerabilities (and best view this site) please update to a modern browser such as Chrome, Firefox or Edge.\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[9],[0,\"\\n      Given my audience, chances are if you're reading this it's because you care deeply about cross-browser compatability -- and so do I!\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[9],[0,\"\\n      Per the \"],[7,\"a\"],[11,\"href\",\"https://www.us-cert.gov/ncas/current-activity/2020/01/17/microsoft-releases-security-advisory-internet-explorer\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"Department of Homeland Security\"],[10],[0,\"\\n      IE use is highly discouraged at this time.\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[7,\"div\"],[11,\"class\",\"demo row\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"col small bottom\"],[9],[0,\"\\n\"],[4,\"sticky-element\",null,[[\"top\",\"class\",\"bottom\"],[10,\"sticky\",500]],{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"mtn__1\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"media\",\"isMobile\"]]],null,{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn1-mobile.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn1.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]}],[0,\"      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"col small bottom\"],[9],[0,\"\\n\"],[4,\"sticky-element\",null,[[\"top\",\"class\",\"bottom\"],[20,\"sticky\",400]],{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"mtn__2\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"media\",\"isMobile\"]]],null,{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn2-mobile.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn2.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]}],[0,\"      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"col small bottom\"],[9],[0,\"\\n\"],[4,\"sticky-element\",null,[[\"top\",\"class\",\"bottom\"],[30,\"sticky\",300]],{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"mtn__3\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"media\",\"isMobile\"]]],null,{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn3-mobile.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn3.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]}],[0,\"      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"col small bottom\"],[9],[0,\"\\n\"],[4,\"sticky-element\",null,[[\"top\",\"class\",\"bottom\"],[40,\"sticky\",200]],{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"mtn__4\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"media\",\"isMobile\"]]],null,{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn4-mobile.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn4.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]}],[0,\"      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"col small bottom\"],[9],[0,\"\\n\"],[4,\"sticky-element\",null,[[\"top\",\"class\",\"bottom\"],[50,\"sticky\",100]],{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"mtn__5\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"media\",\"isMobile\"]]],null,{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn5-mobile.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn5.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]}],[0,\"      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"col small bottom\"],[9],[0,\"\\n\"],[4,\"sticky-element\",null,[[\"top\",\"class\",\"bottom\"],[60,\"sticky\",0]],{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"mtn__6\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"typed\"],[9],[0,\"\\n          \"],[7,\"span\"],[9],[0,\"Hey, welcome! I'm Abbie.\"],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"typed\"],[9],[0,\"\\n          \"],[7,\"span\"],[9],[0,\"I'm a Portland based Software Engineer and I build \"],[10],[0,\"\\n          \"],[1,[27,\"typed-string\",null,[[\"strings\",\"loop\",\"typeSpeed\",\"backSpeed\",\"backDelay\"],[[23,[\"typedStrings\"]],[23,[\"infinite\"]],80,40,500]]],false],[0,\"\\n        \"],[10],[0,\"\\n\"],[4,\"if\",[[23,[\"media\",\"isMobile\"]]],null,{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn6-mobile.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"          \"],[7,\"img\"],[11,\"src\",\"/img/mtn6.png\"],[11,\"alt\",\"Drawing of a mountain\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]}],[0,\"      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"  \"],[10],[0,\"\\n\"],[10]],\"hasEval\":false}",
@@ -1346,7 +1285,6 @@
       "moduleName": "mountain-portfolio/components/sticky-mountains/template.hbs"
     }
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/components/typed-string", ["exports", "ember-typed/components/typed-string"], function (_exports, _typedString) {
@@ -1382,11 +1320,9 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.Controller.extend({
     typedStrings: Object.freeze(["Ember apps.", "RESTful APIs.", "React components.", "SQL queries.", "automated tests with Selenium."])
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/helpers/-link-to-params", ["exports", "ember-angle-bracket-invocation-polyfill/helpers/-link-to-params"], function (_exports, _linkToParams) {
@@ -1410,21 +1346,20 @@
   });
   _exports.appVersion = appVersion;
   _exports.default = void 0;
+  function appVersion(_) {
+    let hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    const version = _environment.default.APP.version;
+    // e.g. 1.0.0-alpha.1+4jds75hf
 
-  function appVersion(_, hash = {}) {
-    const version = _environment.default.APP.version; // e.g. 1.0.0-alpha.1+4jds75hf
     // Allow use of 'hideSha' and 'hideVersion' For backwards compatibility
-
     let versionOnly = hash.versionOnly || hash.hideSha;
     let shaOnly = hash.shaOnly || hash.hideVersion;
     let match = null;
-
     if (versionOnly) {
       if (hash.showExtended) {
         match = version.match(_regexp.versionExtendedRegExp); // 1.0.0-alpha.1
-      } // Fallback to just version
-
-
+      }
+      // Fallback to just version
       if (!match) {
         match = version.match(_regexp.versionRegExp); // 1.0.0
       }
@@ -1436,9 +1371,7 @@
 
     return match ? match[0] : version;
   }
-
   var _default = Ember.Helper.helper(appVersion);
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/helpers/bs-contains", ["exports", "ember-bootstrap/helpers/bs-contains"], function (_exports, _bsContains) {
@@ -1447,16 +1380,16 @@
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _bsContains.default;
-    }
-  });
   Object.defineProperty(_exports, "bsContains", {
     enumerable: true,
     get: function () {
       return _bsContains.bsContains;
+    }
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _bsContains.default;
     }
   });
 });
@@ -1492,6 +1425,25 @@
     }
   });
 });
+;define("mountain-portfolio/helpers/loc", ["exports", "@ember/string/helpers/loc"], function (_exports, _loc) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _loc.default;
+    }
+  });
+  Object.defineProperty(_exports, "loc", {
+    enumerable: true,
+    get: function () {
+      return _loc.loc;
+    }
+  });
+});
 ;define("mountain-portfolio/helpers/media", ["exports", "ember-responsive/helpers/media"], function (_exports, _media) {
   "use strict";
 
@@ -1508,6 +1460,45 @@
     enumerable: true,
     get: function () {
       return _media.media;
+    }
+  });
+});
+;define("mountain-portfolio/helpers/on-document", ["exports", "ember-on-helper/helpers/on-document"], function (_exports, _onDocument) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _onDocument.default;
+    }
+  });
+});
+;define("mountain-portfolio/helpers/on-window", ["exports", "ember-on-helper/helpers/on-window"], function (_exports, _onWindow) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _onWindow.default;
+    }
+  });
+});
+;define("mountain-portfolio/helpers/on", ["exports", "ember-on-helper/helpers/on"], function (_exports, _on) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _on.default;
     }
   });
 });
@@ -1597,12 +1588,10 @@
   });
   _exports.default = void 0;
   let name, version;
-
   if (_environment.default.APP) {
     name = _environment.default.APP.name;
     version = _environment.default.APP.version;
   }
-
   var _default = {
     name: 'App Version',
     initialize: (0, _initializerFactory.default)(name, version)
@@ -1618,13 +1607,11 @@
   _exports.default = void 0;
   var _default = {
     name: 'container-debug-adapter',
-
     initialize() {
       let app = arguments[1] || arguments[0];
       app.register('container-debug-adapter:main', _containerDebugAdapter.default);
       app.inject('container-debug-adapter:main', 'namespace', 'application:main');
     }
-
   };
   _exports.default = _default;
 });
@@ -1641,14 +1628,13 @@
     }
   });
 });
-;define("mountain-portfolio/initializers/ember-data", ["exports", "ember-data/setup-container", "ember-data"], function (_exports, _setupContainer, _emberData) {
+;define("mountain-portfolio/initializers/ember-data", ["exports", "ember-data/setup-container"], function (_exports, _setupContainer) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-
   /*
   
     This code initializes Ember-Data onto an Ember application.
@@ -1709,15 +1695,12 @@
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.initialize = initialize;
   _exports.default = void 0;
-
+  _exports.initialize = initialize;
   function initialize() {
     var application = arguments[1] || arguments[0];
-
     if (_environment.default.exportApplicationGlobal !== false) {
       var theGlobal;
-
       if (typeof window !== 'undefined') {
         theGlobal = window;
       } else if (typeof global !== 'undefined') {
@@ -1728,29 +1711,24 @@
         // no reasonable global, just bail
         return;
       }
-
       var value = _environment.default.exportApplicationGlobal;
       var globalName;
-
       if (typeof value === 'string') {
         globalName = value;
       } else {
         globalName = Ember.String.classify(_environment.default.modulePrefix);
       }
-
       if (!theGlobal[globalName]) {
         theGlobal[globalName] = application;
         application.reopen({
           willDestroy: function () {
             this._super.apply(this, arguments);
-
             delete theGlobal[globalName];
           }
         });
       }
     }
   }
-
   var _default = {
     name: 'export-application-global',
     initialize: initialize
@@ -1763,15 +1741,12 @@
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.initialize = initialize;
   _exports.default = void 0;
-
-  function initialize()
-  /* container, application */
-  {
+  _exports.initialize = initialize;
+  function initialize( /* container, application */
+  ) {
     _config.default.load(_environment.default['ember-bootstrap'] || {});
   }
-
   var _default = {
     name: 'load-bootstrap-config',
     initialize
@@ -1804,7 +1779,6 @@
     value: true
   });
   _exports.default = void 0;
-
   /**
    * Ember UserAgent initializer
    *
@@ -1870,6 +1844,19 @@
     }
   });
 });
+;define("mountain-portfolio/modifiers/focus-trap", ["exports", "ember-focus-trap/modifiers/focus-trap"], function (_exports, _focusTrap) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _focusTrap.default;
+    }
+  });
+});
 ;define("mountain-portfolio/modifiers/ref", ["exports", "ember-ref-modifier/modifiers/ref"], function (_exports, _ref) {
   "use strict";
 
@@ -1920,9 +1907,7 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.Route.extend({});
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/services/-in-viewport", ["exports", "ember-in-viewport/services/-in-viewport"], function (_exports, _inViewport) {
@@ -1981,17 +1966,14 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.Service.extend({
     spriteling: undefined,
     top: 0,
     left: 100,
     forward: true,
     action: 'standRight',
-
     init() {
       this._super(...arguments);
-
       const sprite = new _spriteling.default({
         url: '/img/alpaca_spritesheet.png',
         cols: 12,
@@ -2019,9 +2001,7 @@
       }]);
       this.set('spriteling', sprite);
     }
-
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/services/user-agent", ["exports", "ember-useragent/services/user-agent"], function (_exports, _userAgent) {
@@ -2044,7 +2024,6 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.HTMLBars.template({
     "id": "Xax0I/Q8",
     "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"body\"],[9],[0,\"\\n  \"],[1,[21,\"outlet\"],false],[0,\"\\n\"],[10],[0,\"\\n\"]],\"hasEval\":false}",
@@ -2052,7 +2031,6 @@
       "moduleName": "mountain-portfolio/templates/application.hbs"
     }
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/templates/awesome", ["exports"], function (_exports) {
@@ -2062,7 +2040,6 @@
     value: true
   });
   _exports.default = void 0;
-
   var _default = Ember.HTMLBars.template({
     "id": "PylBWF2Y",
     "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"sr-only\"],[11,\"tabindex\",\"0\"],[9],[0,\"\\n  \"],[7,\"p\"],[9],[0,\"Hey, welcome! I'm Abbie.\"],[10],[0,\"\\n  \"],[7,\"p\"],[9],[0,\"I'm a Portland based Software Engineer and I build...\"],[10],[0,\"\\n  \"],[7,\"p\"],[9],[1,[21,\"typedStrings\"],false],[10],[0,\"\\n\"],[10],[0,\"\\n\"],[1,[27,\"sticky-mountains\",null,[[\"typedStrings\"],[[22,0,[\"typedStrings\"]]]]],false],[0,\"\\n\"],[1,[21,\"alpaca-game\"],false],[0,\"\\n\"]],\"hasEval\":false}",
@@ -2070,7 +2047,6 @@
       "moduleName": "mountain-portfolio/templates/awesome.hbs"
     }
   });
-
   _exports.default = _default;
 });
 ;define("mountain-portfolio/templates/components/ember-popper-targeting-parent", ["exports", "ember-popper/templates/components/ember-popper-targeting-parent"], function (_exports, _emberPopperTargetingParent) {
@@ -2122,7 +2098,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+e6e8e8fc"});
+            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+99058d4e"});
           }
         
 //# sourceMappingURL=mountain-portfolio.map
