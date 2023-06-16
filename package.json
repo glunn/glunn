@@ -1,7 +1,7 @@
 {
   "name": "mountain-portfolio",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "description": "Small description for mountain-portfolio goes here",
   "repository": "",
   "license": "MIT",
