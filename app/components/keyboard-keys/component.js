@@ -1,13 +1,14 @@
 import Component from '@ember/component';
 import { get, set } from '@ember/object';
-import { task, timeout } from 'ember-concurrency';
+import { taskGroup, timeout } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
   classNames: ['keyboard-keys-component'],
   sprite: service(),
 
-  onClickLeft: task(function * (inc) {
+
+  onClickLeft: taskGroup(function * (inc) {
     let spriteling = get(this, 'sprite.spriteling');
     let left = get(this, 'sprite.left');
 
@@ -26,7 +27,7 @@ export default Component.extend({
       document.getElementById("move-sprite").style.left = left + "px";
     }
   }),
-  onClickRight: task(function * (inc) {
+  onClickRight: taskGroup(function * (inc) {
     let spriteling = get(this, 'sprite.spriteling');
     let left = get(this, 'sprite.left');
 
@@ -45,7 +46,7 @@ export default Component.extend({
       document.getElementById("move-sprite").style.left = left + "px";
     }
   }),
-  onClickDown: task(function * (inc) {
+  onClickDown: taskGroup(function * (inc) {
     let top = get(this, 'sprite.top');
     while (true) {
       this.incrementProperty('sprite.top', inc);
@@ -55,7 +56,7 @@ export default Component.extend({
       document.getElementById("move-sprite").style.top = top + "px";
     }
   }),
-  onClickUp: task(function * (inc) {
+  onClickUp: taskGroup(function * (inc) {
     let top = get(this, 'sprite.top');
     let spriteling = get(this, 'sprite.spriteling');
     let forward = get(this, 'sprite.forward');

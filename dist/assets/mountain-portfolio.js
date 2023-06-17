@@ -1058,7 +1058,7 @@
   var _default = Ember.Component.extend({
     classNames: ['keyboard-keys-component'],
     sprite: Ember.inject.service(),
-    onClickLeft: (0, _emberConcurrency.task)(function* (inc) {
+    onClickLeft: (0, _emberConcurrency.taskGroup)(function* (inc) {
       let spriteling = Ember.get(this, 'sprite.spriteling');
       let left = Ember.get(this, 'sprite.left');
       spriteling.play('runLeft', {
@@ -1075,7 +1075,7 @@
         document.getElementById("move-sprite").style.left = left + "px";
       }
     }),
-    onClickRight: (0, _emberConcurrency.task)(function* (inc) {
+    onClickRight: (0, _emberConcurrency.taskGroup)(function* (inc) {
       let spriteling = Ember.get(this, 'sprite.spriteling');
       let left = Ember.get(this, 'sprite.left');
       spriteling.play('runRight', {
@@ -1092,7 +1092,7 @@
         document.getElementById("move-sprite").style.left = left + "px";
       }
     }),
-    onClickDown: (0, _emberConcurrency.task)(function* (inc) {
+    onClickDown: (0, _emberConcurrency.taskGroup)(function* (inc) {
       let top = Ember.get(this, 'sprite.top');
       while (true) {
         this.incrementProperty('sprite.top', inc);
@@ -1102,7 +1102,7 @@
         document.getElementById("move-sprite").style.top = top + "px";
       }
     }),
-    onClickUp: (0, _emberConcurrency.task)(function* (inc) {
+    onClickUp: (0, _emberConcurrency.taskGroup)(function* (inc) {
       let top = Ember.get(this, 'sprite.top');
       let spriteling = Ember.get(this, 'sprite.spriteling');
       let forward = Ember.get(this, 'sprite.forward');
