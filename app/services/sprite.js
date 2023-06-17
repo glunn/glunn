@@ -1,7 +1,9 @@
 import Service from '@ember/service';
+import { inject as service } from '@ember/service';
 import Spriteling from 'spriteling';
 
 export default Service.extend({
+  rootURL: service(),
   spriteling: undefined,
   top: 0,
   left: 100,
@@ -12,7 +14,7 @@ export default Service.extend({
     this._super(...arguments);
 
     const sprite = new Spriteling({
-       url: '/img/alpaca_spritesheet.png',
+       url: this.rootURL.build('/img/alpaca_spritesheet.png'),
        cols: 12,
        rows: 1,
        startSprite: 12,

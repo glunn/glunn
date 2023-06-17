@@ -1048,93 +1048,84 @@
   });
   _exports.default = _default;
 });
-;define("mountain-portfolio/components/keyboard-keys/component", ["exports"], function (_exports) {
+;define("mountain-portfolio/components/keyboard-keys/component", ["exports", "ember-concurrency"], function (_exports, _emberConcurrency) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  // import { get, set } from '@ember/object';
-  // import { task, timeout } from 'ember-concurrency';
-  // import { inject as service } from '@ember/service';
   var _default = Ember.Component.extend({
-    //   classNames: ['keyboard-keys-component'],
-    //   sprite: service(),
-
-    //   onClickLeft: task(function * (inc) {
-    //     let spriteling = get(this, 'sprite.spriteling');
-    //     let left = get(this, 'sprite.left');
-
-    //     spriteling.play('runLeft', {
-    //       run: -1,
-    //       delay: 150
-    //     });
-    //     this.set('sprite.action', 'runLeft');
-    //     this.set('sprite.forward', false);
-
-    //     while (true) {
-    //       this.decrementProperty('sprite.left', inc);
-    //       yield timeout(8);
-    //       left = get(this, 'sprite.left');
-    //       set(this, 'sprite.left', left);
-    //       document.getElementById("move-sprite").style.left = left + "px";
-    //     }
-    //   }),
-    //   onClickRight: task(function * (inc) {
-    //     let spriteling = get(this, 'sprite.spriteling');
-    //     let left = get(this, 'sprite.left');
-
-    //     spriteling.play('runRight', {
-    //       run: -1,
-    //       delay: 150
-    //     });
-    //     this.set('sprite.action', 'runRight');
-    //     this.set('sprite.forward', true);
-
-    //     while (true) {
-    //       this.incrementProperty('sprite.left', inc);
-    //       yield timeout(8);
-    //       left = get(this, 'sprite.left');
-    //       set(this, 'sprite.left', left);
-    //       document.getElementById("move-sprite").style.left = left + "px";
-    //     }
-    //   }),
-    //   onClickDown: task(function * (inc) {
-    //     let top = get(this, 'sprite.top');
-    //     while (true) {
-    //       this.incrementProperty('sprite.top', inc);
-    //       yield timeout(8);
-    //       top = get(this, 'sprite.top');
-    //       set(this, 'sprite.top', top);
-    //       document.getElementById("move-sprite").style.top = top + "px";
-    //     }
-    //   }),
-    //   onClickUp: task(function * (inc) {
-    //     let top = get(this, 'sprite.top');
-    //     let spriteling = get(this, 'sprite.spriteling');
-    //     let forward = get(this, 'sprite.forward');
-    //     spriteling.next();
-
-    //     if (!forward) {
-    //       spriteling.showSprite(2);
-    //       this.set('sprite.action', 'jumpLeft');
-    //     } else {
-    //       spriteling.showSprite(11);
-    //       this.set('sprite.action', 'jumpRight');
-    //     }
-    //     while (true) {
-    //       this.decrementProperty('sprite.top', inc);
-    //       yield timeout(8);
-    //       top = get(this, 'sprite.top');
-    //       set(this, 'sprite.top', top);
-    //       document.getElementById("move-sprite").style.top = top + "px";
-    //     }
-    //   }),
-    //   onMoveUp() {},
-    //   onMoveDown() {},
-    //   onMoveLeft() {},
-    //   onMoveRight() {}
+    classNames: ['keyboard-keys-component'],
+    sprite: Ember.inject.service(),
+    onClickLeft: (0, _emberConcurrency.task)(function* (inc) {
+      let spriteling = Ember.get(this, 'sprite.spriteling');
+      let left = Ember.get(this, 'sprite.left');
+      spriteling.play('runLeft', {
+        run: -1,
+        delay: 150
+      });
+      this.set('sprite.action', 'runLeft');
+      this.set('sprite.forward', false);
+      while (true) {
+        this.decrementProperty('sprite.left', inc);
+        yield (0, _emberConcurrency.timeout)(8);
+        left = Ember.get(this, 'sprite.left');
+        Ember.set(this, 'sprite.left', left);
+        document.getElementById("move-sprite").style.left = left + "px";
+      }
+    }),
+    onClickRight: (0, _emberConcurrency.task)(function* (inc) {
+      let spriteling = Ember.get(this, 'sprite.spriteling');
+      let left = Ember.get(this, 'sprite.left');
+      spriteling.play('runRight', {
+        run: -1,
+        delay: 150
+      });
+      this.set('sprite.action', 'runRight');
+      this.set('sprite.forward', true);
+      while (true) {
+        this.incrementProperty('sprite.left', inc);
+        yield (0, _emberConcurrency.timeout)(8);
+        left = Ember.get(this, 'sprite.left');
+        Ember.set(this, 'sprite.left', left);
+        document.getElementById("move-sprite").style.left = left + "px";
+      }
+    }),
+    onClickDown: (0, _emberConcurrency.task)(function* (inc) {
+      let top = Ember.get(this, 'sprite.top');
+      while (true) {
+        this.incrementProperty('sprite.top', inc);
+        yield (0, _emberConcurrency.timeout)(8);
+        top = Ember.get(this, 'sprite.top');
+        Ember.set(this, 'sprite.top', top);
+        document.getElementById("move-sprite").style.top = top + "px";
+      }
+    }),
+    onClickUp: (0, _emberConcurrency.task)(function* (inc) {
+      let top = Ember.get(this, 'sprite.top');
+      let spriteling = Ember.get(this, 'sprite.spriteling');
+      let forward = Ember.get(this, 'sprite.forward');
+      spriteling.next();
+      if (!forward) {
+        spriteling.showSprite(2);
+        this.set('sprite.action', 'jumpLeft');
+      } else {
+        spriteling.showSprite(11);
+        this.set('sprite.action', 'jumpRight');
+      }
+      while (true) {
+        this.decrementProperty('sprite.top', inc);
+        yield (0, _emberConcurrency.timeout)(8);
+        top = Ember.get(this, 'sprite.top');
+        Ember.set(this, 'sprite.top', top);
+        document.getElementById("move-sprite").style.top = top + "px";
+      }
+    }),
+    onMoveUp() {},
+    onMoveDown() {},
+    onMoveLeft() {},
+    onMoveRight() {}
   });
   _exports.default = _default;
 });
@@ -1146,8 +1137,8 @@
   });
   _exports.default = void 0;
   var _default = Ember.HTMLBars.template({
-    "id": "Jqa5ADjz",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n\"],[10],[0,\"\\n\\n\\n\\n\"]],\"hasEval\":false}",
+    "id": "238TTMOM",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"row justify-content-center\"],[9],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"up-key\",\"w\",[27,\"perform\",[[23,[\"onClickUp\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickUp\"]]],null]]]],false],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"row justify-content-center\"],[9],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"left-key\",\"a\",[27,\"perform\",[[23,[\"onClickLeft\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickLeft\"]]],null]]]],false],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"down-key\",\"s\",[27,\"perform\",[[23,[\"onClickDown\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickDown\"]]],null]]]],false],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"right-key\",\"d\",[27,\"perform\",[[23,[\"onClickRight\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickRight\"]]],null]]]],false],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\\n\\n\"]],\"hasEval\":false}",
     "meta": {
       "moduleName": "mountain-portfolio/components/keyboard-keys/template.hbs"
     }
@@ -1997,6 +1988,7 @@
   });
   _exports.default = void 0;
   var _default = Ember.Service.extend({
+    rootURL: Ember.inject.service(),
     spriteling: undefined,
     top: 0,
     left: 100,
@@ -2005,7 +1997,7 @@
     init() {
       this._super(...arguments);
       const sprite = new _spriteling.default({
-        url: '/img/alpaca_spritesheet.png',
+        url: this.rootURL.build('/img/alpaca_spritesheet.png'),
         cols: 12,
         rows: 1,
         startSprite: 12,
@@ -2128,7 +2120,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+34fb3298"});
+            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+cdf0f331"});
           }
         
 //# sourceMappingURL=mountain-portfolio.map
