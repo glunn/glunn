@@ -2120,7 +2120,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+cdf0f331"});
+            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+3885c944"});
           }
         
 //# sourceMappingURL=mountain-portfolio.map
