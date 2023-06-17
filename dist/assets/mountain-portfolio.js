@@ -1058,71 +1058,82 @@
   var _default = Ember.Component.extend({
     classNames: ['keyboard-keys-component'],
     sprite: Ember.inject.service(),
-    onClickLeft: (0, _emberConcurrency.taskGroup)(function* (inc) {
-      let spriteling = Ember.get(this, 'sprite.spriteling');
-      let left = Ember.get(this, 'sprite.left');
-      spriteling.play('runLeft', {
-        run: -1,
-        delay: 150
-      });
-      this.set('sprite.action', 'runLeft');
-      this.set('sprite.forward', false);
-      while (true) {
-        this.decrementProperty('sprite.left', inc);
-        yield (0, _emberConcurrency.timeout)(8);
-        left = Ember.get(this, 'sprite.left');
-        Ember.set(this, 'sprite.left', left);
-        document.getElementById("move-sprite").style.left = left + "px";
-      }
-    }),
-    onClickRight: (0, _emberConcurrency.taskGroup)(function* (inc) {
-      let spriteling = Ember.get(this, 'sprite.spriteling');
-      let left = Ember.get(this, 'sprite.left');
-      spriteling.play('runRight', {
-        run: -1,
-        delay: 150
-      });
-      this.set('sprite.action', 'runRight');
-      this.set('sprite.forward', true);
-      while (true) {
-        this.incrementProperty('sprite.left', inc);
-        yield (0, _emberConcurrency.timeout)(8);
-        left = Ember.get(this, 'sprite.left');
-        Ember.set(this, 'sprite.left', left);
-        document.getElementById("move-sprite").style.left = left + "px";
-      }
-    }),
-    onClickDown: (0, _emberConcurrency.taskGroup)(function* (inc) {
-      let top = Ember.get(this, 'sprite.top');
-      while (true) {
-        this.incrementProperty('sprite.top', inc);
-        yield (0, _emberConcurrency.timeout)(8);
-        top = Ember.get(this, 'sprite.top');
-        Ember.set(this, 'sprite.top', top);
-        document.getElementById("move-sprite").style.top = top + "px";
-      }
-    }),
-    onClickUp: (0, _emberConcurrency.taskGroup)(function* (inc) {
-      let top = Ember.get(this, 'sprite.top');
-      let spriteling = Ember.get(this, 'sprite.spriteling');
-      let forward = Ember.get(this, 'sprite.forward');
-      spriteling.next();
-      if (!forward) {
-        spriteling.showSprite(2);
-        this.set('sprite.action', 'jumpLeft');
-      } else {
-        spriteling.showSprite(11);
-        this.set('sprite.action', 'jumpRight');
-      }
-      while (true) {
-        this.decrementProperty('sprite.top', inc);
-        yield (0, _emberConcurrency.timeout)(8);
-        top = Ember.get(this, 'sprite.top');
-        Ember.set(this, 'sprite.top', top);
-        document.getElementById("move-sprite").style.top = top + "px";
-      }
-    }),
-    onMoveUp() {},
+    onClickLeft: function () {},
+    onClickDown: function () {},
+    onClickUp: function () {},
+    onClickRight: function () {},
+    //   onClickLeft: task(function * (inc) {
+    //     let spriteling = get(this, 'sprite.spriteling');
+    //     let left = get(this, 'sprite.left');
+
+    //     spriteling.play('runLeft', {
+    //       run: -1,
+    //       delay: 150
+    //     });
+    //     this.set('sprite.action', 'runLeft');
+    //     this.set('sprite.forward', false);
+
+    //     while (true) {
+    //       this.decrementProperty('sprite.left', inc);
+    //       yield timeout(8);
+    //       left = get(this, 'sprite.left');
+    //       set(this, 'sprite.left', left);
+    //       document.getElementById("move-sprite").style.left = left + "px";
+    //     }
+    //   }),
+    //   onClickRight: task(function * (inc) {
+    //     let spriteling = get(this, 'sprite.spriteling');
+    //     let left = get(this, 'sprite.left');
+
+    //     spriteling.play('runRight', {
+    //       run: -1,
+    //       delay: 150
+    //     });
+    //     this.set('sprite.action', 'runRight');
+    //     this.set('sprite.forward', true);
+
+    //     while (true) {
+    //       this.incrementProperty('sprite.left', inc);
+    //       yield timeout(8);
+    //       left = get(this, 'sprite.left');
+    //       set(this, 'sprite.left', left);
+    //       document.getElementById("move-sprite").style.left = left + "px";
+    //     }
+    //   }),
+    //   onClickDown: task(function * (inc) {
+    //     let top = get(this, 'sprite.top');
+    //     while (true) {
+    //       this.incrementProperty('sprite.top', inc);
+    //       yield timeout(8);
+    //       top = get(this, 'sprite.top');
+    //       set(this, 'sprite.top', top);
+    //       document.getElementById("move-sprite").style.top = top + "px";
+    //     }
+    //   }),
+    //   onClickUp: task(function * (inc) {
+    //     let top = get(this, 'sprite.top');
+    //     let spriteling = get(this, 'sprite.spriteling');
+    //     let forward = get(this, 'sprite.forward');
+    //     spriteling.next();
+
+    //     if (!forward) {
+    //       spriteling.showSprite(2);
+    //       this.set('sprite.action', 'jumpLeft');
+    //     } else {
+    //       spriteling.showSprite(11);
+    //       this.set('sprite.action', 'jumpRight');
+    //     }
+    //     while (true) {
+    //       this.decrementProperty('sprite.top', inc);
+    //       yield timeout(8);
+    //       top = get(this, 'sprite.top');
+    //       set(this, 'sprite.top', top);
+    //       document.getElementById("move-sprite").style.top = top + "px";
+    //     }
+    //   }),
+    onMoveUp() {
+      let test = _emberConcurrency.task;
+    },
     onMoveDown() {},
     onMoveLeft() {},
     onMoveRight() {}
@@ -1137,8 +1148,8 @@
   });
   _exports.default = void 0;
   var _default = Ember.HTMLBars.template({
-    "id": "238TTMOM",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"row justify-content-center\"],[9],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"up-key\",\"w\",[27,\"perform\",[[23,[\"onClickUp\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickUp\"]]],null]]]],false],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"row justify-content-center\"],[9],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"left-key\",\"a\",[27,\"perform\",[[23,[\"onClickLeft\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickLeft\"]]],null]]]],false],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"down-key\",\"s\",[27,\"perform\",[[23,[\"onClickDown\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickDown\"]]],null]]]],false],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\",\"release\"],[\"right-key\",\"d\",[27,\"perform\",[[23,[\"onClickRight\"]],2],null],[27,\"cancel-all\",[[23,[\"onClickRight\"]]],null]]]],false],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\\n\\n\"]],\"hasEval\":false}",
+    "id": "R8uMbj9A",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"row justify-content-center\"],[9],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\"],[\"up-key\",\"w\",[27,\"perform\",[[23,[\"onClickUp\"]],2],null]]]],false],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"row justify-content-center\"],[9],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\"],[\"left-key\",\"a\",[27,\"perform\",[[23,[\"onClickLeft\"]],2],null]]]],false],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\"],[\"down-key\",\"s\",[27,\"perform\",[[23,[\"onClickDown\"]],2],null]]]],false],[0,\"\\n    \"],[1,[27,\"keyboard-key\",null,[[\"class\",\"letter\",\"press\"],[\"right-key\",\"d\",[27,\"perform\",[[23,[\"onClickRight\"]],2],null]]]],false],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\\n\\n\"]],\"hasEval\":false}",
     "meta": {
       "moduleName": "mountain-portfolio/components/keyboard-keys/template.hbs"
     }

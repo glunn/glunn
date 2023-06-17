@@ -160,7 +160,7 @@ define("mountain-portfolio/tests/lint/app.lint-test", [], function () {
   });
   QUnit.test('components/keyboard-keys/component.js', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'components/keyboard-keys/component.js should pass ESLint\n\n');
+    assert.ok(false, 'components/keyboard-keys/component.js should pass ESLint\n\n2:10 - \'get\' is defined but never used. (no-unused-vars)\n2:15 - \'set\' is defined but never used. (no-unused-vars)\n3:16 - \'timeout\' is defined but never used. (no-unused-vars)\n88:11 - \'test\' is assigned a value but never used. (no-unused-vars)');
   });
   QUnit.test('components/portfolio-cards/component.js', function (assert) {
     assert.expect(1);
