@@ -1,9 +1,9 @@
-// import Component from '@ember/component';
+import Component from '@ember/component';
 // import { get, set } from '@ember/object';
 // import { task, timeout } from 'ember-concurrency';
 // import { inject as service } from '@ember/service';
 
-// export default Component.extend({
+export default Component.extend({
 //   classNames: ['keyboard-keys-component'],
 //   sprite: service(),
 
@@ -80,4 +80,4 @@
 //   onMoveDown() {},
 //   onMoveLeft() {},
 //   onMoveRight() {}
-// });
+});
