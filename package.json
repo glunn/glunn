@@ -54,6 +54,7 @@
     "ember-resolver": "^5.0.1",
     "ember-responsive": "^3.0.5",
     "ember-responsive-image": "^1.0.0-rc.6",
+    "ember-root-url": "^1.0.1",
     "ember-source": "~3.8.0",
     "ember-sticky-element": "^0.2.3",
     "ember-typed": "^0.1.3",
