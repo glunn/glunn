@@ -1997,7 +1997,7 @@
     init() {
       this._super(...arguments);
       const sprite = new _spriteling.default({
-        url: this.rootURL.build('/img/alpaca_spritesheet.png'),
+        url: this.rootURL.build('img/alpaca_spritesheet.png'),
         cols: 12,
         rows: 1,
         startSprite: 12,
@@ -2120,7 +2120,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+3885c944"});
+            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+fac3c4f5"});
           }
         
 //# sourceMappingURL=mountain-portfolio.map

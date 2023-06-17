@@ -14,7 +14,7 @@ export default Service.extend({
     this._super(...arguments);
 
     const sprite = new Spriteling({
-       url: this.rootURL.build('/img/alpaca_spritesheet.png'),
+       url: this.rootURL.build('img/alpaca_spritesheet.png'),
        cols: 12,
        rows: 1,
        startSprite: 12,
