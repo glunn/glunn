@@ -1058,82 +1058,71 @@
   var _default = Ember.Component.extend({
     classNames: ['keyboard-keys-component'],
     sprite: Ember.inject.service(),
-    onClickLeft: function () {},
-    onClickDown: function () {},
-    onClickUp: function () {},
-    onClickRight: function () {},
-    //   onClickLeft: task(function * (inc) {
-    //     let spriteling = get(this, 'sprite.spriteling');
-    //     let left = get(this, 'sprite.left');
-
-    //     spriteling.play('runLeft', {
-    //       run: -1,
-    //       delay: 150
-    //     });
-    //     this.set('sprite.action', 'runLeft');
-    //     this.set('sprite.forward', false);
-
-    //     while (true) {
-    //       this.decrementProperty('sprite.left', inc);
-    //       yield timeout(8);
-    //       left = get(this, 'sprite.left');
-    //       set(this, 'sprite.left', left);
-    //       document.getElementById("move-sprite").style.left = left + "px";
-    //     }
-    //   }),
-    //   onClickRight: task(function * (inc) {
-    //     let spriteling = get(this, 'sprite.spriteling');
-    //     let left = get(this, 'sprite.left');
-
-    //     spriteling.play('runRight', {
-    //       run: -1,
-    //       delay: 150
-    //     });
-    //     this.set('sprite.action', 'runRight');
-    //     this.set('sprite.forward', true);
-
-    //     while (true) {
-    //       this.incrementProperty('sprite.left', inc);
-    //       yield timeout(8);
-    //       left = get(this, 'sprite.left');
-    //       set(this, 'sprite.left', left);
-    //       document.getElementById("move-sprite").style.left = left + "px";
-    //     }
-    //   }),
-    //   onClickDown: task(function * (inc) {
-    //     let top = get(this, 'sprite.top');
-    //     while (true) {
-    //       this.incrementProperty('sprite.top', inc);
-    //       yield timeout(8);
-    //       top = get(this, 'sprite.top');
-    //       set(this, 'sprite.top', top);
-    //       document.getElementById("move-sprite").style.top = top + "px";
-    //     }
-    //   }),
-    //   onClickUp: task(function * (inc) {
-    //     let top = get(this, 'sprite.top');
-    //     let spriteling = get(this, 'sprite.spriteling');
-    //     let forward = get(this, 'sprite.forward');
-    //     spriteling.next();
-
-    //     if (!forward) {
-    //       spriteling.showSprite(2);
-    //       this.set('sprite.action', 'jumpLeft');
-    //     } else {
-    //       spriteling.showSprite(11);
-    //       this.set('sprite.action', 'jumpRight');
-    //     }
-    //     while (true) {
-    //       this.decrementProperty('sprite.top', inc);
-    //       yield timeout(8);
-    //       top = get(this, 'sprite.top');
-    //       set(this, 'sprite.top', top);
-    //       document.getElementById("move-sprite").style.top = top + "px";
-    //     }
-    //   }),
-    onMoveUp() {
-      let test = _emberConcurrency.task;
-    },
+    onClickLeft: (0, _emberConcurrency.task)(function* (inc) {
+      let spriteling = Ember.get(this, 'sprite.spriteling');
+      let left = Ember.get(this, 'sprite.left');
+      spriteling.play('runLeft', {
+        run: -1,
+        delay: 150
+      });
+      this.set('sprite.action', 'runLeft');
+      this.set('sprite.forward', false);
+      while (true) {
+        this.decrementProperty('sprite.left', inc);
+        yield (0, _emberConcurrency.timeout)(8);
+        left = Ember.get(this, 'sprite.left');
+        Ember.set(this, 'sprite.left', left);
+        document.getElementById("move-sprite").style.left = left + "px";
+      }
+    }),
+    onClickRight: (0, _emberConcurrency.task)(function* (inc) {
+      let spriteling = Ember.get(this, 'sprite.spriteling');
+      let left = Ember.get(this, 'sprite.left');
+      spriteling.play('runRight', {
+        run: -1,
+        delay: 150
+      });
+      this.set('sprite.action', 'runRight');
+      this.set('sprite.forward', true);
+      while (true) {
+        this.incrementProperty('sprite.left', inc);
+        yield (0, _emberConcurrency.timeout)(8);
+        left = Ember.get(this, 'sprite.left');
+        Ember.set(this, 'sprite.left', left);
+        document.getElementById("move-sprite").style.left = left + "px";
+      }
+    }),
+    onClickDown: (0, _emberConcurrency.task)(function* (inc) {
+      let top = Ember.get(this, 'sprite.top');
+      while (true) {
+        this.incrementProperty('sprite.top', inc);
+        yield (0, _emberConcurrency.timeout)(8);
+        top = Ember.get(this, 'sprite.top');
+        Ember.set(this, 'sprite.top', top);
+        document.getElementById("move-sprite").style.top = top + "px";
+      }
+    }),
+    onClickUp: (0, _emberConcurrency.task)(function* (inc) {
+      let top = Ember.get(this, 'sprite.top');
+      let spriteling = Ember.get(this, 'sprite.spriteling');
+      let forward = Ember.get(this, 'sprite.forward');
+      spriteling.next();
+      if (!forward) {
+        spriteling.showSprite(2);
+        this.set('sprite.action', 'jumpLeft');
+      } else {
+        spriteling.showSprite(11);
+        this.set('sprite.action', 'jumpRight');
+      }
+      while (true) {
+        this.decrementProperty('sprite.top', inc);
+        yield (0, _emberConcurrency.timeout)(8);
+        top = Ember.get(this, 'sprite.top');
+        Ember.set(this, 'sprite.top', top);
+        document.getElementById("move-sprite").style.top = top + "px";
+      }
+    }),
+    onMoveUp() {},
     onMoveDown() {},
     onMoveLeft() {},
     onMoveRight() {}
@@ -1176,8 +1165,8 @@
   });
   _exports.default = void 0;
   var _default = Ember.HTMLBars.template({
-    "id": "Btrka5zw",
-    "block": "{\"symbols\":[],\"statements\":[[4,\"unless\",[[27,\"user-agent\",[\"browser.isIE\"],null]],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n        \"],[7,\"p\"],[9],[0,\"I work for Poached Jobs where I help develop new features and migrate a legacy site from WordPress to a single page Ember application backed by a RESTful API.\"],[10],[0,\"\\n        \"],[7,\"h6\"],[9],[0,\"Some languages, frameworks and tools I've used:\"],[10],[0,\"\\n        \"],[7,\"h1\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://emberjs.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"ember\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://sass-lang.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"sass\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://reactjs.org/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"react\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://nodejs.org/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"node\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://developer.mozilla.org/en-US/docs/Web/JavaScript\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"js\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.adobe.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"adobe\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://getbootstrap.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"bootstrap\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.npmjs.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"npm\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"html5\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.mysql.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mysql\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/mysql.png\"],null]],[11,\"alt\",\"mysql logo\"],[11,\"class\",\"fa\"],[9],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://github.com/glunn\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"github\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.python.org/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"python\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"row p-sm-5 mx-sm-auto\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://blog.poachedjobs.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/poached-blog.jpg\"],null]],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"The Poached Blog\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"The Poached Blog\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"Before starting on the main app one of my projects at Poached was building their blog site using a WordPress child theme. Avg. daily pageviews are up over 200%. (My co-workers are brillant and hilarious, you should check out their articles!)\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"http://rubencortezdrywall.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"drywall.jpg\",\"card-img-top\",\"Ruben Cortez Drywall\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Ruben Cortez Drywall\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"Responsive, quick to load, and straight to the point. A local contractor asked me for a simple page to showcase his company's Yelp reviews.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.portlandialanguages.com/free-session\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"sign-up.jpg\",\"card-img-top\",\"Portlandia Languages\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Portlandia Language School\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I doubled the rate of enrollment in language courses at Portlandia Language School by updating their website and implementing an online sign up form.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://devpost.com/software/growing-gardens-donate-portal\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/growing-gardens.jpg\"],null]],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"Growing Gardens app\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Growing Gardens 🏆\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"My team won first place at the annual We Code For Good Hackathon with our donation platform for a local non-profit. I contributed to the concept, requirements gathering, front end development, and I set up the front end architecture for the project.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"http://rpmaquinarias.com.ar/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/rp-maquinarias.jpg\"],null]],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"RP Maquinarias site\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"RP Maquinarias\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I used a Wayback Machine downloader to quickly recontruct a lost site designed by another developer. RP was losing substantial business due to downtime and thought they were out >1k and numerous hours spent generating content, but happily it was pretty straight-forward to save everything.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://devpost.com/software/team-13-z8gw0b\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/milk-bank.jpg\"],null]],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"Mother's Milk app\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"NW Mother’s Milk Bank\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"My team's entry for the 2017 We Code For Good Hackathon. We built a mobile app to aid donors in finding places to drop off their breast milk, and designed features for ordering supplies, tracking donations, and explaining donation packaging. It's built with Node.js and MongoDB.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://help.poachedjobs.com/hc/en-us\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"zendesk.jpg\",\"card-img-top\",\"Help Center\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Zendesk Help Desk\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I created a theme for our Poached help center, with a search function and suggested articles.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"http://www.hackoregon.org/about-us\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"web-cartography.jpg\",\"card-img-top\",\"Web Cartography\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Hack Oregon\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I volunteered as a Junior Front End Developer for a Hack Oregon civic project, and also completed their JavaScript, React, and Web Cartography classes.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
+    "id": "Mx6hh159",
+    "block": "{\"symbols\":[],\"statements\":[[4,\"unless\",[[27,\"user-agent\",[\"browser.isIE\"],null]],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n        \"],[7,\"p\"],[9],[0,\"I work for Poached Jobs where I help develop new features and migrate a legacy site from WordPress to a single page Ember application backed by a RESTful API.\"],[10],[0,\"\\n        \"],[7,\"h6\"],[9],[0,\"Some languages, frameworks and tools I've used:\"],[10],[0,\"\\n        \"],[7,\"h1\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://emberjs.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"ember\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://sass-lang.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"sass\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://reactjs.org/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"react\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://nodejs.org/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mx-auto\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"node\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://developer.mozilla.org/en-US/docs/Web/JavaScript\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"js\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n\"],[0,\"          \"],[7,\"a\"],[11,\"href\",\"https://getbootstrap.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"bootstrap\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.npmjs.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"npm\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"html5\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.mysql.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[11,\"class\",\"mysql\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/mysql.png\"],null]],[11,\"alt\",\"mysql logo\"],[11,\"class\",\"fa\"],[9],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://github.com/glunn\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"github\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.python.org/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[5,\"fa-icon\",[],[[\"@icon\",\"@prefix\"],[\"python\",\"fab\"]]],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"row p-sm-5 mx-sm-auto\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://blog.poachedjobs.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/poached-blog.jpg\"],null]],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"The Poached Blog\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"The Poached Blog\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"Before starting on the main app one of my projects at Poached was building their blog site using a WordPress child theme. Avg. daily pageviews are up over 200%. (My co-workers are brillant and hilarious, you should check out their articles!)\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"http://rubencortezdrywall.com/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"drywall.jpg\",\"card-img-top\",\"Ruben Cortez Drywall\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Ruben Cortez Drywall\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"Responsive, quick to load, and straight to the point. A local contractor asked me for a simple page to showcase his company's Yelp reviews.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://www.portlandialanguages.com/free-session\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"sign-up.jpg\",\"card-img-top\",\"Portlandia Languages\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Portlandia Language School\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I doubled the rate of enrollment in language courses at Portlandia Language School by updating their website and implementing an online sign up form.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://devpost.com/software/growing-gardens-donate-portal\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/growing-gardens.jpg\"],null]],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"Growing Gardens app\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Growing Gardens 🏆\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"My team won first place at the annual We Code For Good Hackathon with our donation platform for a local non-profit. I contributed to the concept, requirements gathering, front end development, and I set up the front end architecture for the project.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"http://rpmaquinarias.com.ar/\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/rp-maquinarias.jpg\"],null]],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"RP Maquinarias site\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"RP Maquinarias\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I used a Wayback Machine downloader to quickly recontruct a lost site designed by another developer. RP was losing substantial business due to downtime and thought they were out >1k and numerous hours spent generating content, but happily it was pretty straight-forward to save everything.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://devpost.com/software/team-13-z8gw0b\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[7,\"img\"],[12,\"src\",[27,\"root-url\",[\"/img/milk-bank.jpg\"],null]],[11,\"class\",\"card-img-top\"],[11,\"alt\",\"Mother's Milk app\"],[9],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"NW Mother’s Milk Bank\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"My team's entry for the 2017 We Code For Good Hackathon. We built a mobile app to aid donors in finding places to drop off their breast milk, and designed features for ordering supplies, tracking donations, and explaining donation packaging. It's built with Node.js and MongoDB.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"https://help.poachedjobs.com/hc/en-us\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"zendesk.jpg\",\"card-img-top\",\"Help Center\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Zendesk Help Desk\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I created a theme for our Poached help center, with a search function and suggested articles.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"card-deck mx-auto\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"card mx-sm-2 mt-5 mb-5\"],[9],[0,\"\\n          \"],[7,\"a\"],[11,\"href\",\"http://www.hackoregon.org/about-us\"],[11,\"target\",\"_blank\"],[11,\"rel\",\"noopener\"],[9],[0,\"\\n            \"],[1,[27,\"responsive-image\",null,[[\"image\",\"class\",\"alt\"],[\"web-cartography.jpg\",\"card-img-top\",\"Web Cartography\"]]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"card-body\"],[9],[0,\"\\n              \"],[7,\"h6\"],[9],[0,\"Hack Oregon\"],[10],[0,\"\\n              \"],[7,\"p\"],[11,\"class\",\"card-text\"],[9],[0,\"I volunteered as a Junior Front End Developer for a Hack Oregon civic project, and also completed their JavaScript, React, and Web Cartography classes.\"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"bg-dark\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"jumbotron jumbotron-fluid mb-0\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"container\"],[9],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
     "meta": {
       "moduleName": "mountain-portfolio/components/portfolio-cards/template.hbs"
     }
@@ -2131,7 +2120,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+a8990380"});
+            require("mountain-portfolio/app")["default"].create({"name":"mountain-portfolio","version":"0.0.0+84330116"});
           }
         
 //# sourceMappingURL=mountain-portfolio.map
